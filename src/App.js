@@ -5,6 +5,8 @@ import ServicesContainer from "./components/ServicesContainer";
 import Header from "./components/Header";
 import Banner from "./components/Banner";
 import bannerImage from "./assets/banner-img.png";
+import HeroSlider from "./components/HeroSlider";
+import AboutSection from "./components/AboutSection";
 
 const Wrapper = styled.div`
   background:
@@ -15,6 +17,22 @@ const Wrapper = styled.div`
   min-height: 100vh;
   
   color: white;
+`;
+const PageWrapper = styled.div`
+  position: relative;
+  background: #f9f9f9;
+`;
+
+const FixedSliderWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+`;
+
+const PushedContent = styled.div`
+  margin-top: 70vh; // hoặc đúng chiều cao của HeroSlider
 `;
 
 function App() {
@@ -30,23 +48,10 @@ function App() {
       <Banner key={refreshKey} />
      {/* <ContentPlaceholder></ContentPlaceholder> */}
        <ServicesContainer />
+       <HeroSlider/>
+       <AboutSection/>
     </>
   );
 }
 export default App;
-// const ContentPlaceholder = styled.section`
-//   padding: 100px 40px;
-//   background: #f8f9fa;
-//   color: #333;
-//   min-height: 1000px; 
 
-//   h2 {
-//     font-size: 32px;
-//     margin-bottom: 20px;
-//   }
-
-//   p {
-//     max-width: 800px;
-//     line-height: 1.6;
-//   }
-// `;

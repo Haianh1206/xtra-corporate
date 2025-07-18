@@ -17,21 +17,25 @@ const services = [
     icon: serviceIcon2,
     label: "FINANCIAL FUNCTIONS",
     title: "ACCOUNTING SERVICES",
+    hoverText: "Network",
   },
   {
     icon: serviceIcon3,
     label: "MATERIALS DISTRIBUTION",
     title: "PURCHASING SERVICES",
+    hoverText: "Objective",
   },
   {
     icon: serviceIcon4,
     label: "SAFEGUARD ASSETS",
     title: "INTERNAL CONTROLS",
+    hoverText: "Creative",
   },
   {
     icon: serviceIcon5,
     label: "ONLINE PURCHASING",
     title: "E-COMMERCE ORDERING",
+    hoverText: "Banknote",
   },
   {
     label: "",
@@ -45,6 +49,7 @@ const ContainerWrapper = styled.div`
   margin-top: -81px;
   padding: 0 120px 80px 120px;
   background: #f9f9f9;
+  height: 110vh;
 `;
 
 const Container = styled.div`
@@ -94,12 +99,15 @@ const Card = styled.div`
 
 const Icon = styled.div`
   font-size: 32px;
+  margin-left: 12px;
+  margin-top: 8px;
 `;
 
 const Label = styled.div`
   font-size: 16px;
   color: #666666;
   text-transform: uppercase;
+    margin-left: 20px;
 `;
 
 const Title = styled.div`
@@ -107,7 +115,7 @@ const Title = styled.div`
   font-weight: bold;
   color: #000000;
   transition: color 0.3s ease;
-
+  margin-left: 20px;
   .hoverable:hover & {
     color: #002a96;
   }
@@ -117,14 +125,15 @@ const TitleRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
 `;
 
 const Arrow = styled.div`
   color: #bbb;
 
   svg {
-    width: 24px;
-    height: 24px;
+    width: ${(props) => (props.$large ? "40px" : "24px")};
+    height: ${(props) => (props.$large ? "40px" : "24px")};
   }
 `;
 
@@ -230,6 +239,26 @@ const LargeTitle = styled.div`
   line-height: 1.1;
   text-transform: uppercase;
 `;
+const HoverText = styled.div`
+  position: absolute;
+  left: 65px;
+  top: 44px; /* ngay dưới icon (icon cao 84px) */
+  background: black;
+  color: #fff;
+  font-size: 12px;
+  height: 24px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease 1s; /* 2s delay */
+
+  ${Card}:hover & {
+    opacity: 1;
+  }
+`;
 
 export default function ServicesContainer() {
   return (
@@ -243,59 +272,58 @@ export default function ServicesContainer() {
             className={idx >= 1 && idx <= 4 ? "hoverable" : ""}
           >
             {idx >= 1 && idx <= 4 && (
-              <Icon>
-                {item.icon && (
-                  <img
-                    src={item.icon}
-                    alt="service icon"
-                    width={84}
-                    height={84}
-                  />
-                )}
-              </Icon>
+              <>
+                <Icon>
+                  {item.icon && (
+                    <img
+                      src={item.icon}
+                      alt="service icon"
+                      width={84}
+                      height={84}
+                    />
+                  )}
+                  {item.hoverText && <HoverText>{item.hoverText}</HoverText>}
+                </Icon>
+                <InfoGroup $shift>
+                  <Label>{item.label}</Label>
+                  <TitleRow>
+                    <Title>{item.title}</Title>
+                    <Arrow $large={idx >= 1 && idx <= 4}>
+                      <ArrowRight />
+                    </Arrow>
+                  </TitleRow>
+                </InfoGroup>
+              </>
             )}
 
-            {idx === 0 ? (
+            {idx === 0 && (
               <TitleGroup>
-                <Label>{item.label}</Label>
-                <LargeTitle>
-                  WHAT
-                  <br />
-                  WE CAN
-                  <br />
-                  DO?
-                </LargeTitle>
+                <div style={{ marginLeft: "20px" }}>
+                  <Label>{item.label}</Label>
+                  <LargeTitle>
+                    WHAT
+                    <br />
+                    WE CAN
+                    <br />
+                    DO?
+                  </LargeTitle>
+                </div>
               </TitleGroup>
-            ) : idx === 5 ? (
+            )}
+
+            {idx === 5 && (
               <CenteredArrow>
-                {/* Arrow cũ chạy ra ngoài */}
                 <ArrowExit className="arrow-exit">
                   <ChevronRight size={64} />
                 </ArrowExit>
-
-                {/* Arrow mới chạy vào */}
                 <ArrowEnter className="arrow-enter">
                   <ChevronRight size={64} />
                 </ArrowEnter>
-
-                {/* Text cũ chạy ra */}
                 <TextExit className="text-exit">
                   Looking for a New Service?
                 </TextExit>
-
-                {/* Text mới chạy vào */}
                 <TextEnter className="text-enter">Request a quote!</TextEnter>
               </CenteredArrow>
-            ) : (
-              <InfoGroup $shift>
-                <Label>{item.label}</Label>
-                <TitleRow>
-                  <Title>{item.title}</Title>
-                  <Arrow>
-                    <ArrowRight />
-                  </Arrow>
-                </TitleRow>
-              </InfoGroup>
             )}
           </Card>
         ))}

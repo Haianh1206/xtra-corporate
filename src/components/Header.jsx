@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import xtraLogo from "../assets/xtra-logo.png";
 import envatoLogo from "../assets/envato-logo.png";
-
 import {
   FaFacebookF,
   FaLinkedinIn,
@@ -19,9 +18,8 @@ import {
 
 const Wrapper = styled.header`
   width: 100%;
-   position: absolute;
-  margin-top : 16px;
-
+  position: absolute;
+  margin-top: 16px;
   z-index: 3000;
 `;
 
@@ -62,19 +60,23 @@ const TopBar = styled.div`
     }
   }
 
-  .download-btn {
-    background-color: #8bc34a;
-    color: #262626;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
+.download-btn {
+  margin-left: auto;
+  background-color: #82b440;
+  font-size: 14px;
+  padding: 5px 20px;
+  line-height: 1.5;
+  color: #000;
+  border-radius: 4px;
+  font-weight: 500;
+  margin-top: 0;
 
-    &:hover {
-      background-color: #7cb342;
-    }
-  }
+  /* Đổ bóng ngược lên trên */
+  box-shadow: 0 -4px 8px rgba(111, 154, 55, 0.3);
+}
+
+
+
 `;
 
 const ContentContainer = styled.div`
@@ -127,22 +129,29 @@ const SocialBar = styled.div`
     white-space: nowrap;
     overflow: hidden;
   }
-
   .info span {
     color: rgba(255, 255, 255, 0.5);
-    transition: color 0.3s ease;
     display: flex;
     align-items: center;
     gap: 8px;
-  }
 
-  .info span:hover {
-    color: #ffffff;
-  }
+    svg {
+      transition: none !important;
+      color: rgba(255, 255, 255, 0.5) !important; /* cố định màu icon */
+    }
 
-  .highlight {
-    font-weight: 700;
-    color: #fff;
+    &:hover {
+      color: #ffffff;
+    }
+
+    &:hover svg {
+      color: rgba(
+        255,
+        255,
+        255,
+        0.5
+      ) !important; /* ngăn icon đổi màu khi hover */
+    }
   }
 `;
 
@@ -152,6 +161,7 @@ const NavBar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   @keyframes dropdownFadeIn {
     0% {
       opacity: 0;
@@ -164,31 +174,58 @@ const NavBar = styled.div`
   }
 
   .dropdown {
-    /* đã có styles sẵn, giờ thêm animation */
-    animation: dropdownFadeIn 0.3s ease forwards;
-  }
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    background: #fff;
+    padding: 10px 0;
+    min-width: 200px;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 
-  .dropdown a {
-    opacity: 0;
-    transform: translateY(-10px);
-    animation: dropdownFadeIn 0.3s ease forwards;
-    animation-delay: 0.1s;
-  }
+    a {
+      padding: 5px 20px;
+      color: #555;
+      text-decoration: none;
+      opacity: 0;
+      font-size: 16px;
+      transform: translateY(-10px);
+      animation: dropdownFadeIn 0.3s ease forwards;
+      animation-delay: 0s;
 
-  .dropdown a:nth-child(2) {
-    animation-delay: 0.1s;
-  }
-  .dropdown a:nth-child(3) {
-    animation-delay: 0.14s;
-  }
-  .dropdown a:nth-child(4) {
-    animation-delay: 0.18s;
-  }
-  .dropdown a:nth-child(5) {
-    animation-delay: 0.22s;
-  }
-  .dropdown a:nth-child(6) {
-    animation-delay: 0.26s;
+      .link-inner {
+        display: inline-block;
+        transform: translateX(0);
+        transition: color 0.3s ease, transform 0.3s ease;
+      }
+
+      &:hover .link-inner {
+        color: #0d6efd;
+        transform: translateX(4px);
+      }
+    }
+
+    a:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+    a:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    a:nth-child(3) {
+      animation-delay: 0.15s;
+    }
+    a:nth-child(4) {
+      animation-delay: 0.2s;
+    }
+    a:nth-child(5) {
+      animation-delay: 0.25s;
+    }
+    a:nth-child(6) {
+      animation-delay: 0.3s;
+    }
   }
 
   .logo {
@@ -204,7 +241,7 @@ const NavBar = styled.div`
       display: flex;
       gap: 25px;
 
-      a {
+      .nav-link {
         display: flex;
         align-items: center;
         gap: 6px;
@@ -234,50 +271,27 @@ const NavBar = styled.div`
         &:hover::after {
           transform: translateX(-50%) scaleX(1);
         }
+      }
 
-        &.has-dropdown {
-          position: relative;
+      .has-dropdown {
+        position: relative;
 
-          .hover-bridge {
-            position: absolute;
-            top: 25px;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: transparent;
-            z-index: 1;
-          }
+        .hover-bridge {
+          position: absolute;
+          top: 25px;
+          left: 0;
+          width: 100%;
+          height: 10px;
+          background: transparent;
+          z-index: 1;
+        }
 
-          .dropdown {
-            display: none;
-            position: absolute;
-            top: 35px;
-            left: 0;
-            background: #fff;
-            padding: 10px 0;
-            min-width: 200px;
-            flex-direction: column;
-            border-radius: 4px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
+        .dropdown {
+          display: none;
+        }
 
-            a {
-              padding: 10px 20px;
-              color: #555;
-              text-decoration: none;
-              transition: all 0.3s ease;
-
-              &:hover {
-                background: transparent;
-                color: #0d6efd;
-                transform: translateX(5px);
-              }
-            }
-          }
-
-          &:hover .dropdown {
-            display: flex;
-          }
+        &:hover .dropdown {
+          display: flex;
         }
       }
     }
@@ -294,6 +308,7 @@ const NavBar = styled.div`
 
         &:hover {
           color: #0d6efd;
+          color: #fff !important;
         }
       }
 
@@ -302,7 +317,16 @@ const NavBar = styled.div`
 
         .cart {
           position: relative;
-
+          &::after {
+            content: "";
+            position: absolute;
+            top: 16px;
+            right: 0;
+            width: 100%;
+            height: 30px;
+            background: transparent;
+            z-index: 1;
+          }
           .cart-trigger {
             display: flex;
             align-items: center;
@@ -313,12 +337,12 @@ const NavBar = styled.div`
             position: absolute;
             top: -20px;
             right: -10px;
-            background-color: #fff; /* hoặc #fff nếu bạn muốn nền trắng */
+            background-color: #fff;
             color: #333;
             font-size: 12px;
             padding: 0px;
-            border: 1px solid rgba(255, 255, 255, 0.5); /* viền trắng mờ */
-            border-radius: 4px; /* hình vuông bo nhẹ */
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
             font-weight: bold;
             min-width: 20px;
             min-height: 20px;
@@ -336,7 +360,7 @@ const NavBar = styled.div`
             height: 183px;
             background: #fff;
             padding: 5px;
-            border-radius: 6px;
+            border-radius: 4px;
             text-align: center;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
             flex-direction: column;
@@ -367,6 +391,7 @@ const NavBar = styled.div`
               opacity: 0;
               transform: translateY(-10px);
               animation: dropdownFadeIn 0.4s ease forwards;
+
               svg {
                 margin-bottom: 10px;
               }
@@ -414,8 +439,7 @@ export default function Header({ onHomeClick }) {
           </div>
           <div className="info">
             <span>
-              <FaPhoneAlt /> Have questions? Call now{" "}
-              <span className="highlight">+1 (818) 23 45 678</span>
+              <FaPhoneAlt /> Have questions? Call now +1 (818) 23 45 678
             </span>
             <span>
               <FaEnvelope /> Need help? Contact us via email
@@ -428,47 +452,91 @@ export default function Header({ onHomeClick }) {
 
           <div className="right">
             <nav>
-              <a  onClick={onHomeClick} className="active" href="#">
+              <a onClick={onHomeClick} className="nav-link active" href="#">
                 <FaHome />
               </a>
-              <a href="#">About</a>
-              <a href="#">Services</a>
-              <a href="#">FAQ’s</a>
-              <a className="has-dropdown" href="#">
-                Blog <FaChevronDown size={14} />
-                <div className="hover-bridge"></div>
-                <div className="dropdown">
-                  <a href="#">Blog</a>
-                  <a href="#">Standard</a>
-                  <a href="#">Video Player</a>
-                  <a href="#">Audio Player</a>
-                  <a href="#">Images Gallery</a>
-                  <a href="#">Slider Gallery</a>
-                </div>
+              <a className="nav-link" href="#">
+                About
               </a>
-              <a className="has-dropdown" href="#">
-                Portfolio <FaChevronDown size={14} />
-                <div className="hover-bridge"></div>
-                <div className="dropdown">
-                  <a href="#">Portfolio</a>
-                  <a href="#">Single 1 Slider</a>
-                  <a href="#">Single 2 Gallery</a>
-                  <a href="#">Single 3 Full</a>
-                </div>
+              <a className="nav-link" href="#">
+                Services
               </a>
-              <a className="has-dropdown" href="#">
-                Shop
-                <FaChevronDown size={14} />
-                <div className="hover-bridge"></div>
-                <div className="dropdown">
-                  <a href="#">All Products</a>
-                  <a href="#">My account</a>
-                  <a href="#">Cart</a>
-                  <a href="#">Checkout</a>
-                </div>
+              <a className="nav-link" href="#">
+                FAQ’s
               </a>
 
-              <a href="#">Contact</a>
+              <div className="nav-link has-dropdown">
+                <span>
+                  Blog <FaChevronDown size={14} />
+                </span>
+                <div className="hover-bridge"></div>
+                <div className="dropdown">
+                  <a href="#">
+                    <span className="link-inner">Blog</span>
+                  </a>
+                  <a href="#">
+                    <span className="link-inner">Standard</span>
+                  </a>
+                  <a href="#">
+                    <span className="link-inner">Video Player</span>
+                  </a>
+                  <a href="#">
+                    <span className="link-inner">Audio Player</span>
+                  </a>
+                  <a href="#">
+                    <span className="link-inner">Images Gallery</span>
+                  </a>
+                  <a href="#">
+                    <span className="link-inner">Slider Gallery</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="nav-link has-dropdown">
+                <span>
+                  Portfolio <FaChevronDown size={14} />
+                </span>
+                <div className="hover-bridge"></div>
+                <div className="dropdown">
+                  <a href="#">
+                    <span className="link-inner">Portfolio</span>
+                  </a>
+                  <a href="#">
+                    <span className="link-inner">Single 1 Slider</span>
+                  </a>
+                  <a href="#">
+                    <span className="link-inner">Single 2 Gallery</span>
+                  </a>
+                  <a href="#">
+                    <span className="link-inner">Single 3 Full</span>
+                  </a>
+                </div>
+              </div>
+
+              <div className="nav-link has-dropdown">
+                <span>
+                  Shop <FaChevronDown size={14} />
+                </span>
+                <div className="hover-bridge"></div>
+                <div className="dropdown">
+                  <a href="#">
+                    <span className="link-inner">All Products</span>
+                  </a>
+                  <a href="#">
+                    <span className="link-inner">My account</span>
+                  </a>
+                  <a href="#">
+                    <span className="link-inner">Cart</span>
+                  </a>
+                  <a href="#">
+                    <span className="link-inner">Checkout</span>
+                  </a>
+                </div>
+              </div>
+
+              <a className="nav-link" href="#">
+                Contact
+              </a>
             </nav>
 
             <div className="icons">
@@ -479,7 +547,6 @@ export default function Header({ onHomeClick }) {
                     <FaShoppingCart />
                     <span className="cart-count">0</span>
                   </div>
-
                   <div className="cart-dropdown">
                     <div className="cart-inner">
                       <FaShoppingCart size={36} color="#888" />
@@ -488,7 +555,6 @@ export default function Header({ onHomeClick }) {
                   </div>
                 </div>
               </div>
-
               <FaBars />
             </div>
           </div>
