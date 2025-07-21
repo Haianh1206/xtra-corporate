@@ -423,7 +423,7 @@ export default function Header({ onHomeClick }) {
           <img src={envatoLogo} alt="Envato" />
         </div>
         <div className="message">
-          Limited time offer, <strong>Buy XTRA WordPress theme only $49</strong>
+          Limited time offer, Buy XTRA WordPress theme only $49
         </div>
         <button className="download-btn">Download XTRA Theme</button>
       </TopBar>

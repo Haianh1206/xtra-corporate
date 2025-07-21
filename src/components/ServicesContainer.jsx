@@ -81,7 +81,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  z-index: 9999;
+  z-index: 10;
   transition: all 0.3s ease;
 
   &:hover {
