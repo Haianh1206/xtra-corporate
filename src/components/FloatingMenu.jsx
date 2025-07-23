@@ -8,6 +8,7 @@ import {
   FaRegEdit,
   FaRegStickyNote,
   FaRegFileVideo,
+  FaYoutube,
 } from "react-icons/fa";
 
 // Hiệu ứng trượt từ phải sang
@@ -15,6 +16,17 @@ const slideIn = keyframes`
   from {
     opacity: 0;
     transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const fadeInLeft = keyframes`
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
   }
   to {
     opacity: 1;
@@ -34,23 +46,18 @@ const MenuWrapper = styled.div`
   border-radius: 4px;
   padding: 4px 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  transition: opacity 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  &:hover {
-    opacity: 1;
-  }
 `;
 
 const IconButton = styled.div`
+  position: relative;
   font-size: 18px;
   color: #333;
   padding: 6px;
   margin: 4px 0;
   cursor: pointer;
-
   transition: transform 0.2s ease;
 
   ${({ delay }) =>
@@ -64,8 +71,30 @@ const IconButton = styled.div`
   &:hover {
     color: #000;
   }
+
+  &:hover .tooltip {
+    display: block;
+    animation: ${fadeInLeft} 0.3s ease forwards;
+  }
 `;
 
+const Tooltip = styled.div`
+  position: absolute;
+  right: 100%;
+  top : 12%;
+  margin-right: 10px;
+  background: white;
+  color: black;
+  padding: 6px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  display: none;
+      
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+`;
 
 export default function FloatingMenu() {
   const [hovered, setHovered] = useState(false);
@@ -75,16 +104,33 @@ export default function FloatingMenu() {
       <MenuWrapper
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        hovered={hovered}
       >
-        <IconButton><FaDownload /></IconButton>
+        <IconButton>
+          <FaDownload />
+          <Tooltip className="tooltip">Download XTRA Theme</Tooltip>
+        </IconButton>
         {hovered && (
           <>
-            <IconButton delay={0.05}><FaRegFileVideo /></IconButton>
-            <IconButton delay={0.1}><FaRegStickyNote /></IconButton>
-            <IconButton delay={0.15}><FaRegCommentDots /></IconButton>
-            <IconButton delay={0.2}><FaRegEdit /></IconButton>
-            <IconButton delay={0.25}><FaRegHeart /></IconButton>
+            <IconButton delay={0.05}>
+              <FaYoutube />
+              <Tooltip className="tooltip">Video Tutorials</Tooltip>
+            </IconButton>
+            <IconButton delay={0.1}>
+              <FaRegStickyNote />
+              <Tooltip className="tooltip">Theme Documentation</Tooltip>
+            </IconButton>
+            <IconButton delay={0.15}>
+              <FaRegCommentDots />
+              <Tooltip className="tooltip">Help & Support</Tooltip>
+            </IconButton>
+            <IconButton delay={0.2}>
+              <FaRegEdit />
+              <Tooltip className="tooltip">Demos Edit Guide</Tooltip>
+            </IconButton>
+            <IconButton delay={0.25}>
+              <FaRegHeart />
+              <Tooltip className="tooltip">Customers Showcase</Tooltip>
+            </IconButton>
           </>
         )}
       </MenuWrapper>
