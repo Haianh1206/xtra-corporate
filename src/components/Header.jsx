@@ -172,7 +172,11 @@ const NavBar = styled.div`
       transform: translateY(0);
     }
   }
-
+.nav-link-inner {
+  display: flex;
+  align-items: center;
+  
+}
   .dropdown {
     display: none;
     position: absolute;
@@ -252,6 +256,8 @@ const NavBar = styled.div`
 
         svg {
           font-size: 20px;
+          margin-top : 6px;
+          margin-left : 2px;
         }
 
         &::after {
@@ -466,9 +472,9 @@ export default function Header({ onHomeClick }) {
               </a>
 
               <div className="nav-link has-dropdown">
-                <span>
-                  Blog <FaChevronDown size={14} />
-                </span>
+               <span className="nav-link-inner">
+  Blog <FaChevronDown size={14} />
+</span>
                 <div className="hover-bridge"></div>
                 <div className="dropdown">
                   <a href="#">
@@ -493,9 +499,9 @@ export default function Header({ onHomeClick }) {
               </div>
 
               <div className="nav-link has-dropdown">
-                <span>
-                  Portfolio <FaChevronDown size={14} />
-                </span>
+                <span className="nav-link-inner">
+  Blog <FaChevronDown size={14} />
+</span>
                 <div className="hover-bridge"></div>
                 <div className="dropdown">
                   <a href="#">
@@ -514,9 +520,9 @@ export default function Header({ onHomeClick }) {
               </div>
 
               <div className="nav-link has-dropdown">
-                <span>
-                  Shop <FaChevronDown size={14} />
-                </span>
+                <span className="nav-link-inner">
+  Blog <FaChevronDown size={14} />
+</span>
                 <div className="hover-bridge"></div>
                 <div className="dropdown">
                   <a href="#">

@@ -47,9 +47,9 @@ const services = [
 
 const ContainerWrapper = styled.div`
   margin-top: -81px;
-  padding: 0 120px 80px 120px;
+  padding: 0 120px 0px 120px;
   background: #f9f9f9;
-  height: 110vh;
+  height: 100vh;
 `;
 
 const Container = styled.div`
@@ -69,7 +69,8 @@ const Card = styled.div`
 
   width: ${({ $highlight }) =>
     $highlight ? "344px" : "350px"}; // Card 6 giảm 6px
-  height: 220px;
+  height: {({ $highlight }) =>
+    $highlight ? "208px" : "220px"};
   padding: 24px;
 
   border: ${({ $highlight }) =>

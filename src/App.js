@@ -10,6 +10,11 @@ import AboutSection from "./components/AboutSection";
 import SetYourGoals from "./components/SetYourGoals";
 import WorkProcess from "./components/WorkProcess";
 import ServiceVideoSection from "./components/ServiceVideoSection";
+import BlogSlider from "./components/BlogSlider";
+import OurTeamSection from "./components/OurTeamSection";
+import Footer from "./components/Footer";
+import CustomChatIcon from "./components/CustomChatIcon";
+import FloatingMenu from "./components/FloatingMenu";
 
 
 
@@ -34,6 +39,11 @@ function App() {
        <SetYourGoals/>
        <WorkProcess/>
        <ServiceVideoSection/>
+       <BlogSlider/>
+       <OurTeamSection/>
+       <Footer/>
+       <CustomChatIcon/>
+       <FloatingMenu/>
     </>
   );
 }
