@@ -15,6 +15,7 @@ import OurTeamSection from "./components/OurTeamSection";
 import Footer from "./components/Footer";
 import CustomChatIcon from "./components/CustomChatIcon";
 import FloatingMenu from "./components/FloatingMenu";
+import CookieBanner from "./components/CookieBanner";
 
 
 
@@ -44,6 +45,7 @@ function App() {
        <Footer/>
        <CustomChatIcon/>
        <FloatingMenu/>
+       <CookieBanner/>
     </>
   );
 }
