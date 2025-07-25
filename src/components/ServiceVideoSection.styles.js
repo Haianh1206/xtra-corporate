@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import bgImage from "../assets/banner-img.png";
+import media from "../styles/media";
 
 const bounce = keyframes`
   0% { transform: scale(0.9); }
@@ -12,6 +13,11 @@ const Section = styled.section`
   height: 100vh;
   position: relative;
   font-family: "Roboto", sans-serif;
+
+  ${media.lg`
+    flex-direction: column;
+    height: auto;
+  `}
 `;
 
 const Left = styled.div`
@@ -22,67 +28,110 @@ const Left = styled.div`
   align-items: center;
   justify-content: center;
   width: 50%;
+
+  ${media.lg`
+    width: 100%;
+    height: 300px;
+  `}
+
+  ${media.md`
+    height: 220px;
+    padding: 16px;
+    background-position: top;
+  `}
 `;
 
 const Right = styled.div`
   flex: 1;
   background: #fff;
+
+  ${media.lg`
+    padding: 24px;
+  `}
+
+  ${media.md`
+    padding: 12px;
+  `}
 `;
 
 const PlayButton = styled.div`
   width: 132px;
   height: 132px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   background: transparent;
-  transition: all 0.3s ease;
+  cursor: pointer;
   animation: ${bounce} 0.6s ease;
 
   svg {
     color: white;
     font-size: 28px;
-    transition: all 0.3s ease;
   }
 
   &:hover {
     background: white;
-    animation: ${bounce} 0.4s ease;
-
     svg {
       color: #0044cc;
     }
   }
+
+  ${media.lg`
+    width: 100px;
+    height: 100px;
+  `}
+
+  ${media.md`
+    width: 80px;
+    height: 80px;
+    svg {
+      font-size: 24px;
+    }
+  `}
 `;
 
 const Service = styled.div`
   margin: 60px 0 72px 0;
   margin-left: 120px;
+
+  ${media.lg`
+    margin: 40px 20px;
+  `}
+
+  ${media.md`
+    margin: 32px 12px;
+  `}
 `;
 
 const Title = styled.h3`
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 8px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  display: inline-block;
   padding-bottom: 6px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  color: #000000;
-  &:hover {
-    color: #0044cc;
-    border-color: #0044cc;
-  }
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  ${media.lg`
+    font-size: 24px;
+  `}
+
+  ${media.md`
+    font-size: 18px;
+  `}
 `;
 
 const Description = styled.p`
   font-size: 18px;
-  color: #666666;
   line-height: 1.7;
+  color: #666;
+
+  ${media.lg`
+    font-size: 16px;
+  `}
+
+  ${media.md`
+    font-size: 14px;
+  `}
 `;
 
 const IconColumn = styled.div`
@@ -94,21 +143,46 @@ const IconColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  ${media.lg`
+    position: static;
+    transform: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin: 24px 0;
+  `}
+
+  ${media.md`
+    gap: 12px;
+    margin: 16px 0;
+  `}
 `;
 
 const IconBox = styled.img`
   width: 70px;
   height: 70px;
-  background: #fff;
   padding: 25px;
+  background: #fff;
   border-radius: 4px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  object-fit: contain;
-  transition: transform 0.3s ease;
-  margin: 38px 0;
+
   &:hover {
     transform: scale(1.1);
   }
+
+  ${media.lg`
+    width: 60px;
+    height: 60px;
+    padding: 20px;
+  `}
+
+  ${media.md`
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+  `}
 `;
 
 const VideoText = styled.div`
@@ -116,8 +190,11 @@ const VideoText = styled.div`
   margin-top: 16px;
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.4;
   text-transform: uppercase;
+
+  ${media.md`
+    font-size: 14px;
+  `}
 `;
 
 const VideoCenter = styled.div`
@@ -127,7 +204,6 @@ const VideoCenter = styled.div`
   text-align: center;
 `;
 
-// Modal styles
 const ModalOverlay = styled.div`
   position: fixed;
   inset: 0;
@@ -150,19 +226,24 @@ const NavLeft = styled.div`
   transform: translateY(-50%);
   font-size: 48px;
   color: white;
-  cursor: pointer;
-  user-select: none;
+
+  ${media.lg`
+    font-size: 36px;
+    left: 12px;
+  `}
+
+  ${media.md`
+    font-size: 28px;
+  `}
 `;
 
-const NavRight = styled.div`
-  position: absolute;
+const NavRight = styled(NavLeft)`
+  left: auto;
   right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 48px;
-  color: white;
-  cursor: pointer;
-  user-select: none;
+
+  ${media.lg`
+    right: 12px;
+  `}
 `;
 
 const PageNumber = styled.div`
@@ -171,6 +252,12 @@ const PageNumber = styled.div`
   bottom: 24px;
   font-size: 18px;
   color: white;
+
+  ${media.md`
+    font-size: 14px;
+    left: 12px;
+    bottom: 12px;
+  `}
 `;
 
 const TopRightButtons = styled.div`
@@ -179,14 +266,19 @@ const TopRightButtons = styled.div`
   top: 24px;
   display: flex;
   gap: 12px;
+
+  ${media.md`
+    right: 12px;
+    top: 12px;
+    gap: 8px;
+  `}
 `;
 
 const ZoomButton = styled.div`
   color: white;
   font-size: 24px;
   cursor: pointer;
-      margin-top : 24px;
-
+  margin-top: 24px;
 `;
 
 const CloseButton = styled.div`
@@ -198,11 +290,13 @@ const CloseButton = styled.div`
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.15);
   transition: background 0.3s ease;
-    margin-top : 24px;
+  margin-top: 24px;
+
   &:hover {
     background-color: rgba(255, 255, 255, 0.3);
   }
 `;
+
 export {
   bounce,
   Section,

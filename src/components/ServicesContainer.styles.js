@@ -1,63 +1,39 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import media from "../styles/media";
 
-// 1. Responsive styles
-const ResponsiveStyle = css`
-  ${media.lg`
-    .container {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .card {
-      width: 100% !important;
-      height: auto;
-    }
-  `}
-
-  ${media.md`
-    .card:nth-child(n+2):nth-child(-n+5) .arrow-exit {
-      display: none;
-    }
-
-    .card {
-      align-items: center;
-      text-align: center;
-    }
-
-    .icon,
-    .label,
-    .title,
-    .title-group,
-    .info-group,
-    .text-exit,
-    .text-enter {
-      margin-left: 0 !important;
-      text-align: center;
-    }
-
-    .arrow-enter,
-    .arrow-exit,
-    .hover-text {
-      display: none;
-    }
-  `}
-`;
-
-// 2. Styled components
+// Container wrapper (nếu có)
 const ContainerWrapper = styled.div`
   margin-top: -81px;
   padding: 0 120px 100px 120px;
   background: #f9f9f9;
   min-height: auto;
+
+  ${media.lg`
+    padding: 0 60px 80px 60px;
+  `}
+
+  ${media.md`
+    margin-top: 30px;
+    padding: 0 30px 60px 30px;
+  `}
+
+  ${media.sm`
+    margin-top: 30px;
+    padding: 0 16px 40px 16px;
+  `}
 `;
+
 
 const Container = styled.div.attrs({ className: "container" })`
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
-  ${ResponsiveStyle}
+
+  ${media.lg`
+    flex-direction: column;
+    align-items: center;
+  `}
 `;
 
 const Card = styled.div.attrs({ className: "card" })`
@@ -67,6 +43,7 @@ const Card = styled.div.attrs({ className: "card" })`
     $serviceImage
       ? `linear-gradient(rgba(1, 46, 88, 0.8), rgba(0, 39, 76, 0.8)), url(${$serviceImage}) center/cover no-repeat`
       : "white"};
+
   width: ${({ $highlight }) => ($highlight ? "344px" : "350px")};
   height: ${({ $highlight }) => ($highlight ? "208px" : "220px")};
   padding: 24px;
@@ -89,12 +66,37 @@ const Card = styled.div.attrs({ className: "card" })`
     position: relative;
     z-index: 1;
   }
+
+  ${media.lg`
+    width: 95% !important;
+    max-width: 700px;
+    height: auto;
+    align-items: center;
+    text-align: center;
+  `}
+
+  ${media.md`
+    width: 95% !important;
+    max-width: 700px;
+  `}
+
+  ${media.sm`
+    width: 100% !important;
+    padding: 4px;
+    max-width : 360px;
+  `}
 `;
+
 
 const Icon = styled.div.attrs({ className: "icon" })`
   font-size: 32px;
   margin-left: 12px;
   margin-top: 8px;
+
+  ${media.md`
+    margin-left: 0 !important;
+    text-align: center;
+  `}
 `;
 
 const Label = styled.div.attrs({ className: "label" })`
@@ -102,6 +104,11 @@ const Label = styled.div.attrs({ className: "label" })`
   color: #666666;
   text-transform: uppercase;
   margin-left: 20px;
+
+  ${media.md`
+    margin-left: 0 !important;
+    text-align: center;
+  `}
 `;
 
 const Title = styled.div.attrs({ className: "title" })`
@@ -114,6 +121,11 @@ const Title = styled.div.attrs({ className: "title" })`
   .hoverable:hover & {
     color: #002a96;
   }
+
+  ${media.md`
+    margin-left: 0 !important;
+    text-align: center;
+  `}
 `;
 
 const TitleRow = styled.div`
@@ -151,6 +163,10 @@ const ArrowExit = styled.div.attrs({ className: "arrow-exit" })`
     transform: translateX(300px);
     opacity: 0;
   }
+
+  ${media.md`
+    display: none;
+  `}
 `;
 
 const ArrowEnter = styled.div.attrs({ className: "arrow-enter" })`
@@ -166,6 +182,10 @@ const ArrowEnter = styled.div.attrs({ className: "arrow-enter" })`
     transform: translateX(0);
     opacity: 1;
   }
+
+  ${media.md`
+    display: none;
+  `}
 `;
 
 const TextExit = styled.div.attrs({ className: "text-exit" })`
@@ -180,6 +200,11 @@ const TextExit = styled.div.attrs({ className: "text-exit" })`
     transform: translateX(300px);
     opacity: 0;
   }
+
+  ${media.md`
+    margin-left: 0 !important;
+    text-align: center;
+  `}
 `;
 
 const TextEnter = styled.div.attrs({ className: "text-enter" })`
@@ -196,6 +221,11 @@ const TextEnter = styled.div.attrs({ className: "text-enter" })`
     opacity: 1;
     transform: translateX(0);
   }
+
+  ${media.md`
+    margin-left: 0 !important;
+    text-align: center;
+  `}
 `;
 
 const InfoText = styled.div`
@@ -219,6 +249,11 @@ const TitleGroup = styled.div.attrs({ className: "title-group" })`
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  ${media.md`
+    margin-left: 0 !important;
+    text-align: center;
+  `}
 `;
 
 const InfoGroup = styled.div.attrs({ className: "info-group" })`
@@ -226,6 +261,11 @@ const InfoGroup = styled.div.attrs({ className: "info-group" })`
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  ${media.md`
+    margin-left: 0 !important;
+    text-align: center;
+  `}
 `;
 
 const LargeTitle = styled.div`
@@ -255,9 +295,13 @@ const HoverText = styled.div.attrs({ className: "hover-text" })`
   ${Card}:hover & {
     opacity: 1;
   }
+
+  ${media.md`
+    display: none;
+  `}
 `;
 
-// 3. Export
+// Export
 export {
   ContainerWrapper,
   Container,

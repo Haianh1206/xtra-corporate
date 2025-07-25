@@ -1,11 +1,28 @@
 import styled from "styled-components";
 
+// Media query breakpoints
+const sizes = {
+  md: "768px",
+  sm: "480px",
+};
+
 const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
   padding: 80px;
   background: #fff;
   gap: 48px;
-  height: 80vh;
+  height: auto;
+
+  @media (max-width: ${sizes.md}) {
+    padding: 40px 20px;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  @media (max-width: ${sizes.sm}) {
+    padding: 32px 16px;
+  }
 `;
 
 const LeftColumn = styled.div`
@@ -14,6 +31,11 @@ const LeftColumn = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  @media (max-width: ${sizes.md}) {
+    width: 100%;
+    align-items: center;
+  }
 `;
 
 const Label = styled.div`
@@ -33,6 +55,7 @@ const VerticalLine = styled.div`
 
 const MiddleColumn = styled.div`
   flex: 1;
+  min-width: 280px;
 `;
 
 const Title = styled.h2`
@@ -45,6 +68,11 @@ const Title = styled.h2`
   span {
     color: #002699;
   }
+
+  @media (max-width: ${sizes.md}) {
+    font-size: 28px;
+    text-align: center;
+  }
 `;
 
 const Paragraph = styled.p`
@@ -52,6 +80,11 @@ const Paragraph = styled.p`
   color: #555;
   line-height: 1.6;
   margin-bottom: 32px;
+
+  @media (max-width: ${sizes.md}) {
+    font-size: 16px;
+    text-align: center;
+  }
 `;
 
 const FeatureList = styled.div`
@@ -59,6 +92,11 @@ const FeatureList = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 16px 40px;
   margin-bottom: 40px;
+
+  @media (max-width: ${sizes.md}) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
 `;
 
 const Feature = styled.div`
@@ -69,7 +107,10 @@ const Feature = styled.div`
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 18px;
-
+  
+@media (max-width: ${sizes.md}) {
+    margin-left : 30px;
+  }
   svg {
     margin-right: 10px;
     border-radius: 50%;
@@ -93,6 +134,17 @@ const Feature = styled.div`
 const ButtonGroup = styled.div`
   display: flex;
   gap: 16px;
+
+  @media (max-width: ${sizes.md}) {
+    
+    align-items: center;
+    gap: 16px;
+  }
+    @media (max-width: ${sizes.sm}) {
+    
+    align-items: center;
+    gap : 0px;
+  }
 `;
 
 const Button = styled.button`
@@ -103,48 +155,64 @@ const Button = styled.button`
   border: 2px solid #003cff;
   cursor: pointer;
   transition: all 0.3s ease;
-
+  width: fit-content;
+ @media (max-width: ${sizes.md}) {
+          margin-left: 15px;
+          padding: 12px;
+        }
   ${({ primary }) =>
     primary
       ? `
-   background: #002699;
-    color: #fff;
+        background: #002699;
+        color: #fff;
 
-    &:hover {
-      background: #fff;
-      color: #002699;
-    }
-  `
+        &:hover {
+          background: #fff;
+          color: #002699;
+        }
+      `
       : `
-    
-     background: #fff;
-    color: #002699;
-    margin-left : 28px;
+        background: #fff;
+        color: #002699;
+        margin-left: 28px;
 
-    &:hover {
-     
-       background: #002699;
-      color: #fff;
-    }
-  `}
+        &:hover {
+          background: #002699;
+          color: #fff;
+        }
+
+       
+      `}
 `;
 
 const RightColumn = styled.div`
   width: 33.33%;
-`;
 
-// ==== Image 3D + Viền Dots ====
+  @media (max-width: ${sizes.md}) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+`;
 
 const Frame = styled.div`
   position: relative;
   width: 330px;
   height: 535px;
   perspective: 1000px;
+
+  @media (max-width: ${sizes.sm}) {
+    width: 260px;
+    height: 420px;
+  }
 `;
 
 const BorderDots = styled.div`
   position: absolute;
   pointer-events: none;
+@media (max-width: ${sizes.md}) {
+    display: none;
+  }
 
   &.bottom,
   &.bottom2 {
@@ -191,13 +259,18 @@ const Image3D = styled.img`
   border-radius: 4px;
   transition: transform 0.03s ease;
   transform-style: preserve-3d;
+  @media (max-width: ${sizes.sm}) {
+    max-width : 100%;
+  }
 `;
+
 const Highlight = styled.strong`
   color: #002699;
   padding: 1px 7px 2px;
   background: rgba(167, 167, 167, 0.15);
   border-radius: 2px;
 `;
+
 export {
   Container,
   LeftColumn,
@@ -214,5 +287,5 @@ export {
   Frame,
   BorderDots,
   Image3D,
-  Highlight
+  Highlight,
 };

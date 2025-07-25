@@ -1,59 +1,45 @@
-// import { css } from "styled-components";
-// import media from "./media";
-// import {
-//   Container,
-//   Card,
-//   ArrowExit,
-//   ArrowEnter,
-//   Icon,
-//   Label,
-//   Title,
-//   TitleGroup,
-//   InfoGroup,
-//   TextExit,
-//   TextEnter,
-//   HoverText,
-// } from "../components/ServicesContainer.styles";
+// src/styles/Responsive.styles.js
+import { css } from "styled-components";
+import media from "./media";
 
-// export const serviceCardResponsive = css`
-//   ${media.lg`
-//     ${Container} {
-//       flex-direction: column;
-//       align-items: center;
-      
-//     }
+// Responsive cho Container
+export const containerResponsive = css`
+  ${media.lg`
+    flex-direction: column;
+    align-items: center;
+  `}
+`;
 
-//     ${Card} {
-//       width: 100% !important;
-//       height: auto;
-//     }
-//   `}
+// Responsive cho Card
+export const cardResponsive = css`
+  ${media.lg`
+    width: 100% !important;
+    height: auto;
+  `}
+  ${media.md`
+    align-items: center;
+    text-align: center;
+  `}
+`;
 
-//   ${media.md`
-//     ${Card}:nth-child(n+2):nth-child(-n+5) ${ArrowExit} {
-//       display: none;
-//     }
+// Responsive cho Icon, Label, Title...
+export const centerTextResponsive = css`
+  ${media.md`
+    margin-left: 0 !important;
+    text-align: center;
+  `}
+`;
 
-//     ${Card} {
-//       align-items: center;
-//       text-align: center;
-//     }
+// Hide elements on tablet
+export const hideOnTablet = css`
+  ${media.md`
+    display: none !important;
+  `}
+`;
 
-//     ${Icon},
-//     ${Label},
-//     ${Title},
-//     ${TitleGroup},
-//     ${InfoGroup},
-//     ${TextExit},
-//     ${TextEnter} {
-//       margin-left: 0 !important;
-//       text-align: center;
-//     }
-
-//     ${ArrowEnter},
-//     ${ArrowExit},
-//     ${HoverText} {
-//       display: none;
-//     }
-//   `}
-// `;
+// ArrowExit conditionally hidden based on nth-child in layout logic
+export const arrowExitConditional = css`
+  ${media.md`
+    display: none !important;
+  `}
+`;

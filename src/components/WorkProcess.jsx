@@ -14,6 +14,7 @@ import {
   Roman,
   BoxTitle,
   BoxDesc,
+  H5,
 }from "./WorkProcess.styles";
 
 
@@ -21,9 +22,9 @@ export default function WorkProcess() {
   return (
     <Section>
       <Left>
-        <h5 style={{ fontSize: "18px", color: "#aaa", fontWeight: 500 }}>
+        <H5>
           WORK PROCESS
-        </h5>
+        </H5>
         <Heading>
           HOW IT <span>WORKS</span>?
         </Heading>

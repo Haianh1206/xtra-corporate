@@ -1,6 +1,11 @@
 import styled, { keyframes, css } from "styled-components";
+import media from "../styles/media";
+import {
+  centerTextResponsive,
+  containerResponsive,
+} from "../styles/Responsive.styles";
 
-
+// Animations
 const slideIn = keyframes`
   from {
     opacity: 0;
@@ -11,6 +16,7 @@ const slideIn = keyframes`
     transform: translateY(0);
   }
 `;
+
 const zoomOutIn = keyframes`
   from {
     opacity: 0;
@@ -21,6 +27,7 @@ const zoomOutIn = keyframes`
     transform: scale(1);
   }
 `;
+
 const slideLeft = keyframes`
   from {
     opacity: 0;
@@ -43,6 +50,7 @@ const slideRight = keyframes`
   }
 `;
 
+// Styled Components
 const AnimatedItem = styled.div`
   opacity: 0;
   animation: ${zoomOutIn} 0.6s ease forwards;
@@ -59,10 +67,24 @@ const BannerSection = styled.section`
   color: white;
   position: relative;
   overflow: hidden;
-  animation: ${(props) =>
-  props.direction === "left"
-    ? css`${slideLeft} 0.6s ease-in-out`
-    : css`${slideRight} 0.6s ease-in-out`};
+
+  ${(props) =>
+    props.direction === "left"
+      ? css`${slideLeft} 0.6s ease-in-out`
+      : css`${slideRight} 0.6s ease-in-out`};
+    ${media.xl`
+    min-height: 60vh;
+    padding: 120px 34px;
+  `}
+  ${media.lg`
+    min-height: 50vh;
+    padding:  24px;
+  `}
+  
+  ${media.md`
+    min-height: 50vh;
+    padding: 16px;
+  `}
 `;
 
 const TextContent = styled.div`
@@ -73,6 +95,7 @@ const TextContent = styled.div`
   max-width: 960px;
   margin: 0 auto;
   margin-top: 240px;
+
   > * {
     animation: ${zoomOutIn} 0.6s ease forwards;
     opacity: 0;
@@ -87,6 +110,10 @@ const TextContent = styled.div`
   > *:nth-child(3) {
     animation-delay: 0.5s;
   }
+
+  ${media.md`
+    margin-top: 160px;
+  `}
 `;
 
 const Title = styled.h1`
@@ -94,18 +121,26 @@ const Title = styled.h1`
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 20px;
-  white-space: nowrap; // 👈 Ngăn không cho xuống dòng
+  white-space: nowrap;
 
-  @media (max-width: 768px) {
+  ${media.md`
     font-size: 36px;
-    white-space: normal; // Cho phép xuống dòng ở mobile
-  }
+    white-space: normal;
+  `}
+
+  ${centerTextResponsive}
 `;
 
 const Description = styled.p`
   font-size: 20px;
   color: #eee;
   margin-bottom: 30px;
+
+  ${centerTextResponsive}
+
+  ${media.md`
+    font-size: 18px;
+  `}
 `;
 
 const ActionsRow = styled.div`
@@ -113,11 +148,12 @@ const ActionsRow = styled.div`
   gap: 24px;
   flex-wrap: wrap;
   align-items: center;
-flex-direction: ${({ align }) => (align === "left" ? "row" : "column")};
-  @media (max-width: 768px) {
+  flex-direction: ${({ align }) => (align === "left" ? "row" : "column")};
+
+  ${media.md`
     flex-direction: column;
     gap: 12px;
-  }
+  `}
 `;
 
 const Button = styled.button`
@@ -139,15 +175,14 @@ const Button = styled.button`
 const SubText = styled.span`
   color: rgba(255, 255, 255, 0.6);
   font-size: 16px;
-   display: block;
- 
+  display: block;
 `;
 
 const NavButton = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #000;
+  background: #222222ff;
   border: none;
   color: #fff;
   font-size: 24px;
@@ -158,7 +193,7 @@ const NavButton = styled.button`
   transition: background 0.3s ease;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: #000;
   }
 
   ${(props) =>
@@ -166,12 +201,14 @@ const NavButton = styled.button`
     css`
       left: 20px;
     `}
+
   ${(props) =>
     props.right &&
     css`
       right: 20px;
     `}
 `;
+
 export {
   slideIn,
   zoomOutIn,

@@ -71,11 +71,7 @@ export default function ServiceVideoSection() {
 
   return (
     <Section>
-      <IconColumn>
-        <IconBox src={financial} alt="Financial Icon" />
-        <IconBox src={Software} alt="Software Icon" />
-        <IconBox src={Industrial} alt="Industrial Icon" />
-      </IconColumn>
+     
 
       <Left>
         {!openVideo ? (
@@ -90,7 +86,11 @@ export default function ServiceVideoSection() {
           </VideoCenter>
         ) : null}
       </Left>
-
+ <IconColumn>
+        <IconBox src={financial} alt="Financial Icon" />
+        <IconBox src={Software} alt="Software Icon" />
+        <IconBox src={Industrial} alt="Industrial Icon" />
+      </IconColumn>
       <Right>
         <Service>
           <Title>Financial Services</Title>

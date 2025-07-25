@@ -16,6 +16,7 @@ import Footer from "./components/Footer";
 import CustomChatIcon from "./components/CustomChatIcon";
 import FloatingMenu from "./components/FloatingMenu";
 import CookieBanner from "./components/CookieBanner";
+import MobileNavbar from "./components/MobileNavbar";
 
 
 
@@ -30,7 +31,7 @@ function App() {
 
   return (
     <>
-    {/* <GlobalStyle/> */}
+     {/* <GlobalStyle/>  */}
       <Header onHomeClick={handleHomeClick} />
       <Banner key={refreshKey} />
      {/* <ContentPlaceholder></ContentPlaceholder> */}
@@ -46,6 +47,7 @@ function App() {
        <CustomChatIcon/>
        <FloatingMenu/>
        <CookieBanner/>
+       <MobileNavbar/>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
+import media from "../styles/media";
 
 const slideInFromRight = keyframes`
   from { opacity: 0; transform: translateX(50px); }
@@ -10,19 +11,20 @@ const slideInFromLeft = keyframes`
   to { opacity: 1; transform: translateX(0); }
 `;
 
-// Styled Components
 const ContainerWrapper = styled.div`
   position: relative;
   z-index: 1;
-
 `;
 
 const Wrapper = styled.div`
   overflow: hidden;
   background: #020d18;
   z-index: 20000;
-      height: 120vh;
-
+  height : 120vh;
+  ${media.md`
+    height : 130vh;
+   
+  `}
 `;
 
 const Slider = styled.div`
@@ -30,6 +32,16 @@ const Slider = styled.div`
   height: 70vh;
   margin: 0 136px;
   z-index: 20000;
+
+  ${media.md`
+    margin: 0 40px;
+  height: 18vh;
+  `}
+
+  ${media.sm`
+    margin: 0 20px;
+    height: 18vh;
+  `}
 `;
 
 const Slide = styled.div`
@@ -44,12 +56,15 @@ const Slide = styled.div`
   animation: ${({ active, direction }) =>
     active
       ? css`
-          ${direction === "next"
-            ? slideInFromRight
-            : slideInFromLeft} 0.8s ease forwards
+          ${direction === "next" ? slideInFromRight : slideInFromLeft} 0.8s ease forwards
         `
       : "none"};
   transition: opacity 0.8s ease;
+
+  ${media.md`
+    background-position: center center;
+   
+  `}
 `;
 
 const NextSlide = styled.div`
@@ -65,6 +80,18 @@ const NextSlide = styled.div`
   cursor: pointer;
   z-index: 1;
   transition: all 0.4s ease;
+
+  ${media.md`
+    display : none;
+  `}
+`;
+
+const PrevSlide = styled(NextSlide)`
+  left: -18%;
+  right: auto;
+   ${media.md`
+    display : none;
+  `}
 `;
 
 const OverlayText = styled.div`
@@ -76,6 +103,18 @@ const OverlayText = styled.div`
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 1.3;
+
+  ${media.md`
+    width: 80%;
+    font-size: 1rem;
+  `}
+
+  ${media.sm`
+    width: 90%;
+    font-size: 0.9rem;
+    left: 5%;
+    bottom: 10%;
+  `}
 `;
 
 const NavBtn = styled.button`
@@ -90,7 +129,6 @@ const NavBtn = styled.button`
   font-size: 2.4rem;
   width: 60px;
   height: 60px;
-
   border-radius: 50%;
   cursor: pointer;
   z-index: 3;
@@ -104,6 +142,9 @@ const NavBtn = styled.button`
   &:hover {
     color: white;
   }
+    ${media.md`
+      display : none;
+      `}
 `;
 
 const InfoSection = styled.div`
@@ -111,10 +152,16 @@ const InfoSection = styled.div`
   color: white;
   padding: 60px 20px;
   display: flex;
-  // justify-content: center;
   align-items: flex-start;
   gap: 60px;
   flex-wrap: wrap;
+
+  ${media.md`
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding:  10px;
+  `}
 `;
 
 const TextBlock = styled.div`
@@ -123,7 +170,13 @@ const TextBlock = styled.div`
   align-items: flex-start;
   min-width: 220px;
   margin-left : 115px;
-  margin-top: 65px;
+  margin-top: 25px;
+
+  ${media.md`
+    margin-left: 0;
+    align-items: center;
+    text-align: center;
+  `}
 `;
 
 const Trust = styled.div`
@@ -138,38 +191,55 @@ const HeadingLine = styled.div`
   font-weight: bold;
   line-height: 1.2;
 `;
+
 const HeadingLine2 = styled.div`
   font-size: 2.3rem;
   font-weight: bold;
   line-height: 1.2;
 `;
+
 const Stat = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;  
+  align-items: flex-start;
   margin-left: 20px;
   margin-top : 40px;
-  &:last-of-type {
-    margin-left: 45px; /* Giảm đi 20px so với mặc định */
-  }
-`;
 
+  &:last-of-type {
+    
+  }
+
+  ${media.md`
+    margin-left: 0;
+    align-items: center;
+    margin-top : 10px;
+  `}
+`;
 
 const Number = styled.div`
   font-size: 80px;
   text-align: left;
   display: flex;
-  align-items: center; /* giữ ký tự nhỏ cùng hàng */
+  align-items: center;
   font-weight : 100;
+
+  ${media.md`
+    font-size: 70px;
+    justify-content: center;
+  `}
 `;
 
 const SmallSuffix = styled.span`
   font-size: 40px;
   margin-left: 2px;
-    margin-top: 36px;
-color: rgba(255, 255, 255, 0.8);
-`;
+  margin-top: 36px;
+  color: rgba(255, 255, 255, 0.8);
 
+  ${media.md`
+    font-size: 28px;
+    margin-top: 20px;
+  `}
+`;
 
 const Label = styled.div`
   font-size: 1.8rem;
@@ -177,12 +247,15 @@ const Label = styled.div`
   margin-top: 5px;
   text-align: left;
 
+  ${media.md`
+    font-size: 1.4rem;
+    text-align: center;
+  `}
 `;
-
 
 const Divider = styled.div`
   position: relative;
-  height: 20px; // vùng hover mở rộng
+  height: 20px;
   width: 200%;
   max-width: 300px;
 
@@ -203,10 +276,6 @@ const Divider = styled.div`
   }
 `;
 
-const PrevSlide = styled(NextSlide)`
-  left: -18%;
-  right: auto;
-`;
 export {
   ContainerWrapper,
   Wrapper,

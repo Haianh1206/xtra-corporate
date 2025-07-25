@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import media from "../styles/media";
 
 const Container = styled.section`
   background: #01131d;
@@ -7,6 +8,11 @@ const Container = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${media.md`
+    flex-direction: column;
+    padding: 60px 20px;
+  `}
 `;
 
 const InfoBlock = styled.div`
@@ -14,6 +20,12 @@ const InfoBlock = styled.div`
   text-align: left;
   margin-right: 80px;
   margin-bottom: 100px;
+
+  ${media.md`
+    margin-right: 0;
+    margin-bottom: 40px;
+    text-align: center;
+  `}
 `;
 
 const Title = styled.h2`
@@ -30,16 +42,37 @@ const Title = styled.h2`
     font-size: 40px;
     display: block;
   }
+
+  ${media.md`
+    span:first-child {
+      font-size: 32px;
+    }
+    span:last-child {
+      font-size: 28px;
+    }
+    text-align: center;
+  `}
 `;
 
 const Subtitle = styled.p`
   color: #bbb;
   font-size: 16px;
   margin-bottom: 20px;
+
+  ${media.md`
+    text-align: center;
+    font-size: 14px;
+  `}
 `;
 
 const Grid = styled.div`
   display: flex;
+
+  ${media.md`
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  `}
 `;
 
 const Card = styled.div`
@@ -49,6 +82,11 @@ const Card = styled.div`
   text-align: center;
   transition: filter 0.4s ease;
   position: relative;
+
+  ${media.md`
+    width: 100%;
+    max-width: 300px;
+  `}
 
   &:hover img {
     filter: none;
@@ -63,6 +101,12 @@ const Avatar = styled.img`
 
   filter: grayscale(100%);
   transition: filter 0.4s ease;
+
+  ${media.md`
+    width: 100%;
+    height: auto;
+    max-width: 270px;
+  `}
 `;
 
 const Name = styled.h3`
@@ -70,11 +114,13 @@ const Name = styled.h3`
   font-weight: 700;
   margin-bottom: -10px;
   margin-top: 12px;
+  text-align: center;
 `;
 
 const Role = styled.p`
   color: #aaa;
   margin-bottom: 12px;
+  text-align: center;
 `;
 
 const Socials = styled.div`
@@ -99,6 +145,7 @@ const Socials = styled.div`
     margin: 0;
     transition: background 0.3s ease;
   }
+
   .facebook:hover {
     background: #3b5998;
   }
@@ -136,7 +183,12 @@ const Socials = styled.div`
   span:hover svg {
     transform: rotateY(360deg);
   }
+
+  ${media.sm`
+    display: none;
+  `}
 `;
+
 const LogoSection = styled.section`
   background: #fff;
   padding: 0 80px;
@@ -144,13 +196,17 @@ const LogoSection = styled.section`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 40px; /* hàng: 40px, cột: 30px */
-  height : 275px;
+  gap: 40px;
+  height: 275px;
+
+  ${media.md`
+    height: auto;
+    padding: 40px 20px;
+  `}
 `;
 
-
 const Logo = styled.img`
-  max-height: 90px; /* tăng kích thước */
+  max-height: 90px;
   object-fit: contain;
   opacity: 0.4;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -160,6 +216,7 @@ const Logo = styled.img`
     transform: scale(1.1);
   }
 `;
+
 export {
   Container,
   InfoBlock,
@@ -172,5 +229,5 @@ export {
   Role,
   Socials,
   LogoSection,
-  Logo
+  Logo,
 };
