@@ -23,7 +23,6 @@ const ContainerWrapper = styled.div`
   `}
 `;
 
-
 const Container = styled.div.attrs({ className: "container" })`
   display: flex;
   flex-wrap: wrap;
@@ -44,8 +43,8 @@ const Card = styled.div.attrs({ className: "card" })`
       ? `linear-gradient(rgba(1, 46, 88, 0.8), rgba(0, 39, 76, 0.8)), url(${$serviceImage}) center/cover no-repeat`
       : "white"};
 
-  width: ${({ $highlight }) => ($highlight ? "344px" : "350px")};
-  height: ${({ $highlight }) => ($highlight ? "208px" : "220px")};
+  width: ${({ $highlight }) => ($highlight ? "394px" : "400px")};
+  height: ${({ $highlight }) => ($highlight ? "270px" : "270px")};
   padding: 24px;
   border: ${({ $highlight }) => ($highlight ? "6px solid #002A96" : "none")};
   outline: none;
@@ -99,17 +98,18 @@ const Icon = styled.div.attrs({ className: "icon" })`
   `}
 `;
 
-const Label = styled.div.attrs({ className: "label" })`
+const Label = styled.div`
   font-size: 16px;
   color: #666666;
   text-transform: uppercase;
-  margin-left: 20px;
+  margin-left: ${(props) => (props.isFirst ? "0" : "20px")};
 
   ${media.md`
     margin-left: 0 !important;
     text-align: center;
   `}
 `;
+
 
 const Title = styled.div.attrs({ className: "title" })`
   font-size: 18px;
@@ -257,7 +257,7 @@ const TitleGroup = styled.div.attrs({ className: "title-group" })`
 `;
 
 const InfoGroup = styled.div.attrs({ className: "info-group" })`
-  margin-top: ${({ $shift }) => ($shift ? "30px" : "0")};
+  margin-top: ${({ $shift }) => ($shift ? "0px" : "0")};
   display: flex;
   flex-direction: column;
   gap: 10px;

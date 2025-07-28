@@ -104,7 +104,7 @@ export default function ServicesContainer() {
             {idx === 0 && (
               <TitleGroup>
                 <div style={{ marginLeft: "20px" }}>
-                  <Label>{item.label}</Label>
+                  <Label style={{ marginLeft: "0px" }}>{item.label}</Label>
                   <LargeTitle>
                     WHAT
                     <br />

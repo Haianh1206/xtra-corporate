@@ -16,6 +16,7 @@ const Backdrop = styled.div`
 
 const Sidebar = styled.div`
   position: fixed;
+ 
   top: 0;
   right: 0;
   width: 340px;
@@ -52,8 +53,8 @@ const CloseSVG = styled.svg`
 `;
 
 const Section = styled.div`
-  
-  padding-bottom: 50px;
+   margin-top : 40px;
+  padding-bottom: 20px;
 `;
 
 const SectionTitle = styled.h3`

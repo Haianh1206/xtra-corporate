@@ -55,7 +55,7 @@ export default function WorkProcess() {
             Test and execute final project on online server
           </StepItem>
         </StepList>
-      </Left>
+      </Left> 
 
       <Right>
         <Box>

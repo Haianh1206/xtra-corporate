@@ -3,7 +3,7 @@ import media from "../styles/media";
 
 const Container = styled.section`
   background: #01131d;
-  padding: 100px 120px 100px 130px;
+  padding: 70px 120px 70px 130px;
   color: white;
   display: flex;
   align-items: center;
@@ -18,14 +18,15 @@ const Container = styled.section`
 const InfoBlock = styled.div`
   width: 300px;
   text-align: left;
-  margin-right: 80px;
+  margin-right: 40px;
   margin-bottom: 100px;
 
   ${media.md`
     margin-right: 0;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     text-align: center;
   `}
+  
 `;
 
 const Title = styled.h2`
@@ -36,6 +37,7 @@ const Title = styled.h2`
   span:first-child {
     font-size: 46px;
     display: block;
+    margin-top : -22px;
   }
 
   span:last-child {
@@ -44,12 +46,7 @@ const Title = styled.h2`
   }
 
   ${media.md`
-    span:first-child {
-      font-size: 32px;
-    }
-    span:last-child {
-      font-size: 28px;
-    }
+    
     text-align: center;
   `}
 `;
@@ -63,6 +60,11 @@ const Subtitle = styled.p`
     text-align: center;
     font-size: 14px;
   `}
+    ${media.sm`
+    margin-top:40px;
+   margin-bottom: -40px;
+
+  `}
 `;
 
 const Grid = styled.div`
@@ -72,6 +74,10 @@ const Grid = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 40px;
+  `}
+   ${media.sm`
+   
+    gap: 0px;
   `}
 `;
 
@@ -94,10 +100,10 @@ const Card = styled.div`
 `;
 
 const Avatar = styled.img`
-  width: 270px;
-  height: 270px;
+  width: 280px;
+  height: 280px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 2px;
 
   filter: grayscale(100%);
   transition: filter 0.4s ease;
@@ -105,7 +111,7 @@ const Avatar = styled.img`
   ${media.md`
     width: 100%;
     height: auto;
-    max-width: 270px;
+    max-width: 370px;
   `}
 `;
 
@@ -115,12 +121,19 @@ const Name = styled.h3`
   margin-bottom: -10px;
   margin-top: 12px;
   text-align: center;
+  
+
 `;
 
 const Role = styled.p`
   color: #aaa;
   margin-bottom: 12px;
   text-align: center;
+  margin-top: 20px;
+  ${media.sm`
+      margin-bottom: 0px;
+
+  `}
 `;
 
 const Socials = styled.div`
@@ -184,9 +197,7 @@ const Socials = styled.div`
     transform: rotateY(360deg);
   }
 
-  ${media.sm`
-    display: none;
-  `}
+ 
 `;
 
 const LogoSection = styled.section`
@@ -203,6 +214,11 @@ const LogoSection = styled.section`
     height: auto;
     padding: 40px 20px;
   `}
+  ${media.sm`
+    height: auto;
+    padding: 80px 20px;
+    gap : 10px;
+  `}
 `;
 
 const Logo = styled.img`
@@ -215,6 +231,9 @@ const Logo = styled.img`
     opacity: 1;
     transform: scale(1.1);
   }
+     ${media.md`
+   max-height: 150px;
+  `}
 `;
 
 export {

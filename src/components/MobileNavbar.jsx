@@ -5,7 +5,7 @@ import media from "../styles/media"; // <-- Đảm bảo bạn đã có media.js
 
 const NavbarWrapper = styled.nav`
   position: fixed;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   right: 0;
   height: 80px;

@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
-
+import media from "../styles/media";
 const slideIn = keyframes`
   from {
     opacity: 0;
@@ -27,6 +27,9 @@ const Container = styled.div`
   top: 24%;
   right: 0;
   z-index: 9;
+  ${media.sm`
+    display: none;
+  `}
 `;
 
 const MenuWrapper = styled.div`

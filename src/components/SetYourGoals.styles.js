@@ -10,8 +10,8 @@ const Section = styled.section`
   background-size: cover;
   background-position: center;
   color: #fff;
-  padding: 70px 140px;
-  height: 77vh;
+  padding: 70px 100px;
+  height: 88vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -104,7 +104,7 @@ const Description = styled.p`
 
 const Tabs = styled.div`
   position: absolute;
-  bottom: -140px;
+  bottom: -120px;
   left: 0;
   width: 100%;
   display: flex;

@@ -31,7 +31,7 @@ function App() {
 
   return (
     <>
-     {/* <GlobalStyle/>  */}
+       <GlobalStyle/>  
       <Header onHomeClick={handleHomeClick} />
       <Banner key={refreshKey} />
      {/* <ContentPlaceholder></ContentPlaceholder> */}

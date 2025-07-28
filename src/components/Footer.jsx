@@ -146,7 +146,7 @@ export default function FooterSection() {
       </Grid>
 
       <FooterBottom>
-        <div>&copy; Copyright 2025. All Rights Reserved - XtraTheme.</div>
+        <div>&copy; Copyright 2025. All Rights Reserved - XtraTheme Pty Ltd.</div>
 
         <Socials>
           <span>

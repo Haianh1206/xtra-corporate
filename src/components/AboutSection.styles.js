@@ -9,7 +9,7 @@ const sizes = {
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 80px;
+  padding: 160px 0px 120px 100px;
   background: #fff;
   gap: 48px;
   height: auto;
@@ -46,11 +46,14 @@ const Label = styled.div`
 
 const VerticalLine = styled.div`
   width: 1px;
-  height: 85%;
+  height: 90%;
   background: #ccc;
   position: absolute;
   top: 32px;
   left: 40%;
+   @media (max-width: ${sizes.sm}) {
+    display : none;
+  }
 `;
 
 const MiddleColumn = styled.div`
@@ -67,6 +70,9 @@ const Title = styled.h2`
 
   span {
     color: #002699;
+    font-weight: inherit;
+    font-size: inherit;
+    display: inline;
   }
 
   @media (max-width: ${sizes.md}) {
@@ -74,6 +80,7 @@ const Title = styled.h2`
     text-align: center;
   }
 `;
+
 
 const Paragraph = styled.p`
   font-size: 18px;
@@ -174,7 +181,7 @@ const Button = styled.button`
       : `
         background: #fff;
         color: #002699;
-        margin-left: 28px;
+        
 
         &:hover {
           background: #002699;

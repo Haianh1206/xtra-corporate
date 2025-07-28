@@ -3,13 +3,13 @@ import { CheckCircle } from "lucide-react";
 import media from "../styles/media";
 
 const Section = styled.section`
-  padding: 100px 130px;
+  padding: 140px 130px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 40px;
   background-color: #ffffff;
-  height: 90vh;
+  height: 130vh;
 
   ${media.lg`
     padding: 60px 40px;
@@ -19,7 +19,7 @@ const Section = styled.section`
   `}
 
   ${media.md`
-            padding: 0px 20px 0 8px;
+            padding: 0px 8px 0 8px;
     gap: 24px;
   `}
 `;
@@ -62,6 +62,9 @@ const Heading = styled.h2`
 
   span {
     color: #002699;
+     font-weight: inherit;
+    font-size: inherit;
+    display: inline;
   }
 
   ${media.md`
@@ -74,7 +77,7 @@ const Paragraph = styled.p`
   font-size: 18px;
   line-height: 2;
   color: #666;
-  margin: 20px 0;
+  margin: 46px 0;
 
   ${media.md`
     font-size: 16px;
@@ -97,7 +100,7 @@ const StepItem = styled.li`
   gap: 16px;
   font-size: 18px;
   font-weight: 500;
-  margin-bottom: 8px;
+  margin-bottom: 30px;
 
   svg {
     transition: all 0.3s ease;
@@ -105,7 +108,7 @@ const StepItem = styled.li`
     height: 24px;
     background-color: transparent;
     border-radius: 50%;
-    padding: 10px;
+   
     color: green;
     opacity: 0.7;
   }
@@ -114,11 +117,12 @@ const StepItem = styled.li`
     background-color: #1a73e8;
     color: #fff;
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.8);
+    
   }
 
   ${media.md`
-    font-size: 16px;
+    font-size: 14px;
   `}
 `;
 
@@ -138,8 +142,8 @@ const Box = styled.div`
   border-radius: 4px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  height: 260px;
-  width: 245px;
+  height: 265px;
+  width: 290px;
 
   &:hover {
     border-color: #1a73e8;
@@ -196,6 +200,9 @@ const BoxTitle = styled.h3`
     color: #888;
     font-weight: 600;
     margin-right: 8px;
+     font-weight: inherit;
+    font-size: inherit;
+    display: inline;
   }
 
   ${media.md`
@@ -210,7 +217,7 @@ const BoxTitle = styled.h3`
 const BoxDesc = styled.p`
   font-size: 16px;
   color: #555;
-  margin-top: 54px;
+  margin-top: 24px;
   margin-left: 12px;
   position: relative;
   z-index: 1;

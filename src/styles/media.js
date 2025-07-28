@@ -5,7 +5,8 @@ const sizes = {
   sm: 576,    // mobile
   md: 768,    // tablet
   lg: 992,   
-   xl: 1200, // desktop
+   xl: 1200,
+   xxl : 1800, // desktop
 };
 
 const media = Object.keys(sizes).reduce((acc, label) => {

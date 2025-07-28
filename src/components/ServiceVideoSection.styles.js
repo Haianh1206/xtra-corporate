@@ -28,6 +28,7 @@ const Left = styled.div`
   align-items: center;
   justify-content: center;
   width: 50%;
+height: 630px;
 
   ${media.lg`
     width: 100%;
@@ -35,8 +36,8 @@ const Left = styled.div`
   `}
 
   ${media.md`
-    height: 220px;
-    padding: 16px;
+    height: 450px;
+    padding: 16px 0;
     background-position: top;
   `}
 `;
@@ -52,6 +53,9 @@ const Right = styled.div`
   ${media.md`
     padding: 12px;
   `}
+   ${media.sm`
+    display: none;
+  `}
 `;
 
 const PlayButton = styled.div`
@@ -64,7 +68,7 @@ const PlayButton = styled.div`
   background: transparent;
   cursor: pointer;
   animation: ${bounce} 0.6s ease;
-
+border: 2px solid rgba(255, 255, 255, 0.1);
   svg {
     color: white;
     font-size: 28px;
@@ -92,7 +96,7 @@ const PlayButton = styled.div`
 `;
 
 const Service = styled.div`
-  margin: 60px 0 72px 0;
+  margin: 78px 0 72px 0;
   margin-left: 120px;
 
   ${media.lg`
@@ -101,6 +105,9 @@ const Service = styled.div`
 
   ${media.md`
     margin: 32px 12px;
+  `}
+   ${media.sm`
+    margin: 0;
   `}
 `;
 
@@ -116,7 +123,7 @@ const Title = styled.h3`
   `}
 
   ${media.md`
-    font-size: 18px;
+    font-size: 28px;
   `}
 `;
 
@@ -126,23 +133,24 @@ const Description = styled.p`
   color: #666;
 
   ${media.lg`
-    font-size: 16px;
+    font-size: 22px;
   `}
 
   ${media.md`
-    font-size: 14px;
+    font-size: 18px;
+    margin : 0;
   `}
 `;
 
 const IconColumn = styled.div`
   position: absolute;
-  top: 50%;
+  top: 42%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 5;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 68px;
 
   ${media.lg`
     position: static;
@@ -157,12 +165,14 @@ const IconColumn = styled.div`
   ${media.md`
     gap: 12px;
     margin: 16px 0;
+    display :none;
   `}
+  
 `;
 
 const IconBox = styled.img`
-  width: 70px;
-  height: 70px;
+  width: 120px;
+  height: 120px;
   padding: 25px;
   background: #fff;
   border-radius: 4px;
@@ -296,6 +306,39 @@ const CloseButton = styled.div`
     background-color: rgba(255, 255, 255, 0.3);
   }
 `;
+const MobileLayout = styled.div`
+  display: none;
+
+  ${media.sm`
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 24px;
+  `}
+
+  ${media.md`
+    display: flex;
+    padding: 16px;
+    gap: 24px;
+  `}
+`;
+
+const Item = styled.div`
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+
+  ${media.md`
+    flex-direction: row;
+    align-items: center;
+  `}
+   ${media.sm`
+    flex-direction: column;
+    align-items: center;
+    text-align : center;
+    margin-top : 32px;
+  `}
+`;
 
 export {
   bounce,
@@ -318,4 +361,6 @@ export {
   TopRightButtons,
   ZoomButton,
   CloseButton,
+  MobileLayout,
+  Item,
 };

@@ -27,6 +27,8 @@ import {
   TopRightButtons,
   ZoomButton,
   CloseButton,
+  MobileLayout,
+  Item,
 }from "./ServiceVideoSection.styles";
 
 
@@ -117,7 +119,35 @@ export default function ServiceVideoSection() {
           </Description>
         </Service>
       </Right>
-
+ <MobileLayout>
+  <Item>
+    <IconBox src={financial} alt="Financial Icon" />
+    <Service>
+      <Title>Financial Services</Title>
+      <Description> The editor reviews the content <br /> to ensure there are no process, <br />
+           
+            Once this is done, it moves to designer.</Description>
+    </Service>
+  </Item>
+  <Item>
+    <IconBox src={Software} alt="Software Icon" />
+    <Service>
+      <Title>Software Services</Title>
+      <Description>The editor reviews the content <br /> to ensure there are no process, <br />
+           
+            Once this is done, it moves to designer.</Description>
+    </Service>
+  </Item>
+  <Item>
+    <IconBox src={Industrial} alt="Industrial Icon" />
+    <Service>
+      <Title>Industrial Services</Title>
+      <Description>The editor reviews the content <br /> to ensure there are no process, <br />
+           
+            Once this is done, it moves to designer.</Description>
+    </Service>
+  </Item>
+</MobileLayout>
       {/* Modal Fullscreen */}
       {openVideo && (
         <ModalOverlay>
@@ -157,6 +187,8 @@ export default function ServiceVideoSection() {
           </TopRightButtons>
         </ModalOverlay>
       )}
+     
+
     </Section>
   );
 }

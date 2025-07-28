@@ -1,6 +1,7 @@
 // CustomChatIcon.jsx
 import React from "react";
 import styled from "styled-components";
+import media from "../styles/media";
 
 const ChatIconWrapper = styled.div`
   position: fixed;
@@ -24,7 +25,9 @@ const ChatIconWrapper = styled.div`
     fill: black;
   }
 
-  
+   ${media.sm`
+    display: none;
+  `}
 `;
 
 

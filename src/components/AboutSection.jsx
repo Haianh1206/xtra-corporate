@@ -66,16 +66,16 @@ export default function BusinessSection() {
 
         <FeatureList>
           <Feature>
-            <ArrowRight size={20} /> Coherent in doing things
+            <ArrowRight size={40} /> Coherent in doing things
           </Feature>
           <Feature>
-            <ArrowRight size={20} /> New and modern ideas
+            <ArrowRight size={40} /> New and modern ideas
           </Feature>
           <Feature>
-            <ArrowRight size={20} /> Work progress coordination
+            <ArrowRight size={40} /> Work progress coordination
           </Feature>
           <Feature>
-            <ArrowRight size={20} /> Accurate and friendly support
+            <ArrowRight size={40} /> Accurate and friendly support
           </Feature>
         </FeatureList>
 

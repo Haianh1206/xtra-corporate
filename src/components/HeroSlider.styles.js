@@ -170,7 +170,7 @@ const TextBlock = styled.div`
   align-items: flex-start;
   min-width: 220px;
   margin-left : 115px;
-  margin-top: 25px;
+  margin-top: 65px;
 
   ${media.md`
     margin-left: 0;
@@ -256,7 +256,7 @@ const Label = styled.div`
 const Divider = styled.div`
   position: relative;
   height: 20px;
-  width: 200%;
+  width: 120%;
   max-width: 300px;
 
   &::before {

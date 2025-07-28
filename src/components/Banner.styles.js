@@ -58,7 +58,7 @@ const AnimatedItem = styled.div`
 `;
 
 const BannerSection = styled.section`
-  min-height: 90vh;
+  height: 120vh;
   padding: 160px 40px;
   background: linear-gradient(rgba(0, 26, 51, 0.8), rgba(0, 26, 51, 0.8)),
     url(${(props) => props.bg});
@@ -120,8 +120,9 @@ const Title = styled.h1`
   font-size: 56px;
   font-weight: 800;
   line-height: 1.2;
-  margin-bottom: 20px;
+  margin-bottom: 36px;
   white-space: nowrap;
+  margin-top: 20px;
 
   ${media.md`
     font-size: 36px;
@@ -134,7 +135,7 @@ const Title = styled.h1`
 const Description = styled.p`
   font-size: 20px;
   color: #eee;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
 
   ${centerTextResponsive}
 
@@ -157,15 +158,15 @@ const ActionsRow = styled.div`
 `;
 
 const Button = styled.button`
-  padding: 14px 28px;
+  padding: 18px 44px;
   background: transparent;
   border: 2px solid #fff;
-  border-radius: 6px;
+  border-radius: 2px;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-
+    
   &:hover {
     background: #fff;
     color: #0d6efd;
@@ -176,6 +177,7 @@ const SubText = styled.span`
   color: rgba(255, 255, 255, 0.6);
   font-size: 16px;
   display: block;
+  
 `;
 
 const NavButton = styled.button`
@@ -207,6 +209,9 @@ const NavButton = styled.button`
     css`
       right: 20px;
     `}
+     ${media.sm`
+    display: none;
+  `}
 `;
 
 export {

@@ -20,7 +20,7 @@ const TopBar = styled.div`
   left: 0;
   right: 0;
   z-index: 3000;
-  height: 34px;
+  height: 54px;
 ${media.sm`
     display: none;
   `}
@@ -128,13 +128,14 @@ ${media.md`
     flex-wrap: nowrap;
     white-space: nowrap;
     overflow: hidden;
+    
   }
   .info span {
     color: rgba(255, 255, 255, 0.5);
     display: flex;
     align-items: center;
     gap: 8px;
-
+    font-size : 14px;
     svg {
       transition: none !important;
       color: rgba(255, 255, 255, 0.5) !important; /* cố định màu icon */
@@ -182,7 +183,7 @@ const NavBar = styled.div`
 
   .logo {
     height: 65px;
-    max-width: 150px;
+    max-width: 200px;
 
     ${media.sm`
       height: 50px;
