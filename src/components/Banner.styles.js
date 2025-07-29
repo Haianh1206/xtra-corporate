@@ -58,7 +58,7 @@ const AnimatedItem = styled.div`
 `;
 
 const BannerSection = styled.section`
-  height: 120vh;
+  height: 120vh; // Mặc định trên desktop
   padding: 160px 40px;
   background: linear-gradient(rgba(0, 26, 51, 0.8), rgba(0, 26, 51, 0.8)),
     url(${(props) => props.bg});
@@ -70,20 +70,34 @@ const BannerSection = styled.section`
 
   ${(props) =>
     props.direction === "left"
-      ? css`${slideLeft} 0.6s ease-in-out`
-      : css`${slideRight} 0.6s ease-in-out`};
-    ${media.xl`
+      ? css`
+          ${slideLeft} 0.6s ease-in-out
+        `
+      : css`
+          ${slideRight} 0.6s ease-in-out
+        `};
+
+  ${media.xl`
+    height: auto;
     min-height: 60vh;
     padding: 120px 34px;
   `}
+
   ${media.lg`
+    height: auto;
     min-height: 50vh;
-    padding:  24px;
+    padding: 100px 24px;
   `}
-  
+
   ${media.md`
-    min-height: 50vh;
-    padding: 16px;
+    height: auto;
+    min-height: 42vh;
+    padding: 80px 16px;
+  `}
+
+  ${media.sm`
+    min-height: 36vh;
+    padding: 0px 12px 36px 12px;
   `}
 `;
 
@@ -114,6 +128,10 @@ const TextContent = styled.div`
   ${media.md`
     margin-top: 160px;
   `}
+   ${media.md`
+  align-items: center;
+  `}
+  
 `;
 
 const Title = styled.h1`
@@ -125,10 +143,14 @@ const Title = styled.h1`
   margin-top: 20px;
 
   ${media.md`
-    font-size: 36px;
+    font-size: 32px;
     white-space: normal;
+      margin-top: 0px;
+  margin-bottom: 16px;
   `}
-
+ ${media.sm`
+      margin-top: -10px;
+  `}
   ${centerTextResponsive}
 `;
 
@@ -142,6 +164,10 @@ const Description = styled.p`
   ${media.md`
     font-size: 18px;
   `}
+   ${media.sm`
+  margin-bottom: 30px;
+  
+  `}
 `;
 
 const ActionsRow = styled.div`
@@ -154,6 +180,7 @@ const ActionsRow = styled.div`
   ${media.md`
     flex-direction: column;
     gap: 12px;
+   ;
   `}
 `;
 
@@ -166,18 +193,25 @@ const Button = styled.button`
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-    
+
   &:hover {
     background: #fff;
     color: #0d6efd;
   }
+  ${media.sm`
+  padding: 8px 20px;
+  display: block;
+    margin: 0 auto;
+  `}
 `;
 
 const SubText = styled.span`
   color: rgba(255, 255, 255, 0.6);
   font-size: 16px;
   display: block;
-  
+  ${media.sm`
+    display: none;
+  `}
 `;
 
 const NavButton = styled.button`
@@ -209,7 +243,7 @@ const NavButton = styled.button`
     css`
       right: 20px;
     `}
-     ${media.sm`
+     ${media.x`
     display: none;
   `}
 `;

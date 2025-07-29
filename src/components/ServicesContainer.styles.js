@@ -19,7 +19,7 @@ const ContainerWrapper = styled.div`
 
   ${media.sm`
     margin-top: 30px;
-    padding: 0 16px 40px 16px;
+    padding: 0 16px 80px 16px;
   `}
 `;
 
@@ -43,7 +43,7 @@ const Card = styled.div.attrs({ className: "card" })`
       ? `linear-gradient(rgba(1, 46, 88, 0.8), rgba(0, 39, 76, 0.8)), url(${$serviceImage}) center/cover no-repeat`
       : "white"};
 
-  width: ${({ $highlight }) => ($highlight ? "394px" : "400px")};
+  width: ${({ $highlight }) => ($highlight ? "400px" : "400px")};
   height: ${({ $highlight }) => ($highlight ? "270px" : "270px")};
   padding: 24px;
   border: ${({ $highlight }) => ($highlight ? "6px solid #002A96" : "none")};
@@ -66,9 +66,9 @@ const Card = styled.div.attrs({ className: "card" })`
     z-index: 1;
   }
 
-  ${media.lg`
+  ${media.x`
     width: 95% !important;
-    max-width: 700px;
+    max-width: 800px;
     height: auto;
     align-items: center;
     text-align: center;
@@ -83,6 +83,9 @@ const Card = styled.div.attrs({ className: "card" })`
     width: 100% !important;
     padding: 4px;
     max-width : 360px;
+    
+    height : 270px;
+   
   `}
 `;
 
@@ -95,6 +98,9 @@ const Icon = styled.div.attrs({ className: "icon" })`
   ${media.md`
     margin-left: 0 !important;
     text-align: center;
+  `}
+  ${media.sm`
+    margin-top: 36px; /* áp dụng riêng cho mobile */
   `}
 `;
 
@@ -141,6 +147,9 @@ const Arrow = styled.div`
     width: ${({ $large }) => ($large ? "40px" : "24px")};
     height: ${({ $large }) => ($large ? "40px" : "24px")};
   }
+${media.sm`
+   display : none;
+  `}
 `;
 
 const CenteredArrow = styled.div`
@@ -150,6 +159,9 @@ const CenteredArrow = styled.div`
   align-items: center;
   gap: 12px;
   position: relative;
+    ${media.x`
+   height : 210px;
+  `}
 `;
 
 const ArrowExit = styled.div.attrs({ className: "arrow-exit" })`
@@ -163,10 +175,10 @@ const ArrowExit = styled.div.attrs({ className: "arrow-exit" })`
     transform: translateX(300px);
     opacity: 0;
   }
-
-  ${media.md`
-    display: none;
+${media.x`
+   margin-top : 50px;
   `}
+ 
 `;
 
 const ArrowEnter = styled.div.attrs({ className: "arrow-enter" })`
@@ -257,7 +269,7 @@ const TitleGroup = styled.div.attrs({ className: "title-group" })`
 `;
 
 const InfoGroup = styled.div.attrs({ className: "info-group" })`
-  margin-top: ${({ $shift }) => ($shift ? "0px" : "0")};
+  margin-top: ${({ $shift }) => ($shift ? "28px" : "0")};
   display: flex;
   flex-direction: column;
   gap: 10px;

@@ -17,7 +17,7 @@ const Section = styled.section`
   justify-content: center;
 
   ${media.md`
-    padding: 40px 20px;
+    padding: 80px 20px;
     height: auto;
   `}
 `;
@@ -72,9 +72,10 @@ const Heading = styled.h2`
   top: -20px;
   margin-bottom: 0;
 
-  ${media.md`
-    font-size: 28px;
-    top: 0;
+  ${media.sm`
+    font-size: 38px;
+    top: 30px;
+    
   `}
 `;
 
@@ -87,6 +88,9 @@ const Subheading = styled.p`
   ${media.md`
     font-size: 16px;
     margin-bottom: 40px;
+  `}
+   ${media.sm`
+    margin-top: 32px;
   `}
 `;
 
@@ -119,6 +123,10 @@ const Tabs = styled.div`
     align-items: center;
     gap: 20px;
     margin-top: 40px;
+  `}
+  
+  ${media.sm`
+   display: none;
   `}
 `;
 
@@ -163,7 +171,7 @@ const BackgroundIcon = styled(MessageCircle)`
   z-index: 1;
 
   ${media.sm`
-    display: none;
+    left: 100px;
   `}
 `;
 

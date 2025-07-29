@@ -37,7 +37,7 @@ const Sidebar = styled.div`
 const CloseSVG = styled.svg`
   position: fixed;
   top: 10px;
-  right: 420px;
+  right: 355px;
   width: 28px;
   height: 28px;
   stroke: #fff;

@@ -48,7 +48,7 @@ const Container = styled.div`
 
   ${media.lg`padding: 60px 60px;`}
   ${media.md`padding: 40px 24px;`}
-  ${media.sm`padding: 24px 16px 36px 16px;`}
+  ${media.sm`padding: 36px 16px 68px 16px;`}
 `;
 
 const SlideRow = styled.div`
@@ -109,6 +109,7 @@ const Image = styled.img`
    ${media.sm`
     width: 80%;
     height: auto;
+      aspect-ratio: 1 / 1;
     margin: 24px auto 0 auto;
   `}
 `;

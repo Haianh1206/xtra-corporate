@@ -113,6 +113,11 @@ const Avatar = styled.img`
     height: auto;
     max-width: 370px;
   `}
+   ${media.sm`
+    width: 110%;
+    max-width: none;
+    
+  `}
 `;
 
 const Name = styled.h3`

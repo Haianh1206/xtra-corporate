@@ -37,7 +37,7 @@ height: 630px;
 
   ${media.md`
     height: 450px;
-    padding: 16px 0;
+    padding: 50px 0;
     background-position: top;
   `}
 `;
@@ -189,9 +189,10 @@ const IconBox = styled.img`
   `}
 
   ${media.md`
-    width: 48px;
-    height: 48px;
+    width: 120px;
+    height: 120px;
     padding: 12px;
+    margin-top : 20px;
   `}
 `;
 
@@ -320,6 +321,7 @@ const MobileLayout = styled.div`
     display: flex;
     padding: 16px;
     gap: 24px;
+            padding-bottom: 56px;
   `}
 `;
 

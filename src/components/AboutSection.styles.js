@@ -4,6 +4,7 @@ import styled from "styled-components";
 const sizes = {
   md: "768px",
   sm: "480px",
+  x : "1024px",
 };
 
 const Container = styled.div`
@@ -13,7 +14,11 @@ const Container = styled.div`
   background: #fff;
   gap: 48px;
   height: auto;
-
+  
+ @media (max-width: ${sizes.x}) {
+      padding: 160px 120px 160px 40px;
+gap: 40px;
+  }
   @media (max-width: ${sizes.md}) {
     padding: 40px 20px;
     flex-direction: column;
@@ -21,7 +26,7 @@ const Container = styled.div`
   }
 
   @media (max-width: ${sizes.sm}) {
-    padding: 32px 16px;
+    padding: 56px 16px;
   }
 `;
 
@@ -36,12 +41,23 @@ const LeftColumn = styled.div`
     width: 100%;
     align-items: center;
   }
+      @media (max-width: ${sizes.x}) {
+     width: 70px;
+
+  }
 `;
 
 const Label = styled.div`
   font-weight: bold;
   color: #888;
   margin-bottom: 16px;
+   @media (max-width: ${sizes.sm}) {
+    display : none;
+  }
+    @media (max-width: ${sizes.x}) {
+   width : 70px;
+   text-align : center;
+  }
 `;
 
 const VerticalLine = styled.div`
@@ -75,11 +91,26 @@ const Title = styled.h2`
     display: inline;
   }
 
-  @media (max-width: ${sizes.md}) {
-    font-size: 28px;
+  @media (max-width: ${sizes.sm}) {
     text-align: center;
+    white-space: pre-line;
+
+    br {
+      display: none;
+    }
+
+    &::before {
+      
+    }
+
+    span {
+      display: block;
+      margin-top: 4px;
+      color: #002699;
+    }
   }
 `;
+
 
 
 const Paragraph = styled.p`
@@ -266,8 +297,15 @@ const Image3D = styled.img`
   border-radius: 4px;
   transition: transform 0.03s ease;
   transform-style: preserve-3d;
-  @media (max-width: ${sizes.sm}) {
-    max-width : 100%;
+  
+    @media (max-width: ${sizes.x}) {
+    max-width : 270px;
+    max-height: 450px;
+    margin-left : 78px;
+  }
+    @media (max-width: ${sizes.sm}) {
+    max-width : 120%;
+    margin-left : 0px;
   }
 `;
 
@@ -276,7 +314,24 @@ const Highlight = styled.strong`
   padding: 1px 7px 2px;
   background: rgba(167, 167, 167, 0.15);
   border-radius: 2px;
+
+  @media (max-width: ${sizes.sm}) {
+    font-size: 0; /* Ẩn chữ gốc */
+    position: relative;
+    display: inline-block;
+
+    &::before {
+      content: "XTRA";
+      font-size: 18px;
+      color: #002699;
+      
+      padding:0px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+  }
 `;
+
 
 export {
   Container,

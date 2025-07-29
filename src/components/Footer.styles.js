@@ -14,6 +14,7 @@ const Container = styled.footer`
   `}
   ${media.sm`
     padding: 40px 32px 120px 32px;
+   
   `}
 `;
 
@@ -437,6 +438,16 @@ const HoverIcons = styled.div`
     transform: translateY(0);
     opacity: 1;
   }
+   ${media.sm` 
+    .icon:first-child {
+      display: none; /* Hide FaEnvelope on mobile */
+    }
+
+    .icon.chevron {
+    margin-bottom : 70px;
+      display: flex; /* Ensure it's visible on mobile */
+    }
+  `}
 `;
 
 export {

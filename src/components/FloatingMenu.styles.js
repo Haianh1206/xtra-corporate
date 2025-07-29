@@ -30,6 +30,9 @@ const Container = styled.div`
   ${media.sm`
     display: none;
   `}
+  ${media.x`
+    top : 14%;
+  `}
 `;
 
 const MenuWrapper = styled.div`

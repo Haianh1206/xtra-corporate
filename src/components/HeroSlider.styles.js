@@ -14,16 +14,23 @@ const slideInFromLeft = keyframes`
 const ContainerWrapper = styled.div`
   position: relative;
   z-index: 1;
+
+   ${media.sm`
+   
+  `}
+
 `;
 
 const Wrapper = styled.div`
   overflow: hidden;
   background: #020d18;
   z-index: 20000;
-  height : 120vh;
-  ${media.md`
-    height : 130vh;
-   
+  min-height: 100vh;
+  padding: 40px 0;
+  ${media.x`
+      min-height: 60vh;
+
+
   `}
 `;
 
@@ -41,6 +48,10 @@ const Slider = styled.div`
   ${media.sm`
     margin: 0 20px;
     height: 18vh;
+  `}
+  ${media.x`
+    margin: 0 20px;
+    height: 28vh;
   `}
 `;
 
@@ -81,7 +92,7 @@ const NextSlide = styled.div`
   z-index: 1;
   transition: all 0.4s ease;
 
-  ${media.md`
+  ${media.x`
     display : none;
   `}
 `;
@@ -142,7 +153,7 @@ const NavBtn = styled.button`
   &:hover {
     color: white;
   }
-    ${media.md`
+    ${media.x`
       display : none;
       `}
 `;
@@ -162,6 +173,10 @@ const InfoSection = styled.div`
     gap: 20px;
     padding:  10px;
   `}
+   ${media.x`
+  
+    gap: 20px;
+  `}
 `;
 
 const TextBlock = styled.div`
@@ -172,11 +187,12 @@ const TextBlock = styled.div`
   margin-left : 115px;
   margin-top: 65px;
 
-  ${media.md`
-    margin-left: 0;
+  ${media.x`
+    margin-left: 26px;
     align-items: center;
     text-align: center;
   `}
+
 `;
 
 const Trust = styled.div`
@@ -227,6 +243,10 @@ const Number = styled.div`
     font-size: 70px;
     justify-content: center;
   `}
+  ${media.sm`
+    font-size: 80px;
+    justify-content: center;
+  `}
 `;
 
 const SmallSuffix = styled.span`
@@ -239,6 +259,11 @@ const SmallSuffix = styled.span`
     font-size: 28px;
     margin-top: 20px;
   `}
+   ${media.sm`
+    font-size: 40px;
+    margin-top: 30px;
+    margin-left: 10px;
+  `}
 `;
 
 const Label = styled.div`
@@ -247,10 +272,11 @@ const Label = styled.div`
   margin-top: 5px;
   text-align: left;
 
-  ${media.md`
+  ${media.x`
     font-size: 1.4rem;
     text-align: center;
   `}
+  
 `;
 
 const Divider = styled.div`
@@ -258,7 +284,14 @@ const Divider = styled.div`
   height: 20px;
   width: 120%;
   max-width: 300px;
+ ${media.sm`
+     width: 200%;
 
+  `}
+  ${media.x`
+     width: 105%;
+
+  `}
   &::before {
     content: "";
     position: absolute;

@@ -2,6 +2,8 @@ import styled from "styled-components";
 import xtraLogo from "../assets/xtra-logo.png";
 import envatoLogo from "../assets/envato-logo.png";
 import OverlayMenu from "./OverlayMenu";
+import OverlayMenuMobile from "./OverlayMenuMobile";
+import useMediaQuery from "./useMediaQuery";
 import { useState, useEffect } from "react";
 import media from "../styles/media";
 import {
@@ -29,6 +31,7 @@ import {
 
 export default function Header({ onHomeClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
+   const isMobile = useMediaQuery("(max-width: 768px)");
   return (
     <Wrapper>
       <TopBar>
@@ -60,8 +63,7 @@ export default function Header({ onHomeClick }) {
           </div>
         </SocialBar>
 
-        <NavBar >
-         
+        <NavBar>
           <img className="logo" src={xtraLogo} alt="Xtra Logo" />
 
           <div className="right">
@@ -80,9 +82,9 @@ export default function Header({ onHomeClick }) {
               </a>
 
               <div className="nav-link has-dropdown">
-               <span className="nav-link-inner">
-  Blog <FaChevronDown size={14} />
-</span>
+                <span className="nav-link-inner">
+                  Blog <FaChevronDown size={14} />
+                </span>
                 <div className="hover-bridge"></div>
                 <div className="dropdown">
                   <a href="#">
@@ -108,8 +110,8 @@ export default function Header({ onHomeClick }) {
 
               <div className="nav-link has-dropdown">
                 <span className="nav-link-inner">
-  Blog <FaChevronDown size={14} />
-</span>
+                  Portfolio <FaChevronDown size={14} />
+                </span>
                 <div className="hover-bridge"></div>
                 <div className="dropdown">
                   <a href="#">
@@ -129,8 +131,8 @@ export default function Header({ onHomeClick }) {
 
               <div className="nav-link has-dropdown">
                 <span className="nav-link-inner">
-  Blog <FaChevronDown size={14} />
-</span>
+                  Shop <FaChevronDown size={14} />
+                </span>
                 <div className="hover-bridge"></div>
                 <div className="dropdown">
                   <a href="#">
@@ -169,17 +171,21 @@ export default function Header({ onHomeClick }) {
                   </div>
                 </div>
               </div>
-              <div className="dot-menu">
-    <FaBars onClick={() => setMenuOpen(true)} />
-  </div>
-              
+            </div>
+            <div className="mobile-call-icon">
+              <FaPhoneAlt />
+            </div>
+            <div className="dot-menu">
+              <FaBars onClick={() => setMenuOpen(true)} />
             </div>
           </div>
         </NavBar>
       </ContentContainer>
-          <OverlayMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
-
+     {isMobile ? (
+        <OverlayMenuMobile isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+      ) : (
+        <OverlayMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+      )}
     </Wrapper>
-    
   );
 }

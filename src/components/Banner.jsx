@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import bannerImage from "../assets/banner-img.png";
-import bannerImage2 from "../assets/banner-img2.png"; // thêm banner mới
+import bannerImage2 from "../assets/banner-img2.png";
 
 import {
   slideIn,
@@ -13,7 +13,7 @@ import {
   AnimatedItem,
   BannerSection,
   TextContent,
-  Title, 
+  Title,
   Description,
   ActionsRow,
   Button,
@@ -21,10 +21,31 @@ import {
   NavButton,
 } from "./Banner.styles";
 
+// Hook kiểm tra mobile/tablet
+const useDevice = () => {
+  const [device, setDevice] = useState({ isMobile: false, isTablet: false });
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setDevice({
+        isMobile: width < 640,
+        isTablet: width >= 640 && width < 1025,
+      });
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return device;
+};
+
 
 export default function Banner() {
   const [index, setIndex] = useState(0);
-
+  const [direction, setDirection] = useState("right");
+const { isMobile, isTablet } = useDevice();
   const banners = [
     {
       image: bannerImage,
@@ -32,7 +53,7 @@ export default function Banner() {
       description:
         "We Are Advertising Technology Experts That Drive Business Results.",
       align: "center",
-      button: "Start You New Project",
+      button: "Start Your New Project",
       moreInfo: "Read More About Plans",
     },
     {
@@ -45,36 +66,39 @@ export default function Banner() {
     },
   ];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % banners.length);
-    }, 10000);
-    return () => clearInterval(timer);
-  }, []);
+ useEffect(() => {
+  if (isMobile || isTablet) return;
 
-  const [direction, setDirection] = useState("right");
+  const timer = setInterval(() => {
+    setIndex((prev) => (prev + 1) % banners.length);
+  }, 10000);
+  return () => clearInterval(timer);
+}, [isMobile, isTablet]);
 
-const handlePrev = () => {
-  setDirection("left");
-  setIndex((prev) => (prev - 1 + banners.length) % banners.length);
-};
+  const handlePrev = () => {
+    setDirection("left");
+    setIndex((prev) => (prev - 1 + banners.length) % banners.length);
+  };
 
-const handleNext = () => {
-  setDirection("right");
-  setIndex((prev) => (prev + 1) % banners.length);
-};
+  const handleNext = () => {
+    setDirection("right");
+    setIndex((prev) => (prev + 1) % banners.length);
+  };
 
-
-  const current = banners[index];
+const current = isMobile || isTablet ? banners[1] : banners[index]; 
 
   return (
-    <BannerSection bg={current.image} direction={direction} >
-      <NavButton left onClick={handlePrev}>
-        <FaChevronLeft />
-      </NavButton>
-      <NavButton right onClick={handleNext}>
-        <FaChevronRight />
-      </NavButton>
+    <BannerSection bg={current.image} direction={direction}>
+      {!isMobile && (
+        <>
+          <NavButton left onClick={handlePrev}>
+            <FaChevronLeft />
+          </NavButton>
+          <NavButton right onClick={handleNext}>
+            <FaChevronRight />
+          </NavButton>
+        </>
+      )}
 
       <TextContent align={current.align} key={index}>
         <AnimatedItem delay="0.1s">
@@ -85,9 +109,9 @@ const handleNext = () => {
         </AnimatedItem>
         <AnimatedItem delay="0.5s">
           <ActionsRow align={current.align}>
-    <Button>{current.button}</Button>
-    <SubText>{current.moreInfo}</SubText>
-  </ActionsRow>
+            <Button>{current.button}</Button>
+            <SubText>{current.moreInfo}</SubText>
+          </ActionsRow>
         </AnimatedItem>
       </TextContent>
     </BannerSection>

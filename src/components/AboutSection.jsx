@@ -5,7 +5,7 @@ import aboutsection1 from "../assets/abousection1.png";
 
 // === Styled Components ===
 import {
-    Container,
+  Container,
   LeftColumn,
   Label,
   VerticalLine,
@@ -20,7 +20,7 @@ import {
   Frame,
   BorderDots,
   Image3D,
-  Highlight
+  Highlight,
 } from "./AboutSection.styles";
 export default function BusinessSection() {
   const [transformStyle, setTransformStyle] = useState(
@@ -53,15 +53,16 @@ export default function BusinessSection() {
           SOMETHING KNOW <br />
           ABOUT <span>OUR BUSINESS</span>
         </Title>
+
         <Paragraph>
-          <Highlight>XTRA Theme</Highlight> is a creative, responsive, live drag
-          and drop and easy-to-use WordPress theme for any kind of websites. It
-          allows you to create sites for a wide range of businesses and styles..
-          The changing role of the traditional bank manager and accountant see
-          these two segments requiring business advisory expertise and content.
-          Strategy and Management is the key. Xtra only delivers content for the
-          small business segment, and increasingly digital only delivery as
-          search becomes the default for knowledge.
+          <Highlight>XTRA Theme</Highlight> only delivers content for the small
+          business segment, and increasingly digital only delivery as search
+          becomes the default for knowledge. The changing role of the
+          traditional bank manager and accountant see these two segments
+          requiring business advisory expertise and content. Strategy and
+          Management is the key. Xtra only delivers content for the small
+          business segment, and increasingly digital only delivery as search
+          becomes the default for knowledge.
         </Paragraph>
 
         <FeatureList>

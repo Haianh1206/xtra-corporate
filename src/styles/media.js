@@ -5,6 +5,7 @@ const sizes = {
   sm: 576,    // mobile
   md: 768,    // tablet
   lg: 992,   
+  x : 1025,
    xl: 1200,
    xxl : 1800, // desktop
 };

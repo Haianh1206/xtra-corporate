@@ -5,6 +5,10 @@ const Wrapper = styled.header`
   position: absolute;
   margin-top: 16px;
   z-index: 3000;
+   ${media.sm`
+      margin-top: 0px;
+
+  `}
 `;
 
 const TopBar = styled.div`
@@ -21,7 +25,7 @@ const TopBar = styled.div`
   right: 0;
   z-index: 3000;
   height: 54px;
-${media.sm`
+  ${media.sm`
     display: none;
   `}
   .envato {
@@ -46,32 +50,31 @@ ${media.sm`
     }
   }
 
-.download-btn {
-  margin-left: auto;
-  background-color: #82b440;
-  font-size: 14px;
-  padding: 5px 20px;
-  line-height: 1.5;
-  color: #000;
-  border-radius: 4px;
-  font-weight: 500;
-  margin-top: 0;
+  .download-btn {
+    margin-left: auto;
+    background-color: #82b440;
+    font-size: 14px;
+    padding: 5px 20px;
+    line-height: 1.5;
+    color: #000;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-top: 0;
 
-  /* Đổ bóng ngược lên trên */
-  box-shadow: 0 -4px 8px rgba(111, 154, 55, 0.3);
-}
-
-
-
+    /* Đổ bóng ngược lên trên */
+    box-shadow: 0 -4px 8px rgba(111, 154, 55, 0.3);
+  }
 `;
 
 const ContentContainer = styled.div`
   margin: 54px 120px 0;
-
+ ${media.x`
+    margin: 60px 38px 0;
+  `}
   ${media.lg`
     margin: 54px 40px 0;
   `}
-  
+
   ${media.md`
     margin: 48px 20px 0;
   `}
@@ -90,7 +93,7 @@ const SocialBar = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-${media.md`
+  ${media.md`
     display: none;
   `}
   svg {
@@ -128,14 +131,13 @@ ${media.md`
     flex-wrap: nowrap;
     white-space: nowrap;
     overflow: hidden;
-    
   }
   .info span {
     color: rgba(255, 255, 255, 0.5);
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size : 14px;
+    font-size: 14px;
     svg {
       transition: none !important;
       color: rgba(255, 255, 255, 0.5) !important; /* cố định màu icon */
@@ -156,15 +158,12 @@ ${media.md`
   }
 `;
 
-
-
 const NavBar = styled.div`
   background: transparent;
   padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 
   ${media.md`
     padding: 10px 16px;
@@ -197,32 +196,61 @@ const NavBar = styled.div`
     gap: 30px;
 
     ${media.md`
-      display: none;
-    `}
+    gap: 16px;
+    display: flex; // ✅ Cho phép hiển thị ở mobile
+  `}
 
     nav {
       display: flex;
       gap: 25px;
 
+      ${media.sm`
+      display: none; // ❌ Ẩn menu chính, vẫn giữ dot-menu
+    `}
+
+    .nav-link.shop,
+.nav-link.contact {
+  ${media.x`
+    display: none;
+  `}
+}
+
+    }
+    .mobile-call-icon {
+      display: none;
+
+      ${media.sm`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color : white;
+        padding : 10px;
+        color : blue;
+    font-size: 20px;
+  `}
+
+      svg {
+        transition: color 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          color: #0d6efd;
+        }
+      }
+    }
+    .dot-menu {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 24px;
+      
       ${media.md`
-        gap: 18px;
       `}
-
-      .nav-link.shop,
-      .nav-link.contact {
-        ${media.md`
-          display: none;
-        `}
-      }
-
-      .dot-menu {
-       
-
-        ${media.md`
-          display: flex;
-          align-items: center;
-        `}
-      }
+      ${media.sm`
+        background-color : white;
+        padding : 8px;
+        color : blue;
+      `}
     }
   }
 
@@ -285,6 +313,7 @@ const NavBar = styled.div`
       top: 35px;
       left: 0;
       background: #fff;
+
       padding: 10px 0;
       min-width: 200px;
       flex-direction: column;
@@ -294,7 +323,7 @@ const NavBar = styled.div`
 
       a {
         padding: 5px 20px;
-        color: #555;
+
         text-decoration: none;
         opacity: 0;
         font-size: 16px;
@@ -305,6 +334,7 @@ const NavBar = styled.div`
           display: inline-block;
           transform: translateX(0);
           transition: color 0.3s ease, transform 0.3s ease;
+          color: #666;
         }
 
         &:hover .link-inner {
@@ -313,12 +343,24 @@ const NavBar = styled.div`
         }
       }
 
-      a:nth-child(1) { animation-delay: 0.05s; }
-      a:nth-child(2) { animation-delay: 0.1s; }
-      a:nth-child(3) { animation-delay: 0.15s; }
-      a:nth-child(4) { animation-delay: 0.2s; }
-      a:nth-child(5) { animation-delay: 0.25s; }
-      a:nth-child(6) { animation-delay: 0.3s; }
+      a:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      a:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      a:nth-child(3) {
+        animation-delay: 0.15s;
+      }
+      a:nth-child(4) {
+        animation-delay: 0.2s;
+      }
+      a:nth-child(5) {
+        animation-delay: 0.25s;
+      }
+      a:nth-child(6) {
+        animation-delay: 0.3s;
+      }
     }
 
     &:hover .dropdown {

@@ -19,7 +19,7 @@ const Section = styled.section`
   `}
 
   ${media.md`
-            padding: 0px 8px 0 8px;
+            padding: 100px 8px 100px 8px;
     gap: 24px;
   `}
 `;
@@ -122,7 +122,7 @@ const StepItem = styled.li`
   }
 
   ${media.md`
-    font-size: 14px;
+    font-size: 15px;
   `}
 `;
 
