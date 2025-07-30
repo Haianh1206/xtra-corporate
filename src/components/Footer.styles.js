@@ -9,6 +9,9 @@ const Container = styled.footer`
   color: white;
   padding: 40px 120px;
   font-size: 15px;
+   ${media.x`
+    padding: 40px 52px;
+  `}
   ${media.md`
     padding: 40px 32px;
   `}
@@ -80,6 +83,19 @@ const SubscribeForm = styled.div`
       color: #ccc;
     }
   }
+  ${media.x`
+    width: 50%;
+    flex-direction: row;
+
+    input {
+      width: 50%;
+    }
+
+    button {
+      width: auto;
+      align-self: flex-start;
+    }
+  `}
 
   ${media.md`
     width: 100%;
@@ -138,7 +154,6 @@ const JoinButton = styled.button`
   text-align: center;
   line-height: 16px;
 `}
-
 `;
 
 const PurchaseButton = styled.button`
@@ -167,10 +182,15 @@ const Grid = styled.div`
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 50px;
   gap: 80px;
+ ${media.x`
+   
+    gap: 0px;
+  `}
   ${media.md`
     flex-direction: column;
     gap: 40px;
   `}
+   
 `;
 
 const Column = styled.div`
@@ -185,6 +205,10 @@ const Column = styled.div`
     margin-bottom: 32px;
     margin-left: 4px;
   }
+      ${media.x`
+      min-width: 0px;
+padding : 3px;
+  `}
 `;
 
 const RadioLink = styled.label`
@@ -319,6 +343,12 @@ const FooterInfo = styled.div`
     margin-top: 10px;
     width: 390px;
   }
+    ${media.x`
+    max-width: 50%;
+    p {
+      width: 60%;
+    }
+  `}
   ${media.md`
     max-width: 100%;
     p {
@@ -379,9 +409,13 @@ const ColumnGroup = styled.div`
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
+  ${media.x`
+    gap: 0px;
+  `}
   ${media.md`
     gap: 24px;
     justify-content: space-between;
+    flex-direction : column;
   `}
 `;
 

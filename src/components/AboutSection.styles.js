@@ -248,7 +248,7 @@ const Frame = styled.div`
 const BorderDots = styled.div`
   position: absolute;
   pointer-events: none;
-@media (max-width: ${sizes.md}) {
+@media (max-width: ${sizes.x}) {
     display: none;
   }
 
@@ -301,7 +301,7 @@ const Image3D = styled.img`
     @media (max-width: ${sizes.x}) {
     max-width : 270px;
     max-height: 450px;
-    margin-left : 78px;
+   
   }
     @media (max-width: ${sizes.sm}) {
     max-width : 120%;

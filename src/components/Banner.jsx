@@ -46,6 +46,7 @@ export default function Banner() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState("right");
 const { isMobile, isTablet } = useDevice();
+const [showNav, setShowNav] = useState(false);
   const banners = [
     {
       image: bannerImage,
@@ -65,7 +66,11 @@ const { isMobile, isTablet } = useDevice();
       moreInfo: "Check out our packages",
     },
   ];
-
+useEffect(() => {
+  if (!showNav) return;
+  const timeout = setTimeout(() => setShowNav(false), 5000);
+  return () => clearTimeout(timeout);
+}, [showNav]);
  useEffect(() => {
   if (isMobile || isTablet) return;
 
@@ -88,17 +93,19 @@ const { isMobile, isTablet } = useDevice();
 const current = isMobile || isTablet ? banners[1] : banners[index]; 
 
   return (
-    <BannerSection bg={current.image} direction={direction}>
+    <BannerSection bg={current.image} direction={direction} onClick={() => setShowNav(true)}>
+
       {!isMobile && (
-        <>
-          <NavButton left onClick={handlePrev}>
-            <FaChevronLeft />
-          </NavButton>
-          <NavButton right onClick={handleNext}>
-            <FaChevronRight />
-          </NavButton>
-        </>
-      )}
+  <>
+    <NavButton left visible={showNav} onClick={handlePrev}>
+      <FaChevronLeft />
+    </NavButton>
+    <NavButton right visible={showNav} onClick={handleNext}>
+      <FaChevronRight />
+    </NavButton>
+  </>
+)}
+
 
       <TextContent align={current.align} key={index}>
         <AnimatedItem delay="0.1s">

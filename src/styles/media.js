@@ -2,10 +2,10 @@
 import { css } from "styled-components";
 
 const sizes = {
-  sm: 576,    // mobile
-  md: 768,    // tablet
+  sm: 800,    // mobile
+  md: 800,    
   lg: 992,   
-  x : 1025,
+  x : 1200,// tablet
    xl: 1200,
    xxl : 1800, // desktop
 };

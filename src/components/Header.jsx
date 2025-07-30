@@ -31,7 +31,7 @@ import {
 
 export default function Header({ onHomeClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
-   const isMobile = useMediaQuery("(max-width: 768px)");
+   const isMobile = useMediaQuery("(max-width: 767px)");
   return (
     <Wrapper>
       <TopBar>

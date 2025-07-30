@@ -13,7 +13,9 @@ const Section = styled.section`
   height: 100vh;
   position: relative;
   font-family: "Roboto", sans-serif;
-
+ ${media.x`
+    height : 65vh;
+  `}
   ${media.lg`
     flex-direction: column;
     height: auto;
@@ -29,7 +31,10 @@ const Left = styled.div`
   justify-content: center;
   width: 50%;
 height: 630px;
-
+ ${media.x`
+    width: 100%;
+    height: 777px;
+  `}
   ${media.lg`
     width: 100%;
     height: 300px;
@@ -151,7 +156,11 @@ const IconColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: 68px;
-
+ ${media.x`
+   gap: 100px;
+    margin: -12px 0;
+   
+  `}
   ${media.lg`
     position: static;
     transform: none;

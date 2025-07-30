@@ -35,7 +35,7 @@ const Container = styled.div.attrs({ className: "container" })`
   `}
 `;
 
-const Card = styled.div.attrs({ className: "card" })`
+const Card = styled.div.attrs({ className: "dd" })`
   position: relative;
   overflow: hidden;
   background: ${({ $serviceImage }) =>
@@ -82,7 +82,7 @@ const Card = styled.div.attrs({ className: "card" })`
   ${media.sm`
     width: 100% !important;
     padding: 4px;
-    max-width : 360px;
+    max-width : 760px;
     
     height : 270px;
    

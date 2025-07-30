@@ -30,8 +30,8 @@ const zoomOutIn = keyframes`
 
 const slideLeft = keyframes`
   from {
-    opacity: 0;
-    transform: translateX(-50px);
+    opacity: 1;
+    transform: translateX(0px);
   }
   to {
     opacity: 1;
@@ -41,8 +41,8 @@ const slideLeft = keyframes`
 
 const slideRight = keyframes`
   from {
-    opacity: 0;
-    transform: translateX(50px);
+    opacity: 1;
+    transform: translateX(0px);
   }
   to {
     opacity: 1;
@@ -50,7 +50,6 @@ const slideRight = keyframes`
   }
 `;
 
-// Styled Components
 const AnimatedItem = styled.div`
   opacity: 0;
   animation: ${zoomOutIn} 0.6s ease forwards;
@@ -69,13 +68,14 @@ const BannerSection = styled.section`
   overflow: hidden;
 
   ${(props) =>
-    props.direction === "left"
-      ? css`
-          ${slideLeft} 0.6s ease-in-out
-        `
-      : css`
-          ${slideRight} 0.6s ease-in-out
-        `};
+  props.direction === "left"
+    ? css`
+        animation: ${slideLeft} 0.5s ease-in-out forwards;
+      `
+    : css`
+        animation: ${slideRight} 0.5s ease-in-out forwards;
+      `};
+
 
   ${media.xl`
     height: auto;
@@ -193,7 +193,7 @@ const Button = styled.button`
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-
+font-size : 16px;
   &:hover {
     background: #fff;
     color: #0d6efd;
@@ -218,7 +218,7 @@ const NavButton = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: #222222ff;
+  background: #222;
   border: none;
   color: #fff;
   font-size: 24px;
@@ -226,11 +226,9 @@ const NavButton = styled.button`
   cursor: pointer;
   z-index: 2;
   border-radius: 8%;
-  transition: background 0.3s ease;
-
-  &:hover {
-    background: #000;
-  }
+  opacity: ${(props) => (props.visible ? 1 : 0)};
+  pointer-events: ${(props) => (props.visible ? "auto" : "none")};
+  transition: opacity 0.5s ease;
 
   ${(props) =>
     props.left &&
@@ -243,10 +241,12 @@ const NavButton = styled.button`
     css`
       right: 20px;
     `}
-     ${media.x`
+
+  ${media.x`
     display: none;
   `}
 `;
+
 
 export {
   slideIn,

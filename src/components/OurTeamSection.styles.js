@@ -8,7 +8,9 @@ const Container = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-
+ ${media.x`
+    padding: 80px 40px;
+  `}
   ${media.md`
     flex-direction: column;
     padding: 60px 20px;
@@ -20,7 +22,11 @@ const InfoBlock = styled.div`
   text-align: left;
   margin-right: 40px;
   margin-bottom: 100px;
-
+ ${media.x`
+    margin-right: 0px;
+    margin-bottom: 70px;
+  width: 400px;
+  `}
   ${media.md`
     margin-right: 0;
     margin-bottom: 0px;
@@ -88,7 +94,9 @@ const Card = styled.div`
   text-align: center;
   transition: filter 0.4s ease;
   position: relative;
-
+ ${media.x`
+     padding: 18px;
+  `}
   ${media.md`
     width: 100%;
     max-width: 300px;
@@ -107,7 +115,11 @@ const Avatar = styled.img`
 
   filter: grayscale(100%);
   transition: filter 0.4s ease;
-
+${media.x`
+    width: 100%;
+    height: auto;
+    max-width: 370px;
+  `}
   ${media.md`
     width: 100%;
     height: auto;
@@ -214,7 +226,11 @@ const LogoSection = styled.section`
   flex-wrap: wrap;
   gap: 40px;
   height: 275px;
-
+  ${media.x`
+    height: auto;
+    padding: 90px 20px;
+    gap : 20px;
+  `}
   ${media.md`
     height: auto;
     padding: 40px 20px;
@@ -236,6 +252,12 @@ const Logo = styled.img`
     opacity: 1;
     transform: scale(1.1);
   }
+     ${media.x`
+   max-height: 70px;
+  `}
+   ${media.lg`
+   max-height: 50px;
+  `}
      ${media.md`
    max-height: 150px;
   `}

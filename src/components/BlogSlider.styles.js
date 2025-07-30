@@ -36,16 +36,23 @@ const slides = [
 
 
 const revealLink = keyframes`
-  0% { width: 0; opacity: 0; }
-  100% { width: 40px; opacity: 1; }
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 84px;
+    height: 84px;
+    opacity: 1;
+  }
 `;
+
 
 const Container = styled.div`
   position: relative;
   overflow: hidden;
   padding: 0px 130px 160px 130px;
   background: #ffffff;
-
   ${media.lg`padding: 60px 60px;`}
   ${media.md`padding: 40px 24px;`}
   ${media.sm`padding: 36px 16px 68px 16px;`}
@@ -55,7 +62,9 @@ const SlideRow = styled.div`
   display: flex;
   gap: 24px;
   justify-content: center;
-
+ ${media.x`
+    gap : 0px;
+  `}
   ${media.md`
     flex-direction: column;
     align-items: center;
@@ -68,7 +77,13 @@ const SlideCard = styled.div`
   transition: all 0.3s ease;
   cursor: pointer;
 
+  
+  ${media.x`
+   
+  
+  `}
   ${media.md`
+    
     flex: 0 0 100%;
     width: 100%;
   `}
@@ -95,10 +110,13 @@ const Image = styled.img`
   display: block;
   border-radius: 2px;
   margin: 50px 20px 0 20px;
-
-  ${media.lg`
-    width: 300px;
-    height: 300px;
+ ${media.x`
+    max-width: 270px;
+    max-height: 270px;
+  `}
+   ${media.lg`
+    max-width: 230px;
+    max-height: 230px;
   `}
 
   ${media.md`
@@ -130,7 +148,7 @@ const Overlay = styled.div`
   ${SlideCard}:hover & {
     background: rgba(0, 123, 255, 0.1);
   }
-
+ 
   ${media.md`
     width: 100%;
     left: 0;
@@ -138,18 +156,28 @@ const Overlay = styled.div`
 `;
 
 const HoverIcon = styled.div`
+  position: absolute;
   background: white;
-  height: 80px;
-  padding: 0 22px;
-  text-align: center;
-  border-radius: 4px;
-  color: #03406cff;
+  height: 64px;
+  width: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0;
-  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #03406cff;
+  border-radius: 4px;
   overflow: hidden;
 
   ${SlideCard}:hover & {
     animation: ${revealLink} 0.3s ease forwards;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
   }
 `;
 
@@ -165,7 +193,11 @@ const Title = styled.div`
   ${SlideCard}:hover & {
     color: #002699;
   }
+${media.x`
+    width : 250px;
+    
 
+  `}
   ${media.md`
     text-align: center;
   `}
@@ -193,8 +225,8 @@ const DateLabel = styled.div`
   z-index: 2;
   gap: 4px;
 
-  ${media.md`
-    width: 100%;
+  ${media.x`
+    width: 80%;
     left: 20px;
      flex-direction: column;
   `}
@@ -211,7 +243,7 @@ const DateLabel = styled.div`
 
 const NavArrow = styled.div`
   position: absolute;
-  top: 60%;
+  top: 50%;
   ${(props) => (props.left ? "left: 70px" : "right: 70px")};
   z-index: 10;
   padding: 8px;
@@ -219,7 +251,8 @@ const NavArrow = styled.div`
   color: #ccc;
 
   &:hover {
-    color: #0070e0;
+    color: #002699;
+    opacity : 0.7;
   }
 
   ${media.md`
@@ -254,12 +287,18 @@ const PreviewLeft = styled(PreviewSlide)`
   left: -8.5%;
   transform-origin: left center;
   top : 27%;
+  ${media.x`
+    display: none;
+  `}
 `;
 
 const PreviewRight = styled(PreviewSlide)`
   right: -8.5%;
   transform-origin: right center;
   top : 27%;
+  ${media.x`
+    display: none;
+  `}
 `;
 
 const HeaderBlock = styled.div`

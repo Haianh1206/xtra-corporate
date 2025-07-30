@@ -32,7 +32,7 @@ export default function OverlayMenuMobile({ isOpen, onClose }) {
   useEffect(() => {
     if (isOpen) {
       setNavReady(false);
-      setTimeout(() => setNavReady(true), 200);
+      setTimeout(() => setNavReady(true), 100);
     } else {
       setNavReady(false);
       setBtnClicked(false);
@@ -46,7 +46,7 @@ export default function OverlayMenuMobile({ isOpen, onClose }) {
   const handleClick = (e) => e.stopPropagation();
   const handleCloseClick = () => {
     setBtnClicked(true);
-    setTimeout(() => onClose(), 400);
+    setTimeout(() => onClose(), 200);
   };
   const toggleDropdown = (menu) => {
     setOpenDropdown(openDropdown === menu ? null : menu);

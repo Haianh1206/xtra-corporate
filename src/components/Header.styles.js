@@ -278,11 +278,11 @@ const NavBar = styled.div`
     &::after {
       content: "";
       position: absolute;
-      bottom: -4px;
+      bottom: -19px;
       left: 50%;
       transform: translateX(-50%) scaleX(0);
       width: 100%;
-      height: 2px;
+      height: 4px;
       background-color: white;
       transition: transform 0.3s ease;
       transform-origin: center;
@@ -310,8 +310,8 @@ const NavBar = styled.div`
     .dropdown {
       display: none;
       position: absolute;
-      top: 35px;
-      left: 0;
+      top: 45px;
+      left: -4px;
       background: #fff;
 
       padding: 10px 0;

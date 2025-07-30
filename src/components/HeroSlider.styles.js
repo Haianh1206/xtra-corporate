@@ -2,12 +2,13 @@ import styled, { keyframes, css } from "styled-components";
 import media from "../styles/media";
 
 const slideInFromRight = keyframes`
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {  transform: translateX(1550px); }
+  to { transform: translateX(0); }
+
 `;
 
 const slideInFromLeft = keyframes`
-  from { opacity: 0; transform: translateX(-50px); }
+  from { opacity: 1; transform: translateX(-1550px); }
   to { opacity: 1; transform: translateX(0); }
 `;
 
@@ -67,7 +68,7 @@ const Slide = styled.div`
   animation: ${({ active, direction }) =>
     active
       ? css`
-          ${direction === "next" ? slideInFromRight : slideInFromLeft} 0.8s ease forwards
+          ${direction === "next" ? slideInFromRight : slideInFromLeft} 1.8s ease forwards
         `
       : "none"};
   transition: opacity 0.8s ease;

@@ -15,16 +15,14 @@ import {
   BoxTitle,
   BoxDesc,
   H5,
-}from "./WorkProcess.styles";
-
+  Highlight,
+} from "./WorkProcess.styles";
 
 export default function WorkProcess() {
   return (
     <Section>
       <Left>
-        <H5>
-          WORK PROCESS
-        </H5>
+        <H5>WORK PROCESS</H5>
         <Heading>
           HOW IT <span>WORKS</span>?
         </Heading>
@@ -32,9 +30,10 @@ export default function WorkProcess() {
           As an example, let’s take the content marketing process. It’s a
           process you’ll find in every <b>Marketing Department</b> out there.
           The issue is, it can be rather hectic and chaotic unless the process.
-          There will be writers, designers, xtra experts, and web designers, all
-          working together to create a single piece of content. The first draft
-          is written and reviewed to create the final draft.
+          There will be writers, designers, <Highlight>SEO</Highlight>
+          experts, and web designers, all working together to create a single
+          piece of content. The first draft is written and reviewed to create
+          the final draft.
         </Paragraph>
 
         <StepList>
@@ -55,7 +54,7 @@ export default function WorkProcess() {
             Test and execute final project on online server
           </StepItem>
         </StepList>
-      </Left> 
+      </Left>
 
       <Right>
         <Box>
