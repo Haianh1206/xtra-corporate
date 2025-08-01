@@ -54,15 +54,18 @@ const AnimatedItem = styled.div`
 `;
 
 const BannerSection = styled.section`
-  height: 120vh; // Mặc định trên desktop
-  padding: 160px 40px;
+  width: 100%;
+  height: 120vh;
+
   background: linear-gradient(rgba(0, 26, 51, 0.8), rgba(0, 26, 51, 0.8)),
     url(${(props) => props.bg});
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   color: white;
   position: relative;
-  overflow: hidden;
+  overflow: hidden; // ✅ cho phép DateLabel/element tràn ra
+  z-index: 1;
 
   ${(props) =>
     props.direction === "left"
@@ -76,24 +79,25 @@ const BannerSection = styled.section`
   ${media.xl`
     height: auto;
     min-height: 60vh;
-    padding: 120px 34px;
+    
   `}
 
   ${media.lg`
     height: auto;
     min-height: 50vh;
-    padding: 100px 24px;
+
   `}
 
   ${media.md`
     height: auto;
-    min-height: 42vh;
-    padding: 80px 16px;
+    min-height: 60vh;
+   
+    
   `}
 
   ${media.sm`
-    min-height: 36vh;
-    padding: 0px 12px 36px 12px;
+
+  
   `}
 `;
 
@@ -104,7 +108,7 @@ const TextContent = styled.div`
   text-align: ${(props) => (props.align === "left" ? "left" : "center")};
   max-width: 960px;
   margin: 0 auto;
-  margin-top: 240px;
+  margin-top: 400px;
 
   > * {
     animation: ${zoomOutIn} 0.6s ease forwards;
@@ -237,9 +241,22 @@ const NavButton = styled.button`
       right: 20px;
     `}
 
-  ${media.x`
+  ${media.md`
     display: none;
   `}
+`;
+const SliderWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(${(props) => props.index * -100}%);
+`;
+
+const SlideItem = styled.div`
+  flex: 0 0 100%;
+  height: 100%;
+  position: relative;
 `;
 
 export {
@@ -256,4 +273,6 @@ export {
   Button,
   SubText,
   NavButton,
+  SliderWrapper,
+  SlideItem,
 };

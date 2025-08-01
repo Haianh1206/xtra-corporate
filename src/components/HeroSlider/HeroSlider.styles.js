@@ -1,23 +1,32 @@
 import styled, { keyframes, css } from "styled-components";
 import media from "../../styles/media";
 
-const slideInFromRight = keyframes`
-  from {  transform: translateX(1550px); }
-  to { transform: translateX(0); }
+const slideInFromLeft = keyframes`
+  from {
+    transform: translateX(-100%);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
 `;
 
-const slideInFromLeft = keyframes`
-  from { opacity: 1; transform: translateX(-1550px); }
-  to { opacity: 1; transform: translateX(0); }
+const slideInFromRight = keyframes`
+  from {
+    transform: translateX(100%);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
 `;
 
 const ContainerWrapper = styled.div`
   position: relative;
   z-index: 1;
-
-  ${media.sm`
-   
-  `}
+  ${media.sm``}
 `;
 
 const Wrapper = styled.div`
@@ -27,9 +36,7 @@ const Wrapper = styled.div`
   min-height: 100vh;
   padding: 40px 0;
   ${media.x`
-      min-height: 60vh;
-
-
+    min-height: 60vh;
   `}
 `;
 
@@ -41,9 +48,8 @@ const Slider = styled.div`
 
   ${media.md`
     margin: 0 40px;
-  height: 18vh;
+    height: 18vh;
   `}
-
   ${media.sm`
     margin: 0 20px;
     height: 18vh;
@@ -61,24 +67,44 @@ const Slide = styled.div`
   width: 100%;
   height: 100%;
   background: url(${(p) => p.bg}) center/cover no-repeat;
-  opacity: ${({ active }) => (active ? 1 : 0)};
-  z-index: ${({ active }) => (active ? 2 : 0)};
-  animation: ${({ active, direction }) =>
-    active
+  z-index: ${({ isLeaving }) => (isLeaving ? 1 : 2)};
+  opacity: 1;
+
+  animation: ${({ isEntering, isLeaving, direction }) =>
+    isEntering
       ? css`
-          ${direction === "next"
-            ? slideInFromRight
-            : slideInFromLeft} 1.8s ease forwards
+          ${direction === "next" ? slideInFromRight : slideInFromLeft} 1s ease
+        `
+      : isLeaving
+      ? css`
+          ${direction === "next" ? slideInFromLeft : slideInFromRight} 1s ease
         `
       : "none"};
-  transition: opacity 0.8s ease;
 
-  ${media.md`
-    background-position: center center;
-   
-  `}
+  animation-fill-mode: forwards;
+  transition: opacity 0.6s ease;
 `;
 
+const SliderWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
+  transform: translateX(${(props) => props.index * -100}%);
+`;
+
+const SlideItem = styled.div`
+  flex: 0 0 100%;
+  height: 100%;
+  position: relative;
+  background: url(${(p) => p.bg}) center/cover no-repeat;
+`;
+const SlideImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+`;
 const NextSlide = styled.div`
   position: absolute;
   top: 0;
@@ -92,9 +118,8 @@ const NextSlide = styled.div`
   cursor: pointer;
   z-index: 1;
   transition: all 0.4s ease;
-
-  ${media.x`
-    display : none;
+  ${media.md`
+    display: none;
   `}
 `;
 
@@ -102,7 +127,7 @@ const PrevSlide = styled(NextSlide)`
   left: -18%;
   right: auto;
   ${media.md`
-    display : none;
+    display: none;
   `}
 `;
 
@@ -115,12 +140,10 @@ const OverlayText = styled.div`
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 1.3;
-
   ${media.md`
     width: 80%;
     font-size: 1rem;
   `}
-
   ${media.sm`
     width: 90%;
     font-size: 0.9rem;
@@ -155,8 +178,8 @@ const NavBtn = styled.button`
     color: white;
   }
   ${media.x`
-      display : none;
-      `}
+    display: none;
+  `}
 `;
 
 const InfoSection = styled.div`
@@ -167,15 +190,13 @@ const InfoSection = styled.div`
   align-items: flex-start;
   gap: 60px;
   flex-wrap: wrap;
-
   ${media.md`
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    padding:  10px;
+    padding: 10px;
   `}
   ${media.x`
-  
     gap: 20px;
   `}
 `;
@@ -187,7 +208,6 @@ const TextBlock = styled.div`
   min-width: 220px;
   margin-left: 115px;
   margin-top: 65px;
-
   ${media.x`
     margin-left: 26px;
     align-items: center;
@@ -220,14 +240,10 @@ const Stat = styled.div`
   align-items: flex-start;
   margin-left: 20px;
   margin-top: 40px;
-
-  &:last-of-type {
-  }
-
   ${media.md`
     margin-left: 0;
     align-items: center;
-    margin-top : 10px;
+    margin-top: 10px;
   `}
 `;
 
@@ -236,8 +252,8 @@ const Number = styled.div`
   text-align: left;
   display: flex;
   align-items: center;
-  font-weight: 100;
 
+  font-weight: 100;
   ${media.md`
     font-size: 70px;
     justify-content: center;
@@ -247,13 +263,15 @@ const Number = styled.div`
     justify-content: center;
   `}
 `;
-
+const CountWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+`;
 const SmallSuffix = styled.span`
   font-size: 40px;
   margin-left: 2px;
-  margin-top: 36px;
+  margin-bottom: 10px;
   color: rgba(255, 255, 255, 0.8);
-
   ${media.md`
     font-size: 28px;
     margin-top: 20px;
@@ -270,7 +288,6 @@ const Label = styled.div`
   color: #ccc;
   margin-top: 5px;
   text-align: left;
-
   ${media.x`
     font-size: 1.4rem;
     text-align: center;
@@ -283,12 +300,10 @@ const Divider = styled.div`
   width: 120%;
   max-width: 300px;
   ${media.sm`
-     width: 200%;
-
+    width: 200%;
   `}
   ${media.x`
-     width: 105%;
-
+    width: 105%;
   `}
   &::before {
     content: "";
@@ -301,7 +316,6 @@ const Divider = styled.div`
     transform: translateY(-50%);
     transition: background 0.3s ease;
   }
-
   &:hover::before {
     background: rgba(255, 255, 255, 1);
   }
@@ -326,4 +340,8 @@ export {
   SmallSuffix,
   Label,
   Divider,
+  SlideItem,
+  SliderWrapper,
+  SlideImage,
+  CountWrapper,
 };

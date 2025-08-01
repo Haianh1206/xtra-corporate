@@ -70,17 +70,17 @@ export default function BlogSlider() {
                   <Link size={20} />
                 </HoverIcon>
               </Overlay>
-              <DateLabel>
-                <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                  <Clock size={14} />
-                  <span>{slide.date}</span>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
-                  <Folder size={14} />
-                  <span>{slide.category}</span>
-                </div>
-              </DateLabel>
             </ImageBox>
+            <DateLabel>
+              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <Clock size={14} />
+                <span>{slide.date}</span>
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <Folder size={14} />
+                <span>{slide.category}</span>
+              </div>
+            </DateLabel>
             <Title>{slide.title}</Title>
           </SlideCard>
         ))}

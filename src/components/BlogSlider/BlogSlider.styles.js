@@ -91,24 +91,18 @@ const SlideCard = styled.div`
     `}
   }
 `;
-
 const ImageBox = styled.div`
   position: relative;
-  overflow: visible;
-  border-radius: 8px;
-`;
-
-const Image = styled.img`
+  overflow: hidden; // giới hạn phần zoom không tràn ra ngoài
   width: 384px;
   height: 384px;
-  object-fit: cover;
-  display: block;
-  border-radius: 2px;
+  border-radius: 4px;
   margin: 50px 20px 0 20px;
   ${media.x`
     max-width: 270px;
     max-height: 270px;
   `}
+
   ${media.lg`
     max-width: 230px;
     max-height: 230px;
@@ -127,6 +121,18 @@ const Image = styled.img`
   `}
 `;
 
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+
+  transition: transform 0.6s ease;
+  ${SlideCard}:hover & {
+    transform: scale(1.05); // ✅ hiệu ứng zoom
+  }
+`;
+
 const Overlay = styled.div`
   position: absolute;
   inset: 0;
@@ -138,7 +144,6 @@ const Overlay = styled.div`
   border-radius: 4px;
   overflow: hidden;
   width: 384px;
-  left: 20px;
 
   ${SlideCard}:hover & {
     background: rgba(0, 123, 255, 0.1);
@@ -205,7 +210,7 @@ const Title = styled.div`
 
 const DateLabel = styled.div`
   position: absolute;
-  bottom: -12px;
+  bottom: 82px;
   left: 8px;
   background: #ffffff;
   width: 80%;
@@ -218,7 +223,7 @@ const DateLabel = styled.div`
   color: #002699b3;
   font-weight: 500;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  z-index: 20;
   gap: 4px;
 
   ${media.x`
@@ -227,8 +232,9 @@ const DateLabel = styled.div`
      flex-direction: column;
   `}
   ${media.sm`
-    width: 70%;
-    left: 20px;
+    width: 40%;
+    left: 50px;
+    bottom: 62px;
   `}
   span {
     color: #002699b3;

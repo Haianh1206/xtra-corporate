@@ -4,7 +4,6 @@ import slide2 from "../../assets/slide2.png";
 import slide3 from "../../assets/slide3.png";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-// Animations
 import {
   ContainerWrapper,
   Wrapper,
@@ -24,14 +23,78 @@ import {
   SmallSuffix,
   Label,
   Divider,
+  SliderWrapper,
+  SlideItem,
+  SlideImage,
+  CountWrapper,
 } from "./HeroSlider.styles";
+
 const slides = [
   { src: slide1, text: "Start today and get result tomorrow" },
   { src: slide2, text: "Your trusted business partner" },
   { src: slide3, text: "Solutions that deliver results" },
 ];
 
-// Main Component
+function easeInQuad(t) {
+  return t * t;
+}
+
+function CountUpNumber({ target, duration = 2000, suffix = "", delay = 0 }) {
+  const [count, setCount] = useState(0);
+  const [start, setStart] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStart(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!start) return;
+
+    const startTime = performance.now() + delay;
+    const endTime = startTime + duration;
+    let animationFrame;
+
+    const animate = (now) => {
+      if (now < startTime) {
+        animationFrame = requestAnimationFrame(animate);
+        return;
+      }
+      const rawProgress = Math.min((now - startTime) / duration, 1);
+      const easedProgress = easeInQuad(rawProgress);
+      setCount(Math.floor(easedProgress * target));
+      if (rawProgress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animationFrame);
+  }, [start, delay, duration, target]);
+
+  return (
+    <Number ref={ref}>
+      {count}
+      {suffix}
+    </Number>
+  );
+}
+
 export default function HeroSlider() {
   const [idx, setIdx] = useState(0);
   const [direction, setDirection] = useState("next");
@@ -40,18 +103,9 @@ export default function HeroSlider() {
   const touchEndX = useRef(0);
   const mouseStartX = useRef(0);
   const isDragging = useRef(false);
-  useEffect(() => {
-    const isMobile = window.innerWidth <= 1025;
-
-    if (isMobile) return;
-
-    const t = setInterval(() => {
-      setDirection("next");
-      setIdx((i) => (i + 1) % slides.length);
-    }, 8000);
-
-    return () => clearInterval(t);
-  }, []);
+  const prevIdx = (idx - 1 + slides.length) % slides.length;
+  const nextIdx = (idx + 1) % slides.length;
+  const leavingIdx = direction === "next" ? prevIdx : nextIdx;
 
   const handleSlide = (dir) => {
     setDirection(dir);
@@ -60,11 +114,11 @@ export default function HeroSlider() {
       else return (i - 1 + slides.length) % slides.length;
     });
   };
+
   useEffect(() => {
     const sliderEl = sliderRef.current;
     if (!sliderEl) return;
 
-    // --- Touch events ---
     const handleTouchStart = (e) => {
       touchStartX.current = e.touches[0].clientX;
     };
@@ -78,7 +132,6 @@ export default function HeroSlider() {
       }
     };
 
-    // --- Mouse events ---
     const handleMouseDown = (e) => {
       mouseStartX.current = e.clientX;
       isDragging.current = true;
@@ -96,7 +149,6 @@ export default function HeroSlider() {
 
     sliderEl.addEventListener("touchstart", handleTouchStart);
     sliderEl.addEventListener("touchend", handleTouchEnd);
-
     sliderEl.addEventListener("mousedown", handleMouseDown);
     sliderEl.addEventListener("mouseup", handleMouseUp);
     sliderEl.addEventListener("mouseleave", () => (isDragging.current = false));
@@ -117,11 +169,14 @@ export default function HeroSlider() {
     <ContainerWrapper>
       <Wrapper>
         <Slider ref={sliderRef}>
-          {slides.map((s, i) => (
-            <Slide key={i} bg={s.src} active={i === idx} direction={direction}>
-              {i === idx && <OverlayText>{s.text}</OverlayText>}
-            </Slide>
-          ))}
+          <SliderWrapper index={idx}>
+            {slides.map((slide, i) => (
+              <SlideItem key={i}>
+                <SlideImage src={slide.src} alt={`Slide ${i}`} />
+                <OverlayText>{slide.text}</OverlayText>
+              </SlideItem>
+            ))}
+          </SliderWrapper>
           <PrevSlide
             bg={slides[(idx - 1 + slides.length) % slides.length].src}
             onClick={() => handleSlide("prev")}
@@ -132,7 +187,6 @@ export default function HeroSlider() {
             bg={slides[(idx + 1) % slides.length].src}
             onClick={() => handleSlide("next")}
           />
-
           <NavBtn $left onClick={() => handleSlide("prev")}>
             <ArrowLeft size={32} />
           </NavBtn>
@@ -149,25 +203,31 @@ export default function HeroSlider() {
           </TextBlock>
 
           <Stat>
-            <Number>
-              41<SmallSuffix>+</SmallSuffix>
-            </Number>
+            <CountWrapper>
+              <CountUpNumber target={41} delay={0} />
+              <SmallSuffix>+</SmallSuffix>
+            </CountWrapper>
+
             <Divider />
             <Label>Years of Experience</Label>
           </Stat>
 
           <Stat>
-            <Number>
-              21<SmallSuffix>k</SmallSuffix>
-            </Number>
+            <CountWrapper>
+              <CountUpNumber target={21} delay={500} />
+              <SmallSuffix>k</SmallSuffix>
+            </CountWrapper>
+
             <Divider />
             <Label>Cases Completed</Label>
           </Stat>
 
           <Stat>
-            <Number>
-              80<SmallSuffix>k</SmallSuffix>
-            </Number>
+            <CountWrapper>
+              <CountUpNumber target={80} delay={1000} />
+              <SmallSuffix>k</SmallSuffix>
+            </CountWrapper>
+
             <Divider />
             <Label>Satisfied Customers</Label>
           </Stat>

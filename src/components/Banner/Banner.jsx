@@ -15,6 +15,8 @@ import {
   Button,
   SubText,
   NavButton,
+  SliderWrapper,
+  SlideItem,
 } from "./Banner.styles";
 
 // Hook kiểm tra mobile/tablet
@@ -88,11 +90,7 @@ export default function Banner() {
   const current = isMobile || isTablet ? banners[1] : banners[index];
 
   return (
-    <BannerSection
-      bg={current.image}
-      direction={direction}
-      onClick={() => setShowNav(true)}
-    >
+    <BannerSection onClick={() => setShowNav(true)}>
       {!isMobile && (
         <>
           <NavButton left visible={showNav} onClick={handlePrev}>
@@ -104,20 +102,28 @@ export default function Banner() {
         </>
       )}
 
-      <TextContent align={current.align} key={index}>
-        <AnimatedItem delay="0.1s">
-          <Title>{current.title}</Title>
-        </AnimatedItem>
-        <AnimatedItem delay="0.3s">
-          <Description>{current.description}</Description>
-        </AnimatedItem>
-        <AnimatedItem delay="0.5s">
-          <ActionsRow align={current.align}>
-            <Button>{current.button}</Button>
-            <SubText>{current.moreInfo}</SubText>
-          </ActionsRow>
-        </AnimatedItem>
-      </TextContent>
+      <SliderWrapper index={index}>
+        {banners.map((b, i) => (
+          <SlideItem key={i}>
+            <BannerSection bg={b.image}>
+              <TextContent align={b.align} key={index}>
+                <AnimatedItem delay="0.1s">
+                  <Title>{b.title}</Title>
+                </AnimatedItem>
+                <AnimatedItem delay="0.3s">
+                  <Description>{b.description}</Description>
+                </AnimatedItem>
+                <AnimatedItem delay="0.5s">
+                  <ActionsRow align={b.align}>
+                    <Button>{b.button}</Button>
+                    <SubText>{b.moreInfo}</SubText>
+                  </ActionsRow>
+                </AnimatedItem>
+              </TextContent>
+            </BannerSection>
+          </SlideItem>
+        ))}
+      </SliderWrapper>
     </BannerSection>
   );
 }

@@ -242,7 +242,9 @@ const NavBar = styled.div`
       align-items: center;
       color: white;
       font-size: 24px;
-
+      :hover {
+        cursor: pointer;
+      }
       ${media.md`
       `}
       ${media.sm`

@@ -1,5 +1,16 @@
-import styled from "styled-components";
 import media from "../../styles/media";
+import styled, { keyframes, css } from "styled-components";
+
+const zoomOut = keyframes`
+  from {
+    opacity: 0;
+   
+  }
+  to {
+    opacity: 0.4;
+   
+  }
+`;
 
 const Container = styled.section`
   background: #01131d;
@@ -260,22 +271,28 @@ const LogoSection = styled.section`
 const Logo = styled.img`
   max-height: 90px;
   object-fit: contain;
-  opacity: 0.4;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-origin: center center;
+
+  ${({ $visible, $delay }) =>
+    $visible &&
+    css`
+      transform: translateY(0); // giữ translate riêng
+      animation: ${zoomOut} 0.6s ease-out ${$delay}s both;
+    `}
 
   &:hover {
-    opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.15); // chỉ scale thôi, không động đến translate nữa
+    opacity: 1 !important;
   }
-  ${media.x`
-   max-height: 70px;
-  `}
-  ${media.lg`
-   max-height: 50px;
-  `}
-     ${media.md`
-   max-height: 150px;
-  `}
+
+  ${media.x` max-height: 70px; `}
+  ${media.lg` max-height: 50px; `}
+  ${media.md` max-height: 150px; `}
 `;
 
 export {
@@ -291,4 +308,5 @@ export {
   Socials,
   LogoSection,
   Logo,
+  zoomOut,
 };

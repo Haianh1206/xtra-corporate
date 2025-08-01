@@ -19,56 +19,55 @@ import {
   Underline,
 } from "./SetYourGoals.styles";
 
-// const goalOptions = {
-//   define: {
-//     title: "DEFINE YOUR GOALS",
-//     sub: "IT NEEDS DIRECTION",
-//     desc: `What is the purpose of the process? Why was it created? How will you
-//     know if it is successful? A sales process might seem to be very
-//     different from the finance process...`,
-//     image: goalImage,
-//   },
-//   plan: {
-//     title: "PLAN YOUR PROCESS",
-//     sub: "BLUEPRINT FOR SUCCESS",
-//     desc: `A plan helps map out the steps, define responsibilities and set the goals clearly...`,
-//     image: goalImage, // bạn có thể thay ảnh khác nếu muốn
-//   },
-//   assign: {
-//     title: "ASSIGN STAKEHOLDERS",
-//     sub: "ROLES MATTER",
-//     desc: `Each member needs a clear role to ensure that the process flows efficiently and transparently...`,
-//     image: goalImage,
-//   },
-//   process: {
-//     title: "PROCESS IMPLEMENT",
-//     sub: "EXECUTION PHASE",
-//     desc: `Time to execute. Track performance, gather data, and improve continuously.`,
-//     image: goalImage,
-//   },
-// };
-
-export default function DefineYourGoals() {
-  const [activeTab, setActiveTab] = useState("define");
-
-  return (
-    <Section>
-      <Content>
-        <Left>
-          <img src={goalImage} alt="Define Goals" />
-        </Left>
-        <Right>
-          <BackgroundIcon />
-          <Heading>DEFINE YOUR GOALS</Heading>
-          <Subheading>IT NEEDS DIRECTION</Subheading>
-          <Description>
-            What is the purpose of the process? Why was it created? How will you
+const goalOptions = {
+  define: {
+    title: "DEFINE YOUR GOALS",
+    sub: "IT NEEDS DIRECTION",
+    desc: `What is the purpose of the process? Why was it created? How will you
             know if it is successful? A sales process might seem to be very
             different from the finance process, but there are certain steps that
             are universally common to all business processes. Xtra only delivers
-            content for the small business segment.
-          </Description>
+            content for the small business segment.`,
+    image: goalImage,
+  },
+  plan: {
+    title: "PLAN & MAP YOUR PROCESS",
+    sub: "THINK OUT OF THE BOX",
+    desc: `What are the strategies needed to achieve the goals? This is the broad road map for the process. A sales process might seem to be very different from a finance process, but there are certain steps that are universally common to all business processes.`,
+    image: goalImage, // bạn có thể thay ảnh khác nếu muốn
+  },
+  assign: {
+    title: "SET REQUIRED ACTIONS",
+    sub: "SET ACTIONS & ASSIGN STAKEHOLDERS",
+    desc: `Identify the individual tasks your teams and machines need to do in order to execute the plan. What is the purpose of the process? Why was it created? How will you know if it is successful? Machines need to do in order to execute the new plan.`,
+    image: goalImage,
+  },
+  process: {
+    title: "IMPLEMENT THE PROCESS",
+    sub: "RUN IN THE LIVE ENVIRONMENT",
+    desc: `Start running the process in a live environment. Properly communicate and train all stakeholders. A sales process might seem to be very different from a finance process, but there are certain steps that are universally common to all business processes.`,
+    image: goalImage,
+  },
+};
+
+export default function DefineYourGoals() {
+  const [activeTab, setActiveTab] = useState("define");
+  const currentGoal = goalOptions[activeTab]; // 👈 lấy nội dung tương ứng tab đang chọn
+  const isReversed = activeTab === "plan" || activeTab === "process";
+
+  return (
+    <Section>
+      <Content style={{ flexDirection: isReversed ? "row-reverse" : "row" }}>
+        <Left>
+          <img src={currentGoal.image} alt={currentGoal.title} />
+        </Left>
+        <Right>
+          <BackgroundIcon />
+          <Heading>{currentGoal.title}</Heading>
+          <Subheading>{currentGoal.sub}</Subheading>
+          <Description>{currentGoal.desc}</Description>
         </Right>
+
         <Tabs>
           <Tab
             active={activeTab === "define"}
@@ -118,11 +117,11 @@ export default function DefineYourGoals() {
                 <ShoppingCart />
                 <span>Process Implement</span>
               </TabContent>
+              {activeTab === "process" && <Underline />}
             </div>
           </Tab>
         </Tabs>
       </Content>
-      {activeTab === "process" && <Underline />}
     </Section>
   );
 }

@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+
 import {
   FaFacebookF,
   FaTwitter,
@@ -29,6 +31,7 @@ import {
   LogoSection,
   Logo,
 } from "./OurTeamSection.styles";
+
 const teamMembers = [
   {
     name: "Mike King Man",
@@ -61,6 +64,43 @@ const teamMembers = [
 ];
 
 export default function OurTeamSection() {
+  const [visible, setVisible] = useState(false);
+  const logoRef = useRef(null);
+  const [logoVisible, setLogoVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLogoVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    if (logoRef.current) {
+      observer.observe(logoRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect(); // chỉ chạy 1 lần
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    if (logoRef.current) observer.observe(logoRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <Container>
@@ -91,13 +131,16 @@ export default function OurTeamSection() {
           ))}
         </Grid>
       </Container>
-      <LogoSection>
-        <Logo src={logo1} alt="Logo 1" />
-        <Logo src={logo2} alt="Logo 2" />
-        <Logo src={logo3} alt="Logo 3" />
-        <Logo src={logo4} alt="Logo 4" />
-        <Logo src={logo5} alt="Logo 5" />
-        <Logo src={logo6} alt="Logo 6" />
+      <LogoSection ref={logoRef}>
+        {[logo1, logo2, logo3, logo4, logo5, logo6].map((logo, i) => (
+          <Logo
+            key={i}
+            src={logo}
+            alt={`Logo ${i + 1}`}
+            $visible={logoVisible}
+            $delay={i * 0.2} // từng logo delay 0.2s từ trái qua phải
+          />
+        ))}
       </LogoSection>
     </>
   );
