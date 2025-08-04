@@ -92,18 +92,37 @@ const SliderWrapper = styled.div`
   transition: transform 0.6s ease-in-out;
   transform: translateX(${(props) => props.index * -100}%);
 `;
-
 const SlideItem = styled.div`
   flex: 0 0 100%;
   height: 100%;
   position: relative;
-  background: url(${(p) => p.bg}) center/cover no-repeat;
+  transition: transform 0.5s ease, filter 0.5s ease, opacity 0.5s ease;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+
+  ${(p) =>
+    p.$isActive &&
+    `
+    transform: scale(1.05);
+    z-index: 3;
+     
+  `}
+
+  ${(p) =>
+    p.$isPreview &&
+    `
+    transform: scale(0.92); // <-- sửa từ 0.8 thành 0.9 hoặc 0.95
+    opacity: 0.8; // <-- tăng độ rõ
+    filter: blur(0.5px); // <-- giảm blur
+    z-index: 2;
+      
+  `}
 `;
+
 const SlideImage = styled.img`
-  width: 95%;
+  width: 97%;
   height: 100%;
   object-fit: cover;
   object-position: center;
@@ -174,8 +193,8 @@ const NavBtn = styled.button`
   align-items: center;
   justify-content: center;
   transition: color 0.3s ease;
-  margin-left: -50px;
-  margin-right: -50px;
+  margin-left: -90px;
+  margin-right: -90px;
 
   &:hover {
     color: white;

@@ -8,9 +8,6 @@ import {
   ContainerWrapper,
   Wrapper,
   Slider,
-  Slide,
-  NextSlide,
-  PrevSlide,
   OverlayText,
   NavBtn,
   InfoSection,
@@ -170,12 +167,17 @@ export default function HeroSlider() {
       <Wrapper>
         <Slider ref={sliderRef}>
           <SliderWrapper index={idx}>
-            {slides.map((slide, i) => (
-              <SlideItem key={i}>
-                <SlideImage src={slide.src} alt={`Slide ${i}`} />
-                <OverlayText>{slide.text}</OverlayText>
-              </SlideItem>
-            ))}
+            {slides.map((slide, i) => {
+              const isActive = i === idx;
+              const isPreview = i === prevIdx || i === nextIdx;
+
+              return (
+                <SlideItem key={i} $isActive={isActive} $isPreview={isPreview}>
+                  <SlideImage src={slide.src} alt={`Slide ${i}`} />
+                  {isActive && <OverlayText>{slide.text}</OverlayText>}
+                </SlideItem>
+              );
+            })}
           </SliderWrapper>
 
           <NavBtn $left onClick={() => handleSlide("prev")}>
