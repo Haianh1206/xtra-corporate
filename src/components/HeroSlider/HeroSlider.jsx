@@ -177,16 +177,7 @@ export default function HeroSlider() {
               </SlideItem>
             ))}
           </SliderWrapper>
-          <PrevSlide
-            bg={slides[(idx - 1 + slides.length) % slides.length].src}
-            onClick={() => handleSlide("prev")}
-          />
 
-          {/* Ảnh preview nhỏ */}
-          <NextSlide
-            bg={slides[(idx + 1) % slides.length].src}
-            onClick={() => handleSlide("next")}
-          />
           <NavBtn $left onClick={() => handleSlide("prev")}>
             <ArrowLeft size={32} />
           </NavBtn>

@@ -98,9 +98,12 @@ const SlideItem = styled.div`
   height: 100%;
   position: relative;
   background: url(${(p) => p.bg}) center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 const SlideImage = styled.img`
-  width: 100%;
+  width: 95%;
   height: 100%;
   object-fit: cover;
   object-position: center;
@@ -171,8 +174,8 @@ const NavBtn = styled.button`
   align-items: center;
   justify-content: center;
   transition: color 0.3s ease;
-  margin-left: -80px;
-  margin-right: -80px;
+  margin-left: -50px;
+  margin-right: -50px;
 
   &:hover {
     color: white;
