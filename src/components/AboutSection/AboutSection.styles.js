@@ -4,7 +4,7 @@ import styled from "styled-components";
 const sizes = {
   md: "768px",
   sm: "480px",
-  x : "1024px",
+  x: "1024px",
 };
 
 const Container = styled.div`
@@ -14,10 +14,10 @@ const Container = styled.div`
   background: #fff;
   gap: 48px;
   height: auto;
-  
- @media (max-width: ${sizes.x}) {
-      padding: 160px 120px 160px 40px;
-gap: 40px;
+
+  @media (max-width: ${sizes.x}) {
+    padding: 160px 120px 160px 40px;
+    gap: 40px;
   }
   @media (max-width: ${sizes.md}) {
     padding: 40px 20px;
@@ -38,12 +38,10 @@ const LeftColumn = styled.div`
   align-items: flex-start;
 
   @media (max-width: ${sizes.md}) {
-    width: 100%;
-    align-items: center;
+    display: none;
   }
-      @media (max-width: ${sizes.x}) {
-     width: 70px;
-
+  @media (max-width: ${sizes.x}) {
+    width: 70px;
   }
 `;
 
@@ -51,12 +49,12 @@ const Label = styled.div`
   font-weight: bold;
   color: #888;
   margin-bottom: 16px;
-   @media (max-width: ${sizes.sm}) {
-    display : none;
+  @media (max-width: ${sizes.sm}) {
+    display: none;
   }
-    @media (max-width: ${sizes.x}) {
-   width : 70px;
-   text-align : center;
+  @media (max-width: ${sizes.x}) {
+    width: 70px;
+    text-align: center;
   }
 `;
 
@@ -67,8 +65,8 @@ const VerticalLine = styled.div`
   position: absolute;
   top: 32px;
   left: 40%;
-   @media (max-width: ${sizes.sm}) {
-    display : none;
+  @media (max-width: ${sizes.sm}) {
+    display: none;
   }
 `;
 
@@ -100,7 +98,6 @@ const Title = styled.h2`
     }
 
     &::before {
-      
     }
 
     span {
@@ -110,8 +107,6 @@ const Title = styled.h2`
     }
   }
 `;
-
-
 
 const Paragraph = styled.p`
   font-size: 18px;
@@ -145,9 +140,9 @@ const Feature = styled.div`
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 18px;
-  
-@media (max-width: ${sizes.md}) {
-    margin-left : 30px;
+
+  @media (max-width: ${sizes.md}) {
+    margin-left: 30px;
   }
   svg {
     margin-right: 10px;
@@ -174,14 +169,12 @@ const ButtonGroup = styled.div`
   gap: 16px;
 
   @media (max-width: ${sizes.md}) {
-    
     align-items: center;
     gap: 16px;
   }
-    @media (max-width: ${sizes.sm}) {
-    
+  @media (max-width: ${sizes.sm}) {
     align-items: center;
-    gap : 0px;
+    gap: 0px;
   }
 `;
 
@@ -194,10 +187,10 @@ const Button = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   width: fit-content;
- @media (max-width: ${sizes.md}) {
-          margin-left: 15px;
-          padding: 12px;
-        }
+  @media (max-width: ${sizes.md}) {
+    margin-left: 15px;
+    padding: 12px;
+  }
   ${({ primary }) =>
     primary
       ? `
@@ -248,7 +241,7 @@ const Frame = styled.div`
 const BorderDots = styled.div`
   position: absolute;
   pointer-events: none;
-@media (max-width: ${sizes.x}) {
+  @media (max-width: ${sizes.x}) {
     display: none;
   }
 
@@ -297,15 +290,14 @@ const Image3D = styled.img`
   border-radius: 4px;
   transition: transform 0.03s ease;
   transform-style: preserve-3d;
-  
-    @media (max-width: ${sizes.x}) {
-    max-width : 270px;
+
+  @media (max-width: ${sizes.x}) {
+    max-width: 270px;
     max-height: 450px;
-   
   }
-    @media (max-width: ${sizes.sm}) {
-    max-width : 120%;
-    margin-left : 0px;
+  @media (max-width: ${sizes.sm}) {
+    max-width: 120%;
+    margin-left: 0px;
   }
 `;
 
@@ -324,14 +316,13 @@ const Highlight = styled.strong`
       content: "XTRA";
       font-size: 18px;
       color: #002699;
-      
-      padding:0px;
+
+      padding: 0px;
       border-radius: 2px;
       display: inline-block;
     }
   }
 `;
-
 
 export {
   Container,

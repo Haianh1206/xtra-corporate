@@ -3,6 +3,8 @@ import envatoLogo from "../../assets/envato-logo.png";
 import OverlayMenu from "../OverlayMenu/OverlayMenu";
 import OverlayMenuMobile from "../OverlayMenuMobile/OverlayMenuMobile";
 import useMediaQuery from "../useMediaQuery";
+import { IconWithTooltip, SocialIconWithLabel } from "../../styles/GlobalStyle";
+
 import { useState, useEffect } from "react";
 import {
   FaFacebookF,
@@ -26,7 +28,13 @@ import {
   SocialBar,
   NavBar,
 } from "./Header.styles";
-
+const socials = [
+  { icon: <FaFacebookF />, label: "Facebook", bg: "#3b5998" },
+  { icon: <FaLinkedinIn />, label: "LinkedIn", bg: "#0077b5" },
+  { icon: <FaTwitter />, label: "Twitter", bg: "#1da1f2" },
+  { icon: <FaYoutube />, label: "YouTube", bg: "#ff0000 " },
+  { icon: <FaSkype />, label: "Skype", bg: "#00aff0" },
+];
 export default function Header({ onHomeClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const isMobile = useMediaQuery("(max-width: 767px)");
@@ -46,6 +54,7 @@ export default function Header({ onHomeClick }) {
         <SocialBar>
           <div>
             <FaFacebookF />
+
             <FaLinkedinIn />
             <FaTwitter />
             <FaYoutube />

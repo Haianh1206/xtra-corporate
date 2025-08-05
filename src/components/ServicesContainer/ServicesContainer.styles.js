@@ -7,7 +7,9 @@ const ContainerWrapper = styled.div`
   padding: 0 120px 100px 120px;
   background: #f9f9f9;
   min-height: auto;
-
+  ${media.x`
+    padding: 0 60px 80px 60px;
+  `}
   ${media.lg`
     padding: 0 60px 80px 60px;
   `}
@@ -28,7 +30,10 @@ const Container = styled.div.attrs({ className: "container" })`
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
-
+  ${media.x`
+    flex-direction: row;
+    align-items: center;
+  `}
   ${media.lg`
     flex-direction: column;
     align-items: center;
@@ -66,14 +71,14 @@ const Card = styled.div.attrs({ className: "dd" })`
   }
 
   ${media.x`
-    width: 95% !important;
-    max-width: 800px;
-    height: auto;
-    align-items: center;
-    text-align: center;
+      width: calc((100% - 60px) / 3); /* 👈 mỗi card chiếm 1/3 hàng, trừ đi gap */
+   max-width: none;
+    height: 270px;
+     text-align: left;
++   align-items: flex-start;
   `}
 
-  ${media.md`
+  ${media.lg`
     width: 95% !important;
     max-width: 700px;
   `}
@@ -126,7 +131,8 @@ const Title = styled.div.attrs({ className: "title" })`
   }
 
   ${media.md`
-    margin-left: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     text-align: center;
   `}
 `;
@@ -190,9 +196,14 @@ const ArrowEnter = styled.div.attrs({ className: "arrow-enter" })`
     transform: translateX(0);
     opacity: 1;
   }
+  ${media.x`
+    margin-top : 50px;
 
+  `}
   ${media.md`
-    display: none;
+       margin-top : 50px;
+
+   
   `}
 `;
 
@@ -224,15 +235,23 @@ const TextEnter = styled.div.attrs({ className: "text-enter" })`
   transform: translateX(-300px);
   transition: all 0.6s ease;
   z-index: 2;
-
+  text-align: center;
+  display: flex;
+  align-item: center;
+  justify-content: center;
   ${Card}:hover & {
     opacity: 1;
     transform: translateX(0);
   }
-
+  ${media.x`
+    margin-left: 0 !important;
+    text-align: center;
+      top: 70%;
+  `}
   ${media.md`
     margin-left: 0 !important;
     text-align: center;
+     top: 60%;
   `}
 `;
 

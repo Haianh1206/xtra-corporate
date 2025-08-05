@@ -140,7 +140,10 @@ const Title = styled.h1`
   margin-bottom: 36px;
   white-space: nowrap;
   margin-top: 20px;
-
+  ${media.x`
+    margin-top: -36px;
+    font-size: 48px;
+  `}
   ${media.md`
     font-size: 32px;
     white-space: normal;
@@ -241,9 +244,9 @@ const NavButton = styled.button`
       right: 20px;
     `}
 
-  ${media.md`
+  @media (max-width: 480px) {
     display: none;
-  `}
+  }
 `;
 const SliderWrapper = styled.div`
   display: flex;

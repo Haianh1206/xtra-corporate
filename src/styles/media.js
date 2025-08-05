@@ -2,12 +2,13 @@
 import { css } from "styled-components";
 
 const sizes = {
-  sm: 800,    // mobile
-  md: 800,    
-  lg: 992,   
-  x : 1200,// tablet
-   xl: 1200,
-   xxl : 1800, // desktop
+  s: 480,
+  sm: 800, // mobile
+  md: 800,
+  lg: 992,
+  x: 1024, // tablet
+  xl: 1024,
+  xxl: 1800, // desktop
 };
 
 const media = Object.keys(sizes).reduce((acc, label) => {

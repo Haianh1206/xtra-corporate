@@ -33,7 +33,8 @@ const Content = styled.div`
   z-index: 2;
 
   ${media.md`
-    flex-direction: column;
+  
+    flex-direction: column !important;
     gap: 40px;
   `}
 `;

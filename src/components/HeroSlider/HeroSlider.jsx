@@ -102,7 +102,6 @@ export default function HeroSlider() {
   const isDragging = useRef(false);
   const prevIdx = (idx - 1 + slides.length) % slides.length;
   const nextIdx = (idx + 1) % slides.length;
-  const leavingIdx = direction === "next" ? prevIdx : nextIdx;
 
   const handleSlide = (dir) => {
     setDirection(dir);

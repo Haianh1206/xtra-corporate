@@ -131,6 +131,9 @@ export const MobileNavItem = styled.li`
 `;
 
 export const DropdownWrapper = styled.div`
+  overflow: hidden;
+  transition: all 0.3s ease;
+
   .nav-link {
     font-size: 14px;
     padding: 10px 0;
@@ -145,19 +148,29 @@ export const DropdownWrapper = styled.div`
 
       svg {
         margin-right: 10px;
+        transition: transform 0.3s ease;
       }
     }
 
     &.active {
-      background-color: #000; /* 👈 khi active */
+      background-color: #000;
+
+      .nav-link-inner svg {
+        transform: rotate(180deg); /* Quay mũi tên */
+      }
     }
   }
 
   .dropdown {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: all 0.5s ease;
     padding-left: 16px;
+
     display: flex;
     flex-direction: column;
-    background: rgba(255, 255, 255, 0.1);
 
     a {
       color: #fff;
@@ -166,11 +179,22 @@ export const DropdownWrapper = styled.div`
       margin-left: 12px;
       opacity: 0;
       transform: translateY(-8px);
-      animation: ${slideIn} 0.4s ease forwards;
-      animation-delay: var(--delay, 0s);
+      transition: all 0.3s ease;
+
       &:hover {
         color: #ddd;
       }
+    }
+  }
+
+  &.open .dropdown {
+    max-height: 500px; /* Đủ để hiện tất cả sub items */
+    opacity: 1;
+    transform: translateY(0);
+
+    a {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 `;

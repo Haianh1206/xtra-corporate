@@ -97,7 +97,10 @@ export default function OverlayMenuMobile({ isOpen, onClose }) {
               items: ["All Products", "My account", "Cart", "Checkout"],
             },
           ].map((dropdown, i) => (
-            <DropdownWrapper key={dropdown.label}>
+            <DropdownWrapper
+              key={dropdown.label}
+              className={openDropdown === dropdown.label ? "open" : ""}
+            >
               <div
                 className={`nav-link ${
                   openDropdown === dropdown.label ? "active" : ""
@@ -108,19 +111,18 @@ export default function OverlayMenuMobile({ isOpen, onClose }) {
                   {dropdown.label} <FaChevronDown size={14} />
                 </span>
               </div>
-              {openDropdown === dropdown.label && (
-                <div className="dropdown">
-                  {dropdown.items.map((subItem, idx) => (
-                    <a
-                      href="#"
-                      key={subItem}
-                      style={{ "--delay": `${idx * 0.07 + 0.1}s` }} // 👈 delay tăng dần
-                    >
-                      {subItem}
-                    </a>
-                  ))}
-                </div>
-              )}
+
+              <div className="dropdown">
+                {dropdown.items.map((subItem, idx) => (
+                  <a
+                    href="#"
+                    key={subItem}
+                    style={{ "--delay": `${idx * 0.07 + 0.1}s` }}
+                  >
+                    {subItem}
+                  </a>
+                ))}
+              </div>
             </DropdownWrapper>
           ))}
 

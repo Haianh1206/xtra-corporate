@@ -321,11 +321,12 @@ const Divider = styled.div`
   height: 20px;
   width: 120%;
   max-width: 300px;
-  ${media.sm`
-    width: 200%;
-  `}
+
   ${media.x`
     width: 105%;
+  `}
+  ${media.sm`
+    width: 220%;
   `}
   &::before {
     content: "";

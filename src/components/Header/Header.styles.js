@@ -96,6 +96,7 @@ const SocialBar = styled.div`
   ${media.md`
     display: none;
   `}
+
   svg {
     color: #fff;
     margin-right: 15px;
@@ -107,7 +108,9 @@ const SocialBar = styled.div`
       transform: rotateY(360deg);
     }
   }
-
+  .facebook-icon:hover {
+    color: #1de248ff;
+  }
   svg:nth-child(1):hover {
     color: #060c7a;
   }
@@ -123,7 +126,16 @@ const SocialBar = styled.div`
   svg:nth-child(5):hover {
     color: #0078d7;
   }
-
+  span:nth-child(5)::before {
+    content: "";
+    position: absolute;
+    left: 28px;
+    top: -12px;
+    font-size: 36px;
+    color: rgba(255, 255, 255, 0.1);
+    line-height: 1;
+    pointer-events: none;
+  }
   .info {
     display: flex;
     align-items: center;

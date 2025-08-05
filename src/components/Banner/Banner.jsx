@@ -91,16 +91,14 @@ export default function Banner() {
 
   return (
     <BannerSection onClick={() => setShowNav(true)}>
-      {!isMobile && (
-        <>
-          <NavButton left visible={showNav} onClick={handlePrev}>
-            <FaChevronLeft />
-          </NavButton>
-          <NavButton right visible={showNav} onClick={handleNext}>
-            <FaChevronRight />
-          </NavButton>
-        </>
-      )}
+      <>
+        <NavButton left visible={showNav} onClick={handlePrev}>
+          <FaChevronLeft />
+        </NavButton>
+        <NavButton right visible={showNav} onClick={handleNext}>
+          <FaChevronRight />
+        </NavButton>
+      </>
 
       <SliderWrapper index={index}>
         {banners.map((b, i) => (

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import GlobalStyle from "./GlobalStyle";
+import GlobalStyle from "./styles/GlobalStyle";
 import React, { useState } from "react";
 import ServicesContainer from "./components/ServicesContainer/ServicesContainer";
 import Header from "./components/Header/Header";
