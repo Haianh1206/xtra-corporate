@@ -1,6 +1,16 @@
 // styles.js hoặc GlobalStyles.js
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, keyframes } from "styled-components";
 
+const zoomIn = keyframes`
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+`;
 // GLOBAL STYLE
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -25,77 +35,50 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
   }
 `;
+const SocialIconWrapper = styled.div`
+  position: relative;
+  display: inline-block;
 
+  cursor: pointer;
+
+  svg {
+    color: white;
+    font-size: 16px;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover svg {
+    transform: rotateY(360deg);
+    color: ${({ bg }) => bg};
+  }
+
+  .label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: -32px;
+    top: 140%;
+    transform: translateY(0) scale(1);
+    background: #002a96;
+    color: white;
+    padding: 0px 18px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    line-height: 1;
+    height: 32px;
+  }
+
+  &:hover .label {
+    opacity: 1;
+    animation: ${zoomIn} 0.3s ease forwards;
+  }
+`;
 // ICON COMPONENTS
-const IconWrapper = styled.span`
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  color: white;
-  font-size: 18px;
-  border-radius: 50%;
-  cursor: pointer;
-
-  &:hover .tooltip {
-    opacity: 1;
-    transform: scale(1);
-  }
-`;
-
-const Tooltip = styled.span`
-  position: absolute;
-  top: 140%;
-  background: #002a96;
-  color: white;
-  padding: 0 12px;
-  border-radius: 4px;
-  font-size: 12px;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  line-height: 1;
-  height: 32px;
-  width: 92px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* Animation zoom out */
-  transform: scale(0.8);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-`;
-export const SocialIcon = styled.span`
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  color: white;
-  font-size: 18px;
-  border-radius: 50%;
-  cursor: pointer;
-
-  &:hover .tooltip {
-    opacity: 1;
-    transform: scale(1);
-  }
-`;
-const IconWithTooltip = ({ icon, label, bgColor, className }) => {
-  return (
-    <IconWrapper className={className} $bg={bgColor}>
-      {icon}
-      <Tooltip className="tooltip">{label}</Tooltip>
-    </IconWrapper>
-  );
-};
-const SocialIconWithLabel = ({ icon, label, bg, hoverColor, className }) => (
-  <SocialIcon $bg={bg} $hover={hoverColor} className={className}>
-    {icon}
-    <Tooltip className="tooltip">{label}</Tooltip>
-  </SocialIcon>
-);
 
 export default GlobalStyle;
-export { IconWrapper, Tooltip, IconWithTooltip, SocialIconWithLabel };
+export { SocialIconWrapper };

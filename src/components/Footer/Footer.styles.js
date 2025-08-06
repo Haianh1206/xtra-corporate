@@ -1,8 +1,17 @@
 // Footer.styles.js
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import FooterBg from "../../assets/abousection1.png";
 import media from "../../styles/media";
-
+const zoomIn = keyframes`
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+`;
 const Container = styled.footer`
   background: linear-gradient(rgba(0, 26, 51, 0.8), rgba(0, 26, 51, 0.8)),
     url(${FooterBg}) no-repeat center/cover;
@@ -173,7 +182,7 @@ const PurchaseButton = styled.button`
 
 const Grid = styled.div`
   display: flex;
-  flex-wrap: wrap;
+
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 60px;
@@ -181,7 +190,7 @@ const Grid = styled.div`
   padding-bottom: 50px;
   gap: 80px;
   ${media.x`
-   
+ 
     gap: 0px;
   `}
   ${media.md`
@@ -286,36 +295,10 @@ const Socials = styled.div`
     color: white;
     font-size: 16px;
   }
-
-  span i {
-    display: inline-block;
-    transition: transform 0.4s ease;
-  }
-
-  span:hover i {
-    transform: rotateY(360deg);
-  }
-
-  span:nth-child(1):hover i {
-    color: #060c7a;
-  }
-  span:nth-child(2):hover i {
-    color: #37139a;
-  }
-  span:nth-child(3):hover i {
-    color: #5750bc;
-  }
-  span:nth-child(4):hover i {
-    color: #f44336;
-  }
-  span:nth-child(5):hover i {
-    color: #0078d7;
-  }
-
-  span:nth-child(5)::before {
-    content: "/";
+  span:nth-child(n + 2)::before {
+    content: "";
     position: absolute;
-    left: 28px;
+    left: -10px;
     top: -12px;
     font-size: 36px;
     color: rgba(255, 255, 255, 0.1);
@@ -480,6 +463,18 @@ const HoverIcons = styled.div`
   `}
 `;
 
+const Divider = styled.div`
+  margin: 0 0px;
+  font-size: 36px !important;
+  color: rgba(255, 255, 255, 0.1) !important;
+  line-height: 1;
+  user-select: none;
+  margin-left: 15px;
+  ${media.sm` 
+    display: none;
+    }
+  `}
+`;
 export {
   Container,
   TopRow,
@@ -497,4 +492,5 @@ export {
   ColumnGroup,
   RightGroup,
   HoverIcons,
+  Divider,
 };

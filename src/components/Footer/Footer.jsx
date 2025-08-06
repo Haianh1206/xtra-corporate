@@ -31,8 +31,17 @@ import {
   ColumnGroup,
   RightGroup,
   HoverIcons,
+  Divider,
 } from "./Footer.styles";
+import { SocialIconWrapper } from "../../styles/GlobalStyle";
 
+const socials = [
+  { icon: <FaFacebookF />, label: "Facebook", bg: "#3b5998" },
+  { icon: <FaLinkedinIn />, label: "LinkedIn", bg: "#0077b5" },
+  { icon: <FaTwitter />, label: "Twitter", bg: "#1da1f2" },
+  { icon: <FaYoutube />, label: "YouTube", bg: "#ff0000 " },
+  { icon: <FaSkype />, label: "Skype", bg: "#00aff0" },
+];
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
@@ -147,35 +156,17 @@ export default function FooterSection() {
         <div>
           &copy; Copyright 2025. All Rights Reserved - XtraTheme Pty Ltd.
         </div>
-
         <Socials>
-          <span>
-            <i>
-              <FaFacebookF />
-            </i>
-          </span>
-          <span>
-            <i>
-              <FaLinkedinIn />
-            </i>
-          </span>
-          <span>
-            <i>
-              <FaTwitter />
-            </i>
-          </span>
-          <span>
-            <i>
-              <FaYoutube />
-            </i>
-          </span>
-          <span>
-            <i>
-              <FaSkype />
-            </i>
-          </span>
+          {socials.map((social, index) => (
+            <span key={index}>
+              <SocialIconWrapper bg={social.bg}>
+                {social.icon}
+                <div className="label">{social.label}</div>
+              </SocialIconWrapper>
+            </span>
+          ))}
         </Socials>
-
+        <Divider>/</Divider>
         <RightGroup>
           <BottomLinks>
             <span>Advertisement</span>

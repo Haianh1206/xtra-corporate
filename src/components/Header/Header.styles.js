@@ -1,5 +1,17 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import media from "../../styles/media";
+
+const zoomIn = keyframes`
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+`;
+
 const Wrapper = styled.header`
   width: 100%;
   position: absolute;
@@ -35,6 +47,9 @@ const TopBar = styled.div`
     img {
       height: 22px;
     }
+    img:hover {
+      cursor: pointer;
+    }
   }
 
   .message {
@@ -62,7 +77,10 @@ const TopBar = styled.div`
     margin-top: 0;
 
     /* Đổ bóng ngược lên trên */
-    box-shadow: 0 -4px 8px rgba(111, 154, 55, 0.3);
+    box-shadow: 0 4px 10px rgba(111, 154, 55, 0.25);
+  }
+  .download-btn:hover {
+    cursor: pointer;
   }
 `;
 
@@ -108,24 +126,7 @@ const SocialBar = styled.div`
       transform: rotateY(360deg);
     }
   }
-  .facebook-icon:hover {
-    color: #1de248ff;
-  }
-  svg:nth-child(1):hover {
-    color: #060c7a;
-  }
-  svg:nth-child(2):hover {
-    color: #37139a;
-  }
-  svg:nth-child(3):hover {
-    color: #5750bc;
-  }
-  svg:nth-child(4):hover {
-    color: #f44336;
-  }
-  svg:nth-child(5):hover {
-    color: #0078d7;
-  }
+
   span:nth-child(5)::before {
     content: "";
     position: absolute;
@@ -284,7 +285,6 @@ const NavBar = styled.div`
 
     svg {
       font-size: 20px;
-      margin-top: 6px;
       margin-left: 4px;
     }
 
@@ -312,10 +312,10 @@ const NavBar = styled.div`
 
     .hover-bridge {
       position: absolute;
-      top: 25px;
+      top: 15px;
       left: 0;
       width: 100%;
-      height: 10px;
+      height: 20px;
       background: transparent;
       z-index: 1;
     }
@@ -323,7 +323,7 @@ const NavBar = styled.div`
     .dropdown {
       display: none;
       position: absolute;
-      top: 45px;
+      top: 39px;
       left: -4px;
       background: #fff;
 

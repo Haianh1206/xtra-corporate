@@ -1,7 +1,18 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
 import bgImage from "../../assets/banner-img2.png";
 import { MessageCircle } from "lucide-react";
 import media from "../../styles/media"; // responsive mixin
+const fadeZoomIn = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`;
 
 const Section = styled.section`
   position: relative;
@@ -24,16 +35,16 @@ const Section = styled.section`
     height: auto;
   `}
 `;
-
 const Content = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${(props) => (props.isReversed ? "row-reverse" : "row")};
   align-items: center;
   position: relative;
   z-index: 2;
 
+  animation: ${fadeZoomIn} 0.5s ease;
+
   ${media.md`
-  
     flex-direction: column !important;
     gap: 40px;
   `}
@@ -216,15 +227,17 @@ const TabContent = styled.div`
 const Underline = styled.div`
   position: absolute;
   bottom: -17px;
-  left: 18%;
-  transform: translateX(-50%);
   height: 8px;
   width: 250px;
   background-color: white;
+  transition: transform 0.3s ease;
   z-index: 5;
+
+  left: ${({ tabIndex }) => `calc(${tabIndex} * 21% + 7.5%)`};
+
   ${media.x`
-left: 12.5%;
-width: 180px;
+    left: ${({ tabIndex }) => `calc(${tabIndex} * 25% + 4%)`};
+    width: 140px;
   `}
   ${media.md`
     display: none;

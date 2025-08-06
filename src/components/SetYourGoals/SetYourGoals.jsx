@@ -57,7 +57,7 @@ export default function DefineYourGoals() {
 
   return (
     <Section>
-      <Content style={{ flexDirection: isReversed ? "row-reverse" : "row" }}>
+      <Content key={activeTab} isReversed={isReversed} className="fade-zoom">
         <Left>
           <img src={currentGoal.image} alt={currentGoal.title} />
         </Left>
@@ -72,54 +72,54 @@ export default function DefineYourGoals() {
           <Tab
             active={activeTab === "define"}
             onClick={() => setActiveTab("define")}
+            id="define"
           >
-            <div>
-              <TabContent>
-                <MessageCircle />
-                <span>Define Your Goals</span>
-              </TabContent>
-              {activeTab === "define" && <Underline />}
-            </div>
+            <TabContent>
+              <MessageCircle />
+              <span>Define Your Goals</span>
+            </TabContent>
           </Tab>
 
           <Tab
             active={activeTab === "plan"}
             onClick={() => setActiveTab("plan")}
+            id="plan"
           >
-            <div>
-              <TabContent>
-                <CheckCircle />
-                <span>Plan Your Process</span>
-              </TabContent>
-              {activeTab === "plan" && <Underline />}
-            </div>
+            <TabContent>
+              <CheckCircle />
+              <span>Plan Your Process</span>
+            </TabContent>
           </Tab>
 
           <Tab
             active={activeTab === "assign"}
             onClick={() => setActiveTab("assign")}
+            id="assign"
           >
-            <div>
-              <TabContent>
-                <Users />
-                <span>Assign Stakeholders</span>
-              </TabContent>
-              {activeTab === "assign" && <Underline />}
-            </div>
+            <TabContent>
+              <Users />
+              <span>Assign Stakeholders</span>
+            </TabContent>
           </Tab>
 
           <Tab
             active={activeTab === "process"}
             onClick={() => setActiveTab("process")}
+            id="process"
           >
-            <div>
-              <TabContent>
-                <ShoppingCart />
-                <span>Process Implement</span>
-              </TabContent>
-              {activeTab === "process" && <Underline />}
-            </div>
+            <TabContent>
+              <ShoppingCart />
+              <span>Process Implement</span>
+            </TabContent>
           </Tab>
+
+          {/* 👉 Underline duy nhất */}
+          <Underline
+            tabIndex={["define", "plan", "assign", "process"].indexOf(
+              activeTab
+            )}
+          />
+          {/* <Underline activeTab={activeTab} /> */}
         </Tabs>
       </Content>
     </Section>
