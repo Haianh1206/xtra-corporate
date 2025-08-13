@@ -16,8 +16,6 @@ const NavbarWrapper = styled.nav`
   padding: 0;
   z-index: 999;
   width: 100vw;
-
-  // Mặc định không border
   border-top: ${(props) => (props.showBorder ? "1px solid #fff" : "none")};
   border-bottom: ${(props) =>
     props.showBorder ? "1px solid rgba(255, 255, 255, 0.2)" : "none"};

@@ -210,7 +210,7 @@ const NavBar = styled.div`
 
     ${media.md`
     gap: 16px;
-    display: flex; // ✅ Cho phép hiển thị ở mobile
+    display: flex; 
   `}
 
     nav {
@@ -218,7 +218,7 @@ const NavBar = styled.div`
       gap: 25px;
 
       ${media.sm`
-      display: none; // ❌ Ẩn menu chính, vẫn giữ dot-menu
+      display: none; 
     `}
 
       .nav-link.shop,

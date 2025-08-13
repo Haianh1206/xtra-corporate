@@ -4,7 +4,6 @@ import financial from "../../assets/Financial.png";
 import Software from "../../assets/Software.png";
 import Industrial from "../../assets/Industrial.png";
 
-// Animation
 import {
   Section,
   Left,
@@ -40,7 +39,7 @@ export default function ServiceVideoSection() {
     "https://via.placeholder.com/850x470?text=Page+1",
     "https://via.placeholder.com/850x470?text=Page+2",
     "https://via.placeholder.com/850x470?text=Page+3",
-    "", // Page 4 is video
+    "",
     "https://via.placeholder.com/850x470?text=Page+5",
     "https://via.placeholder.com/850x470?text=Page+6",
     "https://via.placeholder.com/850x470?text=Page+7",
@@ -51,7 +50,7 @@ export default function ServiceVideoSection() {
 
   const handleClick = () => {
     setOpenVideo(true);
-    setCurrentPage(4); // mở modal với video
+    setCurrentPage(4);
   };
 
   const handleNext = () => {

@@ -113,9 +113,9 @@ const SlideItem = styled.div`
   ${(p) =>
     p.$isPreview &&
     `
-    transform: scale(0.92); // <-- sửa từ 0.8 thành 0.9 hoặc 0.95
-    opacity: 0.8; // <-- tăng độ rõ
-    filter: blur(0.5px); // <-- giảm blur
+    transform: scale(0.92); 
+    opacity: 0.8; 
+    filter: blur(0.5px); 
     z-index: 2;
       
   `}

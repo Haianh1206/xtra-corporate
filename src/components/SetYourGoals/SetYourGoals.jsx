@@ -1,8 +1,7 @@
-// DefineYourGoals.jsx
-import { useState } from "react";
+import { useState, useRef, useEffect, useLayoutEffect } from "react";
 import { MessageCircle, CheckCircle, Users, ShoppingCart } from "lucide-react";
 
-import goalImage from "../../assets/goal-img.png"; // Ảnh chính
+import goalImage from "../../assets/goal-img.png";
 
 import {
   Section,
@@ -17,6 +16,7 @@ import {
   BackgroundIcon,
   TabContent,
   Underline,
+  FadeZoomWrap,
 } from "./SetYourGoals.styles";
 
 const goalOptions = {
@@ -34,7 +34,7 @@ const goalOptions = {
     title: "PLAN & MAP YOUR PROCESS",
     sub: "THINK OUT OF THE BOX",
     desc: `What are the strategies needed to achieve the goals? This is the broad road map for the process. A sales process might seem to be very different from a finance process, but there are certain steps that are universally common to all business processes.`,
-    image: goalImage, // bạn có thể thay ảnh khác nếu muốn
+    image: goalImage,
   },
   assign: {
     title: "SET REQUIRED ACTIONS",
@@ -52,75 +52,65 @@ const goalOptions = {
 
 export default function DefineYourGoals() {
   const [activeTab, setActiveTab] = useState("define");
-  const currentGoal = goalOptions[activeTab]; // 👈 lấy nội dung tương ứng tab đang chọn
+  const currentGoal = goalOptions[activeTab];
   const isReversed = activeTab === "plan" || activeTab === "process";
+
+  const tabRefs = useRef({});
+  const underlineRef = useRef(null);
+  const tabsContainerRef = useRef(null);
+  useLayoutEffect(() => {
+    const el = tabRefs.current[activeTab];
+    const underlineParent = underlineRef.current?.parentElement;
+    if (el && underlineRef.current && underlineParent) {
+      const elRect = el.getBoundingClientRect();
+      const parentRect = underlineParent.getBoundingClientRect();
+      const relativeLeft = elRect.left - parentRect.left;
+      underlineRef.current.style.width = `${elRect.width}px`;
+      underlineRef.current.style.transform = `translateX(${relativeLeft}px)`;
+    }
+  }, [activeTab]);
 
   return (
     <Section>
-      <Content key={activeTab} isReversed={isReversed} className="fade-zoom">
-        <Left>
-          <img src={currentGoal.image} alt={currentGoal.title} />
-        </Left>
-        <Right>
-          <BackgroundIcon />
-          <Heading>{currentGoal.title}</Heading>
-          <Subheading>{currentGoal.sub}</Subheading>
-          <Description>{currentGoal.desc}</Description>
-        </Right>
+      <Content isReversed={isReversed}>
+        <FadeZoomWrap key={activeTab} isReversed={isReversed}>
+          <Left>
+            <img src={currentGoal.image} alt={currentGoal.title} />
+          </Left>
+          <Right>
+            <BackgroundIcon />
+            <Heading>{currentGoal.title}</Heading>
+            <Subheading>{currentGoal.sub}</Subheading>
+            <Description>{currentGoal.desc}</Description>
+          </Right>
+        </FadeZoomWrap>
+        <div
+          style={{ display: "flex", justifyContent: "center" }}
+          ref={tabsContainerRef}
+        >
+          <Tabs ref={tabsContainerRef}>
+            {Object.entries({
+              define: { icon: <MessageCircle />, label: "Define Your Goals" },
+              plan: { icon: <CheckCircle />, label: "Plan Your Process" },
+              assign: { icon: <Users />, label: "Assign Stakeholders" },
+              process: { icon: <ShoppingCart />, label: "Process Implement" },
+            }).map(([key, { icon, label }]) => (
+              <Tab
+                key={key}
+                active={activeTab === key}
+                onClick={() => setActiveTab(key)}
+                ref={(el) => (tabRefs.current[key] = el)}
+              >
+                <TabContent>
+                  {icon}
+                  <span>{label}</span>
+                </TabContent>
+              </Tab>
+            ))}
 
-        <Tabs>
-          <Tab
-            active={activeTab === "define"}
-            onClick={() => setActiveTab("define")}
-            id="define"
-          >
-            <TabContent>
-              <MessageCircle />
-              <span>Define Your Goals</span>
-            </TabContent>
-          </Tab>
-
-          <Tab
-            active={activeTab === "plan"}
-            onClick={() => setActiveTab("plan")}
-            id="plan"
-          >
-            <TabContent>
-              <CheckCircle />
-              <span>Plan Your Process</span>
-            </TabContent>
-          </Tab>
-
-          <Tab
-            active={activeTab === "assign"}
-            onClick={() => setActiveTab("assign")}
-            id="assign"
-          >
-            <TabContent>
-              <Users />
-              <span>Assign Stakeholders</span>
-            </TabContent>
-          </Tab>
-
-          <Tab
-            active={activeTab === "process"}
-            onClick={() => setActiveTab("process")}
-            id="process"
-          >
-            <TabContent>
-              <ShoppingCart />
-              <span>Process Implement</span>
-            </TabContent>
-          </Tab>
-
-          {/* 👉 Underline duy nhất */}
-          <Underline
-            tabIndex={["define", "plan", "assign", "process"].indexOf(
-              activeTab
-            )}
-          />
-          {/* <Underline activeTab={activeTab} /> */}
-        </Tabs>
+            <Underline ref={underlineRef} />
+          </Tabs>
+        </div>
       </Content>
     </Section>
   );

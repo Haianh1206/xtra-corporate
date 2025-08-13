@@ -1,4 +1,3 @@
-// Footer.styles.js
 import styled, { keyframes } from "styled-components";
 import FooterBg from "../../assets/abousection1.png";
 import media from "../../styles/media";

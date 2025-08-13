@@ -1,4 +1,3 @@
-// BlogSlider.styles.js
 import styled, { keyframes } from "styled-components";
 import img1 from "../../assets/slide1.png";
 import img2 from "../../assets/slide2.png";
@@ -93,7 +92,7 @@ const SlideCard = styled.div`
 `;
 const ImageBox = styled.div`
   position: relative;
-  overflow: hidden; // giới hạn phần zoom không tràn ra ngoài
+  overflow: hidden;
   width: 384px;
   height: 384px;
   border-radius: 4px;
@@ -129,7 +128,7 @@ const Image = styled.img`
 
   transition: transform 0.6s ease;
   ${SlideCard}:hover & {
-    transform: scale(1.05); // ✅ hiệu ứng zoom
+    transform: scale(1.05);
   }
 `;
 

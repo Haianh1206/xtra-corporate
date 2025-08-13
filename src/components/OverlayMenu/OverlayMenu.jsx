@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 
-// Local image imports
 import Portfolio1 from "../../assets/Portfolio1.png";
 import Portfolio2 from "../../assets/Portfolio2.png";
 import Portfolio3 from "../../assets/Portfolio3.png";
@@ -10,7 +9,6 @@ import Portfolio6 from "../../assets/Portfolio6.png";
 import Products1 from "../../assets/Products1.png";
 import Products2 from "../../assets/Products2.png";
 
-// Animations
 import {
   Backdrop,
   Sidebar,

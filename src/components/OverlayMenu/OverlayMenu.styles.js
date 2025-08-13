@@ -5,7 +5,6 @@ const fadeInScale = keyframes`
   100% { transform: scale(1); opacity: 1; }
 `;
 
-// Styles
 const Backdrop = styled.div`
   position: fixed;
   inset: 0;
@@ -60,7 +59,7 @@ const SectionTitle = styled.h3`
   font-weight: 700;
   margin-bottom: 16px;
   padding-left: 30px;
-  margin-left: -30px; // 6px border + 30px khoảng cách
+  margin-left: -30px;
   border-left: 4px solid #002699;
   color: #002699;
 `;

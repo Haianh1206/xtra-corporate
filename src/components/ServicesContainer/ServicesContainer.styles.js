@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import media from "../../styles/media";
 
-// Container wrapper (nếu có)
 const ContainerWrapper = styled.div`
   margin-top: -81px;
   padding: 0 120px 100px 120px;
@@ -328,7 +327,6 @@ const HoverText = styled.div.attrs({ className: "hover-text" })`
   `}
 `;
 
-// Export
 export {
   ContainerWrapper,
   Container,

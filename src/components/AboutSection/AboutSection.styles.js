@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// Media query breakpoints
 const sizes = {
   md: "768px",
   sm: "480px",

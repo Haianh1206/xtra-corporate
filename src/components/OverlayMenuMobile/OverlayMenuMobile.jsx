@@ -1,4 +1,3 @@
-// OverlayMenuMobile.js
 import { useEffect, useState } from "react";
 import {
   MobileBackdrop,

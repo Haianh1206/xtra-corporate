@@ -1,4 +1,3 @@
-// OverlayMenuMobile.styles.js
 import styled, { keyframes, css } from "styled-components";
 
 const slideIn = keyframes`

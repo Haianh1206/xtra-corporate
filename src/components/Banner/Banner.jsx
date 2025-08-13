@@ -19,7 +19,6 @@ import {
   SlideItem,
 } from "./Banner.styles";
 
-// Hook kiểm tra mobile/tablet
 const useDevice = () => {
   const [device, setDevice] = useState({ isMobile: false, isTablet: false });
 

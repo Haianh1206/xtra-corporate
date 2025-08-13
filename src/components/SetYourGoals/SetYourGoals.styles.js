@@ -1,8 +1,8 @@
 import styled, { keyframes } from "styled-components";
-
 import bgImage from "../../assets/banner-img2.png";
 import { MessageCircle } from "lucide-react";
-import media from "../../styles/media"; // responsive mixin
+import media from "../../styles/media";
+
 const fadeZoomIn = keyframes`
   from {
     opacity: 0;
@@ -35,13 +35,18 @@ const Section = styled.section`
     height: auto;
   `}
 `;
+
 const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+`;
+
+const FadeZoomWrap = styled.div`
   display: flex;
   flex-direction: ${(props) => (props.isReversed ? "row-reverse" : "row")};
   align-items: center;
-  position: relative;
-  z-index: 2;
-
   animation: ${fadeZoomIn} 0.5s ease;
 
   ${media.md`
@@ -98,12 +103,10 @@ const Heading = styled.h2`
   ${media.sm`
     font-size: 38px;
     top: 30px;
-    
   `}
   ${media.x`
     top: 50px;
-        font-size: 36px;
-
+    font-size: 36px;
   `}
 `;
 
@@ -114,13 +117,13 @@ const Subheading = styled.p`
   margin: 8px 0 80px 0;
   ${media.x`
     font-size: 18px;
-   margin-top : 60px;
+    margin-top : 60px;
   `}
   ${media.md`
     font-size: 16px;
     margin-bottom: 40px;
   `}
-   ${media.sm`
+  ${media.sm`
     margin-top: 52px;
   `}
 `;
@@ -141,18 +144,16 @@ const Description = styled.p`
 `;
 
 const Tabs = styled.div`
-  position: absolute;
-  bottom: -120px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 20px 0;
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-start;
   gap: 40px;
+  padding: 20px 0;
   z-index: 10;
+  bottom: -74px;
   ${media.x`
      bottom: -163px;
-gap: 0px;
+     gap: 0px;
   `}
   ${media.md`
     position: static;
@@ -161,7 +162,6 @@ gap: 0px;
     gap: 20px;
     margin-top: 40px;
   `}
-  
   ${media.sm`
    display: none;
   `}
@@ -177,6 +177,7 @@ const Tab = styled.div`
   cursor: pointer;
   transition: all 0.3s;
   margin-right: 40px;
+  padding: 8px 12px;
 
   svg {
     stroke: ${(props) => (props.active ? "#fff" : "#888")};
@@ -186,7 +187,6 @@ const Tab = styled.div`
 
   &:hover {
     color: #fff;
-
     svg {
       stroke: #fff;
     }
@@ -199,7 +199,7 @@ const Tab = styled.div`
 
 const BackgroundIcon = styled(MessageCircle)`
   position: absolute;
-  top: -60px;
+  top: -40px;
   left: 30px;
   width: 140px;
   height: 140px;
@@ -228,20 +228,10 @@ const Underline = styled.div`
   position: absolute;
   bottom: -17px;
   height: 8px;
-  width: 250px;
+
   background-color: white;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, width 0.3s ease;
   z-index: 5;
-
-  left: ${({ tabIndex }) => `calc(${tabIndex} * 21% + 7.5%)`};
-
-  ${media.x`
-    left: ${({ tabIndex }) => `calc(${tabIndex} * 25% + 4%)`};
-    width: 140px;
-  `}
-  ${media.md`
-    display: none;
-  `}
 `;
 
 export {
@@ -257,4 +247,5 @@ export {
   BackgroundIcon,
   TabContent,
   Underline,
+  FadeZoomWrap,
 };

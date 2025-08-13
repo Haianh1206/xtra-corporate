@@ -90,7 +90,7 @@ export default function OurTeamSection() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.disconnect(); // chỉ chạy 1 lần
+          observer.disconnect();
         }
       },
       { threshold: 0.4 }
@@ -138,7 +138,7 @@ export default function OurTeamSection() {
             src={logo}
             alt={`Logo ${i + 1}`}
             $visible={logoVisible}
-            $delay={i * 0.2} // từng logo delay 0.2s từ trái qua phải
+            $delay={i * 0.2}
           />
         ))}
       </LogoSection>

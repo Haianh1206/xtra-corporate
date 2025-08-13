@@ -3,7 +3,6 @@ import { useState } from "react";
 import { ArrowRight } from "lucide-react";
 import aboutsection1 from "../../assets/abousection1.png";
 
-// === Styled Components ===
 import {
   Container,
   LeftColumn,

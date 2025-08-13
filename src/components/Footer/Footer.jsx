@@ -1,5 +1,3 @@
-// FooterSection.jsx
-
 import { useState, useEffect } from "react";
 
 import {
@@ -52,7 +50,7 @@ export default function FooterSection() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY || document.documentElement.scrollTop;
-      setShowScrollTop(scrollY > window.innerHeight); // chỉ hiện khi scroll > 1 màn hình
+      setShowScrollTop(scrollY > window.innerHeight);
     };
 
     window.addEventListener("scroll", handleScroll);

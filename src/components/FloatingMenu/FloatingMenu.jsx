@@ -1,4 +1,3 @@
-// FloatingMenu.jsx
 import React, { useState } from "react";
 import {
   FaDownload,

@@ -281,12 +281,12 @@ const Logo = styled.img`
   ${({ $visible, $delay }) =>
     $visible &&
     css`
-      transform: translateY(0); // giữ translate riêng
+      transform: translateY(0);
       animation: ${zoomOut} 0.6s ease-out ${$delay}s both;
     `}
 
   &:hover {
-    transform: scale(1.15); // chỉ scale thôi, không động đến translate nữa
+    transform: scale(1.15);
     opacity: 1 !important;
   }
 

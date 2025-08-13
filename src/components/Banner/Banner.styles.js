@@ -2,7 +2,6 @@ import styled, { keyframes, css } from "styled-components";
 import media from "../../styles/media";
 import { centerTextResponsive } from "../../styles/Responsive.styles";
 
-// Animations
 const slideIn = keyframes`
   from {
     opacity: 0;
@@ -64,8 +63,7 @@ const BannerSection = styled.section`
   background-repeat: no-repeat;
   color: white;
   position: relative;
-  overflow: hidden; // ✅ cho phép DateLabel/element tràn ra
-  z-index: 1;
+  overflow: hidden;
 
   ${(props) =>
     props.direction === "left"
